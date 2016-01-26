@@ -1,13 +1,12 @@
 package client;
 
-import Filing.FilingMain;
-import Filing.FilingWidget;
+import filing.FilingMain;
+import filing.FilingWidget;
 
 import javax.swing.*;
 import java.awt.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ConcurrentModificationException;
 
 /**
  * Created by JD Isenhart on 9/15/2015.
@@ -36,7 +35,7 @@ public class GUIOverview {
         try {
             name = new JLabel(InetAddress.getLocalHost().getHostName());
         } catch (UnknownHostException e) {
-            e.printStackTrace();
+            name = new JLabel("<Name not found>");
         }
         name.setSize(200, 50);
         name.setLocation(0, 0);

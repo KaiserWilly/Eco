@@ -5,16 +5,15 @@ import main.Values;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.Arrays;
 
 /**
  * Created by james on 1/12/2016.
  */
-public class serverClientHandler extends Thread {
+public class ServerClientHandler extends Thread {
     private Socket socketToClient;
     int ID;
 
-    public serverClientHandler(Socket socket, int id) {
+    public ServerClientHandler(Socket socket, int id) {
         socketToClient = socket;
         ID = id;
         start();
@@ -28,10 +27,10 @@ public class serverClientHandler extends Thread {
             while (true) {
                 if (secCount < Values.secCount) {
                     secCount = Values.secCount;
-//                    for (int i=0;i<serverTimer.dataArray.length;i++){
-//                        System.out.println(Arrays.toString(serverTimer.dataArray[i]));
+//                    for (int i=0;i<ServerTimer.dataArray.length;i++){
+//                        System.out.println(Arrays.toString(ServerTimer.dataArray[i]));
 //                    }
-                    out.writeObject(serverTimer.dataArray);
+                    out.writeObject(ServerTimer.dataArray);
                 }
                 Thread.sleep(1000);
             }

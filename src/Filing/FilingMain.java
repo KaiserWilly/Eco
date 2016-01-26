@@ -1,10 +1,9 @@
-package Filing;
+package filing;
 
 import main.Values;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 
 /**

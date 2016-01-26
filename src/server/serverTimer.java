@@ -9,7 +9,7 @@ import java.util.TimerTask;
 /**
  * Created by james on 1/12/2016.
  */
-public class serverTimer {
+public class ServerTimer {
     static Timer timer;
     public static Object[][] dataArray;
 

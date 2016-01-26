@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 /**
  * Created by james on 1/12/2016.
  */
-public class ecoMain {
+public class EcoMain {
     public static void main(String[] args) throws UnknownHostException {
         System.out.println("Current IP: "+ InetAddress.getLocalHost().getHostAddress());
         SwingUtilities.invokeLater(new Runnable() {
@@ -22,11 +22,5 @@ public class ecoMain {
             }
         });
 
-    }
-    public static void startServer(){
-        server.serverMain.startServer();
-    }
-    public static void startClient() {
-//        Filing.FilingMain.runConversion()
     }
 }

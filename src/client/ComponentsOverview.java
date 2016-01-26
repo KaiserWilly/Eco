@@ -1,7 +1,7 @@
 package client;
 
-import Filing.FilingMain;
-import Filing.FilingWidget;
+import filing.FilingMain;
+import filing.FilingWidget;
 
 import javax.swing.*;
 import java.awt.*;

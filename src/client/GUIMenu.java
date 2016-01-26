@@ -2,6 +2,7 @@ package client;
 
 
 import main.Values;
+import server.ServerMain;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -100,8 +101,9 @@ public class GUIMenu {
                 boolean ipValid = false;
                 while (!ipValid) {
                     IP = (String) JOptionPane.showInputDialog(joinGame, "Enter the IP address of the Server:", "Join Game", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                    System.out.println(IP);
                     if (IP == null) break;
-                    ipValid = clientNetwork.testConnection(IP);
+                    ipValid = Clientnetwork.testConnection(IP);
                 }
                 if (ipValid) {
                     System.out.println("It connected!");
@@ -112,7 +114,7 @@ public class GUIMenu {
             } else if (e.getSource() == startServer) {
                 frame.setVisible(false); //you can't see me!
                 frame.dispose(); //Destroy the JFrame object
-                server.serverMain.startServer();
+                ServerMain.startServer();
             }
 
         }

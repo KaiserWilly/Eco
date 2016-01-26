@@ -1,4 +1,4 @@
-package Filing;
+package filing;
 
 import javax.swing.*;
 import java.awt.*;

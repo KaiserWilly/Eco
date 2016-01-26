@@ -6,10 +6,10 @@ import java.util.ConcurrentModificationException;
 /**
  * Created by james on 1/12/2016.
  */
-public class clientMain {
+public class ClientMain {
 
     public static void startClient(String serverIP) {
-        Thread clientN = new clientServerHandler(serverIP);
+        Thread clientN = new ClientServerHandler(serverIP);
         clientN.start();
     }
 

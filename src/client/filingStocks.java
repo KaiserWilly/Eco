@@ -5,7 +5,7 @@ import server.engine.EcoEngine;
 /**
  * Created by isenhartjd on 1/25/2016.
  */
-public class filingStocks {
+public class FilingStocks {
     static double total;
     static double average;
 

@@ -7,7 +7,7 @@ import java.net.Socket;
 /**
  * Created by james on 1/12/2016.
  */
-public class serverMain {
+public class ServerMain {
     public static void startServer() {
         int ID =1;
         try {
@@ -17,12 +17,12 @@ public class serverMain {
             serverFile.showTimeStamp("Socket Created");
             server.engine.EcoEngine.initializeEngine(50);
             serverFile.showTimeStamp("Engine Initialized");
-            server.serverTimer.startTimer();
+            ServerTimer.startTimer();
             serverFile.showTimeStamp("Update Control Started, game beginning in 10 seconds");
 
             while (true) {
                 Socket socketToClient = listeningSocket.accept();
-                new serverClientHandler(socketToClient, ID);
+                new ServerClientHandler(socketToClient, ID);
                 ID++;
             }
         } catch (BindException e) {

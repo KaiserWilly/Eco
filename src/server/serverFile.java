@@ -7,7 +7,7 @@ import java.util.Calendar;
 /**
  * Created by james on 1/12/2016.
  */
-public class serverFile {
+public class ServerFile {
     public static void showTimeStamp(String command){
         Calendar now = Calendar.getInstance();
         DateFormat df = new SimpleDateFormat("[dd/MM HH:mm:ss]: ");

@@ -1,23 +1,19 @@
 package client;
 
 import main.Values;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.*;
-import java.net.BindException;
 import java.net.Socket;
-import java.util.Arrays;
 import java.util.ConcurrentModificationException;
-import java.util.HashMap;
 
 /**
  * Created by james on 1/13/2016.
  */
-public class clientServerHandler extends Thread {
+public class ClientServerHandler extends Thread {
     int count = 0;
     String serverIP;
 
-    public clientServerHandler(String IP) {
+    public ClientServerHandler(String IP) {
         serverIP = IP;
     }
 
