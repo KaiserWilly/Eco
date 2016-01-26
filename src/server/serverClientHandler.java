@@ -35,7 +35,7 @@ public class ServerClientHandler extends Thread {
                 Thread.sleep(1000);
             }
         } catch (SocketException e) {
-            serverFile.showTimeStamp("Socket Error on Socket ID: "+ID);
+            ServerFile.showTimeStamp("Socket Error on Socket ID: "+ID);
         } catch (Exception e) {
             e.printStackTrace();
         }

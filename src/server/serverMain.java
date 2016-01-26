@@ -11,14 +11,14 @@ public class ServerMain {
     public static void startServer() {
         int ID =1;
         try {
-            serverFile.showTimeStamp("Starting Server");
-            serverFile.showTimeStamp("Creating Listening Socket on Port 1180");
+            ServerFile.showTimeStamp("Starting Server");
+            ServerFile.showTimeStamp("Creating Listening Socket on Port 1180");
             ServerSocket listeningSocket = new ServerSocket(1180);
-            serverFile.showTimeStamp("Socket Created");
+            ServerFile.showTimeStamp("Socket Created");
             server.engine.EcoEngine.initializeEngine(50);
-            serverFile.showTimeStamp("Engine Initialized");
+            ServerFile.showTimeStamp("Engine Initialized");
             ServerTimer.startTimer();
-            serverFile.showTimeStamp("Update Control Started, game beginning in 10 seconds");
+            ServerFile.showTimeStamp("Update Control Started, game beginning in 10 seconds");
 
             while (true) {
                 Socket socketToClient = listeningSocket.accept();
@@ -26,7 +26,8 @@ public class ServerMain {
                 ID++;
             }
         } catch (BindException e) {
-            serverFile.showTimeStamp("ERROR: Port in use / Not able to bind to port. Terminating server");
+            ServerFile.showTimeStamp("ERROR: Port in use / Not able to bind to port. Terminating server");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

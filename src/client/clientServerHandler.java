@@ -30,7 +30,7 @@ public class ClientServerHandler extends Thread {
 //            BufferedReader br = new BufferedReader(new InputStreamReader(is));
             ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
 
-            clientMain.startGUI();
+            ClientMain.startGUI();
             Thread.sleep(100);
 
             while (true) {

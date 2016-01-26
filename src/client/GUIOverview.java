@@ -138,10 +138,11 @@ public class GUIOverview {
         rankingsP.setLocation(1030, 375);
         rankingsP.setBackground(new Color(198, 240, 198));
         Object[][] rankings = new Object[][]{
-                {"JD", "23,300"},
-                {"Daniel", "22,600"},
-                {"Brody", "19,900"},
-                {"Will", "16,300"}
+                {"Daniel", "23,300"},
+                {"JD", "22,600"},
+                {"Toast", "19,900"},
+                {"Will", "16,300"},
+                {"Brody", "16,000"}
         };
         rankWidget = FilingWidget.makeRankingWidget(rankings, 300);
         rankWidgetP = new JScrollPane(rankWidget);
@@ -149,8 +150,6 @@ public class GUIOverview {
         rankWidgetP.setLocation(0, 0);
         rankingsP.add(rankWidgetP);
         base.add(rankingsP);
-
-        //Layout Manager for tab
 
         return base;
     }
@@ -257,12 +256,13 @@ public class GUIOverview {
         rankingsP.setLocation(1030, 375);
         rankingsP.setBackground(new Color(198, 240, 198));
         Object[][] rankings = new Object[][]{
-                {"JD", "23,300"},
-                {"Daniel", "22,600"},
-                {"Brody", "19,900"},
-                {"Will", "16,300"}
+                {"Daniel", "23,300"},
+                {"JD", "22,600"},
+                {"Toast", "19,900"},
+                {"Will", "16,300"},
+                {"Brody", "16,000"}
         };
-        rankWidget = FilingWidget.makeRankingWidget(rankings, 220);
+        rankWidget = FilingWidget.makeRankingWidget(rankings, 300);
         rankWidgetP = new JScrollPane(rankWidget);
         rankWidgetP.setSize(220, 200);
         rankWidgetP.setLocation(0, 0);
