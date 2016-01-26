@@ -124,7 +124,7 @@ public class EcoEngine {
         int stockVolatility;
         Random stockChangeParameter = new Random(); //Sets the parameter against the volatility is checked to see if there is a change in stock value
         for (int i = 0; i < numberOfStocks; i++) {
-            System.out.println("Volatility Value of Stock: " + String.valueOf(stockInput[i][2]));
+//            System.out.println("Volatility Value of Stock: " + String.valueOf(stockInput[i][2]));
             stockVolatility = Integer.parseInt(String.valueOf(stockInput[i][2]));
             if (Boolean.getBoolean(String.valueOf(stockInput[i][4]))) { //Changes the price of the stock if it is trending
                 if (stockVolatility <= stockChangeParameter.nextInt(100 + 1)) {

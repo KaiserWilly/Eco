@@ -115,8 +115,6 @@ public class GUIFrame {
             switch (tabIndex) {
                 case 0:
 //                    System.out.println(" (Game Overview)");
-                    mainFrame.revalidate();
-                    mainFrame.repaint();
                     GUIOverview.updateOverview();
                     break;
                 case 1:
