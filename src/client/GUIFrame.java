@@ -111,10 +111,10 @@ public class GUIFrame {
             } catch (NullPointerException e) {
 
             }
-            System.out.println("Selected Tab: " + tabIndex);
+//            System.out.println("Selected Tab: " + tabIndex);
             switch (tabIndex) {
                 case 0:
-                    System.out.println(" (Game Overview)");
+//                    System.out.println(" (Game Overview)");
                     mainFrame.revalidate();
                     mainFrame.repaint();
                     GUIOverview.updateOverview();

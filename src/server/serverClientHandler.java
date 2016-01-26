@@ -28,9 +28,9 @@ public class serverClientHandler extends Thread {
             while (true) {
                 if (secCount < Values.secCount) {
                     secCount = Values.secCount;
-                    for (int i=0;i<serverTimer.dataArray.length;i++){
-                        System.out.println(Arrays.toString(serverTimer.dataArray[i]));
-                    }
+//                    for (int i=0;i<serverTimer.dataArray.length;i++){
+//                        System.out.println(Arrays.toString(serverTimer.dataArray[i]));
+//                    }
                     out.writeObject(serverTimer.dataArray);
                 }
                 Thread.sleep(1000);

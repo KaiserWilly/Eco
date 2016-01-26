@@ -32,8 +32,9 @@ public class clientServerHandler extends Thread {
             InputStream is = clientSocket.getInputStream();
 //            BufferedReader br = new BufferedReader(new InputStreamReader(is));
             ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
-            Thread.sleep(100);
+
             clientMain.startGUI();
+            Thread.sleep(100);
 
             while (true) {
 
@@ -50,7 +51,6 @@ public class clientServerHandler extends Thread {
                         System.out.println("Can't Write Data");
                     }
                 }
-
                 GUIFrame.PaneFrameMain.reloadTab();
             }
         } catch (Exception e) {

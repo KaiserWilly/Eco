@@ -1,6 +1,7 @@
 package client;
 
 import javax.swing.*;
+import java.util.ConcurrentModificationException;
 
 /**
  * Created by james on 1/12/2016.
@@ -18,7 +19,11 @@ public class clientMain {
             public void run() {
                 try {
                     GUIFrame.PaneFrameMain.createGUI(); //Can't get it to recognize the reference
-                } catch (Exception e) {
+                } catch (IllegalStateException e) {
+                    System.out.println("IllegalStateException: GUIFrame.startGUI()");
+                } catch (ConcurrentModificationException e) {
+                    System.out.println("ConcurrentModificationException: GUIFrame.startGUI()");
+                }catch (Exception e) {
                     e.printStackTrace();
                 }
             }

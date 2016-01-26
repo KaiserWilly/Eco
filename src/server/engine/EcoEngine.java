@@ -131,8 +131,8 @@ public class EcoEngine {
                     double originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
                     double newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
                     stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1; //Increases the value of the trend by 1 turn, in other words, the stock is now trending
-                    System.out.println("Original Price of Stock:" + originalStockPrice);
-                    System.out.println("New Price for Stock:" + newStockPrice);
+//                    System.out.println("Original Price of Stock:" + originalStockPrice);
+//                    System.out.println("New Price for Stock:" + newStockPrice);
                 }
             } else if (stockVolatility <= stockChangeParameter.nextInt(100 + 1)) {
                 double originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
@@ -143,10 +143,10 @@ public class EcoEngine {
                         stockInput[i][5] = 0;
                     }
                 }
-                System.out.println("Original Price of Stock:" + originalStockPrice);
-                System.out.println("New Price for Stock:" + newStockPrice);
+//                System.out.println("Original Price of Stock:" + originalStockPrice);
+//                System.out.println("New Price for Stock:" + newStockPrice);
             } else {
-                System.out.println("No Change in Stock Price for Stock: " + stockInput[i][0]);
+//                System.out.println("No Change in Stock Price for Stock: " + stockInput[i][0]);
             }
         }
 //        for (int i = 0; i < stockInput.length; i++) {
@@ -169,7 +169,7 @@ public class EcoEngine {
                         percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                     }
                     priceToBeChanged = priceToBeChanged + percentageChange;
-                    System.out.println("Percent the Value Changed: " + percentageChange);
+//                    System.out.println("Percent the Value Changed: " + percentageChange);
                 } else {
                     if (percentageAdjustment.nextInt(101) <= 50) {
                         percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
@@ -177,7 +177,7 @@ public class EcoEngine {
                         percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                     }
                     priceToBeChanged = priceToBeChanged - percentageChange;
-                    System.out.println("Percent the Value Changed: " + percentageChange);
+//                    System.out.println("Percent the Value Changed: " + percentageChange);
                 }
             } else {
                 if (percentageAdjustment.nextInt() <= 50 + (10 - currentDurationOfTrend)) {
@@ -187,7 +187,7 @@ public class EcoEngine {
                         percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                     }
                     priceToBeChanged = priceToBeChanged + percentageChange;
-                    System.out.println("Percent the Value Changed: " + percentageChange);
+//                    System.out.println("Percent the Value Changed: " + percentageChange);
                 } else {
                     if (percentageAdjustment.nextInt(101) <= 50) {
                         percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
@@ -195,7 +195,7 @@ public class EcoEngine {
                         percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                     }
                     priceToBeChanged = priceToBeChanged - percentageChange;
-                    System.out.println("Percent the Value Changed: " + percentageChange);
+//                    System.out.println("Percent the Value Changed: " + percentageChange);
                 }
                 priceToBeChanged = (double) Math.round(priceToBeChanged * 100) / 100;
             }
@@ -207,7 +207,7 @@ public class EcoEngine {
                     percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                 }
                 priceToBeChanged = priceToBeChanged + percentageChange;
-                System.out.println("Percent the Value Changed: " + percentageChange);
+//                System.out.println("Percent the Value Changed: " + percentageChange);
             } else {
                 if (percentageAdjustment.nextInt(101) <= 50) {
                     percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
@@ -215,7 +215,7 @@ public class EcoEngine {
                     percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                 }
                 priceToBeChanged = priceToBeChanged - percentageChange;
-                System.out.println("Percent the Value Changed: " + percentageChange);
+//                System.out.println("Percent the Value Changed: " + percentageChange);
             }
             priceToBeChanged = (double) Math.round(priceToBeChanged * 100) / 100;
         }

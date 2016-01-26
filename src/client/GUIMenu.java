@@ -1,7 +1,6 @@
 package client;
 
 
-
 import main.Values;
 
 import javax.imageio.ImageIO;
@@ -11,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.nio.file.Path;
 
 /**
  * Created by JD Isenhart on 9/14/2015.
@@ -20,7 +18,7 @@ public class GUIMenu {
 
     public static JFrame frame;
     public static JPanel base;
-    public static JButton openNew, joinGame;
+    public static JButton startServer, joinGame;
     public static JLabel panelIcon;
     public static JFileChooser openSave, getOptions;
 
@@ -83,13 +81,13 @@ public class GUIMenu {
             joinGame.setBorder(BorderFactory.createLineBorder(new Color(92, 92, 92), 2));
             base.add(joinGame);
 
-            openNew = new JButton("Start Server");
-            openNew.addActionListener(this);
-            openNew.setSize(200, 50);
-            openNew.setLocation(100, 325);
-            openNew.setSelected(false);
-            openNew.setBorder(BorderFactory.createLineBorder(new Color(92, 92, 92), 2));
-            base.add(openNew);
+            startServer = new JButton("Start Server");
+            startServer.addActionListener(this);
+            startServer.setSize(200, 50);
+            startServer.setLocation(100, 325);
+            startServer.setSelected(false);
+            startServer.setBorder(BorderFactory.createLineBorder(new Color(92, 92, 92), 2));
+            base.add(startServer);
 
 
             return base;
@@ -97,19 +95,21 @@ public class GUIMenu {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Path saveLocat = null;
             if (e.getSource() == joinGame) {
                 String IP = null;
                 boolean ipValid = false;
-                while(!ipValid){
+                while (!ipValid) {
                     IP = (String) JOptionPane.showInputDialog(joinGame, "Enter the IP address of the Server:", "Join Game", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                    if (IP == null) break;
                     ipValid = clientNetwork.testConnection(IP);
                 }
-                System.out.println("It connected!");
-                frame.setVisible(false); //you can't see me!
-                frame.dispose(); //Destroy the JFrame object
-                clientMain.startClient(IP);
-            } else if (e.getSource() == openNew){
+                if (ipValid) {
+                    System.out.println("It connected!");
+                    frame.setVisible(false); //you can't see me!
+                    frame.dispose(); //Destroy the JFrame object
+                    clientMain.startClient(IP);
+                }
+            } else if (e.getSource() == startServer) {
                 frame.setVisible(false); //you can't see me!
                 frame.dispose(); //Destroy the JFrame object
                 server.serverMain.startServer();
