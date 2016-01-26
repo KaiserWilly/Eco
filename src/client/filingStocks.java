@@ -8,7 +8,8 @@ import server.engine.EcoEngine;
 public class filingStocks {
     static int total;
     static double average;
-    //Method that generates average across all stocks
+
+    //Method that generates average price across all stocks
         public static double getStockAverage() {
             for (int i = 0; i < EcoEngine.numberOfStocks; i++) {
                 total += (int)EcoEngine.stockInfo[i][0];
