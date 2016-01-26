@@ -17,6 +17,8 @@ public class GUIOverview {
     static JLabel rankMonLab, rankPlayL, compLab;
     static JScrollPane nPTop5WidgetP, pTop5WidgetP, nPBot5WidgetP, pBot5WidgetP, rankWidgetP;
 
+    static int test = 0;
+
 
     public JPanel OverviewPanel() {
         base = new JPanel();
@@ -84,6 +86,7 @@ public class GUIOverview {
         hotSP.setLocation(50, 375);
         hotSP.setBackground(new Color(198, 240, 198));
         nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 220, "Top 5 Stocks");
+        System.out.println("Getting Those Stocks LOL");
         nPTop5WidgetP = new JScrollPane(nPTop5Widget);
         nPTop5WidgetP.setSize(220, 200);
         nPTop5WidgetP.setLocation(0, 0);
@@ -202,6 +205,7 @@ public class GUIOverview {
         hotSP.setLocation(50, 375);
         hotSP.setBackground(new Color(198, 240, 198));
         nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 220, "Top 5 Stocks");
+        System.out.println("Getting Top 5 Stocks");
         nPTop5WidgetP = new JScrollPane(nPTop5Widget);
         nPTop5WidgetP.setSize(220, 200);
         nPTop5WidgetP.setLocation(0, 0);
@@ -258,10 +262,13 @@ public class GUIOverview {
         Object[][] rankings = new Object[][]{
                 {"Daniel", "23,300"},
                 {"JD", "22,600"},
-                {"Toast", "19,900"},
+                {"Toast", test},
                 {"Will", "16,300"},
                 {"Brody", "16,000"}
         };
+
+        test++;
+
         rankWidget = FilingWidget.makeRankingWidget(rankings, 300);
         rankWidgetP = new JScrollPane(rankWidget);
         rankWidgetP.setSize(220, 200);
