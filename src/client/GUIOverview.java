@@ -1,6 +1,7 @@
 package client;
 
 import Filing.FilingMain;
+import Filing.FilingWidget;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,8 +10,10 @@ import java.awt.*;
  * Created by JD Isenhart on 9/15/2015.
  */
 public class GUIOverview {
-    static JPanel base, nameP, rankingMoneyP, compositeP, hotSP, badSP, playTopP, playBotP, rankingsP, playStatsP;
+    static JPanel base, nameP, rankingMoneyP, compositeP, hotSP, badSP, playTopP, playBotP, rankingsP, nPTop5Widget, pTop5Widget,
+            nPBot5Widget, pBot5Widget;
     static JLabel rankMonLab, compLab;
+    static JScrollPane nPTop5WidgetP, pTop5WidgetP, nPBot5WidgetP, pBot5WidgetP;
 
 
     public JPanel OverviewPanel() {
@@ -54,20 +57,52 @@ public class GUIOverview {
         compositeP.setBackground(new Color(198, 240, 198));
         compLab = new JLabel("<Insert Composite Graph Here>");
         compLab.setFont(cHeading);
-        compLab.setSize(1377,300);
-        compLab.setLocation(0,0);
+        compLab.setSize(1377, 300);
+        compLab.setLocation(0, 0);
         compositeP.add(compLab);
         base.add(compositeP);
 
-        hotSP = ComponentsWidgets.top5StocksPanel();
+        //Top 5 Stocks Overall
+        hotSP = new JPanel();
+        hotSP.setLayout(null);
+        hotSP.setPreferredSize(new Dimension(250, 300));
+        hotSP.setMaximumSize(new Dimension(250, 300));
+        hotSP.setBackground(new Color(198, 240, 198));
+        nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 250, "Top 5 Stocks");
+        nPTop5WidgetP = new JScrollPane(nPTop5Widget);
+        nPTop5WidgetP.setSize(250, 300);
+        nPTop5WidgetP.setLocation(0, 0);
+        hotSP.add(nPTop5WidgetP);
         base.add(hotSP);
 
-        badSP = ComponentsWidgets.bot5StocksPanel();
+        //Worst 5 Stocks Overall
+        badSP = new JPanel();
+        badSP.setLayout(null);
+        badSP.setPreferredSize(new Dimension(250, 300));
+        badSP.setMaximumSize(new Dimension(250, 300));
+        badSP.setBackground(new Color(198, 240, 198));
+        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 250, "Worst 5 Stocks");
+        nPBot5WidgetP = new JScrollPane(nPBot5Widget);
+        nPBot5WidgetP.setMinimumSize(new Dimension(250, 300));
+        nPBot5WidgetP.setPreferredSize(new Dimension(250, 300));
+        nPBot5WidgetP.setLocation(0, 0);
+        badSP.add(nPBot5WidgetP);
         base.add(badSP);
 
-        playTopP = ComponentsOverview.top5StocksPanel();
+        //Player's top 5 Stocks
+        playTopP = new JPanel();
+        playTopP.setLayout(new GridBagLayout());
+        playTopP.setPreferredSize(new Dimension(250, 300));
+        playTopP.setMaximumSize(new Dimension(250, 300));
+        playTopP.setBackground(new Color(198, 240, 198));
+        pTop5Widget = FilingWidget.playStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 250, "Your Top 5 Stocks");
+        pTop5WidgetP = new JScrollPane(pTop5Widget);
+        pTop5WidgetP.setMinimumSize(new Dimension(250, 300));
+        pTop5WidgetP.setPreferredSize(new Dimension(250, 300));
+        playTopP.add(pTop5WidgetP);
         base.add(playTopP);
 
+        //Player's worst 5 stocks
         playBotP = ComponentsOverview.bot5StocksPanel();
         base.add(playBotP);
 
@@ -122,7 +157,6 @@ public class GUIOverview {
         base.remove(badSP);
         base.remove(compositeP);
         base.remove(rankingMoneyP);
-        base.remove(nameP);
         base.remove(playTopP);
         base.remove(playBotP);
         base.remove(rankingsP);
