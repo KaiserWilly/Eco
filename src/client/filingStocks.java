@@ -11,7 +11,6 @@ public class filingStocks {
 
     //Method that generates average price across all stocks
         public static double getStockAverage() {
-            System.out.println("Total Number Of Stocks: " + EcoEngine.numberOfStocks);
             for (int i = 0; i < EcoEngine.numberOfStocks; i++) {
                 total += (double)EcoEngine.stockInfo[i][1];
             }
@@ -20,9 +19,6 @@ public class filingStocks {
             average = (double) Math.round(average * 100) / 100;
 
             total = 0;
-
-            System.out.println("The average price of the stock is: $" +average);
-
             return average;
         }
     //
