@@ -25,6 +25,7 @@ public class GUIFrame {
     public static JLabel panelIcon;
     public static GroupLayout layFrame;
     public static GUIOverview overview = new GUIOverview();
+    public static GUIStocks stocks = new GUIStocks();
     static int times = 0;
 
 
@@ -57,7 +58,7 @@ public class GUIFrame {
             base.setBackground(new Color(198, 240, 198));
             tPane = new JTabbedPane();
             tPane.addTab("Game Overview", null, overview.OverviewPanel(), "Overview of the Game");
-            tPane.addTab("Your Stocks", null, new JPanel(), "Overview of stock performance");
+            tPane.addTab("Your Stocks", null, stocks.guiStocks(), "Overview of stock performance");
             tPane.addTab("Buy", null, new JPanel(), "Buy Stocks");
             tPane.addTab("Sell", null, new JPanel(), "Sell Stocks");
 //            tPane.addChangeListener(this);
@@ -122,7 +123,7 @@ public class GUIFrame {
 //                    mainFrame.setJMenuBar(comStats.getTheMenuBar());
                     mainFrame.revalidate();
                     mainFrame.repaint();
-//                    comStats.updateStats();
+                    GUIStocks.updateGUIStocks();
                     break;
                 case 2:
                     System.out.println(" (Buy)");

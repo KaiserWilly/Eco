@@ -103,13 +103,13 @@ public class GUIMenu {
                     IP = (String) JOptionPane.showInputDialog(joinGame, "Enter the IP address of the Server:", "Join Game", JOptionPane.PLAIN_MESSAGE, null, null, null);
                     System.out.println(IP);
                     if (IP == null) break;
-                    ipValid = Clientnetwork.testConnection(IP);
+                    ipValid = ClientNetwork.testConnection(IP);
                 }
                 if (ipValid) {
                     System.out.println("It connected!");
                     frame.setVisible(false); //you can't see me!
                     frame.dispose(); //Destroy the JFrame object
-                    clientMain.startClient(IP);
+                    ClientMain.startClient(IP);
                 }
             } else if (e.getSource() == startServer) {
                 frame.setVisible(false); //you can't see me!
