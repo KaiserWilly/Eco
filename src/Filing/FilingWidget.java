@@ -13,6 +13,7 @@ public class FilingWidget {
         JPanel base = new JPanel();
         base.setBackground(new Color(198, 240, 198));
         base.setLayout(null);
+        base.setSize(width, 300);
         JLabel title = new JLabel("Rankings");
         title.setSize(100, 20);
         title.setLocation((width / 2) - 50, 0);
@@ -41,7 +42,7 @@ public class FilingWidget {
         int panelLoc = 20;
         JPanel base = new JPanel();
         base.setBackground(new Color(198, 240, 198));
-        base.setSize(250,300);
+        base.setSize(width,300);
         base.setLayout(null);
         JLabel title = new JLabel(wTitle);
         title.setVerticalAlignment(SwingConstants.CENTER);

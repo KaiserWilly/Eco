@@ -19,17 +19,22 @@ public class GUIOverview {
 
     public JPanel OverviewPanel() {
         base = new JPanel();
-        base.setBackground(Color.WHITE);
+        base.setBackground(new Color(213, 255, 213));
+        base.setLayout(null);
+        base.setSize(1275, 550);
 
         //Name Panel
         Font sHeading = new Font("Trebuchet MS", Font.PLAIN, 20);
         nameP = new JPanel();
         nameP.setLayout(null);
-        nameP.setSize(200,50);
+        nameP.setSize(200, 50);
+        nameP.setLocation(50, 25);
         nameP.setBackground(new Color(198, 240, 198));
         JLabel name = new JLabel("<Insert Name>");
         name.setSize(200, 50);
         name.setLocation(0, 0);
+        name.setHorizontalAlignment(SwingConstants.CENTER);
+        name.setVerticalAlignment(SwingConstants.CENTER);
         name.setFont(sHeading);
         nameP.add(name);
         base.add(nameP);
@@ -38,12 +43,14 @@ public class GUIOverview {
         Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
         rankingMoneyP = new JPanel();
         rankingMoneyP.setLayout(null);
-        rankingMoneyP.setPreferredSize(new Dimension(300, 50));
-        rankingMoneyP.setMaximumSize(new Dimension(300, 50));
+        rankingMoneyP.setSize(300, 50);
+        rankingMoneyP.setLocation(275, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
         rankMonLab = new JLabel("Ranking: NA   Money: NA   Assets: NA");
         rankMonLab.setFont(mHeading);
         rankMonLab.setSize(300, 50);
+        rankMonLab.setHorizontalAlignment(SwingConstants.CENTER);
+        rankMonLab.setVerticalAlignment(SwingConstants.CENTER);
         rankMonLab.setLocation(0, 0);
         rankingMoneyP.add(rankMonLab);
         base.add(rankingMoneyP);
@@ -52,12 +59,14 @@ public class GUIOverview {
         Font cHeading = new Font("Trebuchet MS", Font.PLAIN, 40);
         compositeP = new JPanel();
         compositeP.setLayout(null);
-        compositeP.setPreferredSize(new Dimension(1377, 300));
-        compositeP.setMaximumSize(new Dimension(1377, 300));
+        compositeP.setSize(1200, 250);
+        compositeP.setLocation(50, 100);
         compositeP.setBackground(new Color(198, 240, 198));
         compLab = new JLabel("<Insert Composite Graph Here>");
         compLab.setFont(cHeading);
-        compLab.setSize(1377, 300);
+        compLab.setSize(1200, 250);
+        compLab.setHorizontalAlignment(SwingConstants.CENTER);
+        compLab.setVerticalAlignment(SwingConstants.CENTER);
         compLab.setLocation(0, 0);
         compositeP.add(compLab);
         base.add(compositeP);
@@ -65,51 +74,53 @@ public class GUIOverview {
         //Top 5 Stocks Overall
         hotSP = new JPanel();
         hotSP.setLayout(null);
-        hotSP.setPreferredSize(new Dimension(250, 300));
-        hotSP.setMaximumSize(new Dimension(250, 300));
+        hotSP.setSize(220, 200);
+        hotSP.setLocation(50, 375);
         hotSP.setBackground(new Color(198, 240, 198));
-        nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 250, "Top 5 Stocks");
+        nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 220, "Top 5 Stocks");
         nPTop5WidgetP = new JScrollPane(nPTop5Widget);
-        nPTop5WidgetP.setSize(250, 300);
+        nPTop5WidgetP.setSize(220, 200);
         nPTop5WidgetP.setLocation(0, 0);
         hotSP.add(nPTop5WidgetP);
         base.add(hotSP);
 
-        //Worst 5 Stocks Overall
-        badSP = new JPanel();
-        badSP.setLayout(null);
-        badSP.setPreferredSize(new Dimension(250, 300));
-        badSP.setMaximumSize(new Dimension(250, 300));
-        badSP.setBackground(new Color(198, 240, 198));
-        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 250, "Worst 5 Stocks");
-        nPBot5WidgetP = new JScrollPane(nPBot5Widget);
-        nPBot5WidgetP.setSize(250, 300);
-        nPBot5WidgetP.setLocation(0, 0);
-        badSP.add(nPBot5WidgetP);
-        base.add(badSP);
 
         //Player's top 5 Stocks
         playTopP = new JPanel();
-        playTopP.setLayout(new GridBagLayout());
-        playTopP.setPreferredSize(new Dimension(250, 300));
-        playTopP.setMaximumSize(new Dimension(250, 300));
+        playTopP.setLayout(null);
+        playTopP.setSize(245, 200);
+        playTopP.setLocation(270, 375);
         playTopP.setBackground(new Color(198, 240, 198));
         pTop5Widget = FilingWidget.playStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 250, "Your Top 5 Stocks");
         pTop5WidgetP = new JScrollPane(pTop5Widget);
-        pTop5WidgetP.setSize(250, 300);
+        pTop5WidgetP.setSize(220, 200);
         pTop5WidgetP.setLocation(0, 0);
         playTopP.add(pTop5WidgetP);
         base.add(playTopP);
 
+
+        //Worst 5 Stocks Overall
+        badSP = new JPanel();
+        badSP.setLayout(null);
+        badSP.setSize(220, 200);
+        badSP.setLocation(540, 375);
+        badSP.setBackground(new Color(198, 240, 198));
+        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 250, "Worst 5 Stocks");
+        nPBot5WidgetP = new JScrollPane(nPBot5Widget);
+        nPBot5WidgetP.setSize(220, 200);
+        nPBot5WidgetP.setLocation(0, 0);
+        badSP.add(nPBot5WidgetP);
+        base.add(badSP);
+
         //Player's worst 5 stocks
         playBotP = new JPanel();
-        playBotP.setLayout(new GridBagLayout());
-        playBotP.setPreferredSize(new Dimension(250, 300));
-        playBotP.setMaximumSize(new Dimension(250, 300));
+        playBotP.setLayout(null);
+        playBotP.setSize(220, 200);
+        playBotP.setLocation(785, 375);
         playBotP.setBackground(new Color(198, 240, 198));
         pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 250, "Your Worst 5 Stocks");
         pBot5WidgetP = new JScrollPane(pBot5Widget);
-        pBot5WidgetP.setSize(250, 300);
+        pBot5WidgetP.setSize(220, 200);
         pBot5WidgetP.setLocation(0, 0);
         playBotP.add(pBot5WidgetP);
         base.add(playBotP);
@@ -117,8 +128,8 @@ public class GUIOverview {
         //Ranking Panel
         rankingsP = new JPanel();
         rankingsP.setLayout(null);
-        rankingsP.setPreferredSize(new Dimension(250, 300));
-        rankingsP.setMaximumSize(new Dimension(250, 300));
+        rankingsP.setSize(220, 200);
+        rankingsP.setLocation(1030, 375);
         rankingsP.setBackground(new Color(198, 240, 198));
         Object[][] rankings = new Object[][]{
                 {"JD", "23,300"},
@@ -128,51 +139,13 @@ public class GUIOverview {
         };
         rankWidget = FilingWidget.makeRankingWidget(rankings, 300);
         rankWidgetP = new JScrollPane(rankWidget);
-        rankWidgetP.setSize(250, 300);
+        rankWidgetP.setSize(220, 200);
         rankWidgetP.setLocation(0, 0);
         rankingsP.add(rankWidgetP);
         base.add(rankingsP);
 
         //Layout Manager for tab
-        GroupLayout layOverview = new GroupLayout(base);
-        base.setLayout(layOverview);
-        layOverview.setAutoCreateGaps(true);
-        layOverview.setAutoCreateContainerGaps(true);
-        layOverview.setHorizontalGroup(
-                layOverview.createSequentialGroup()
-                        .addGroup(layOverview.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addGroup(layOverview.createSequentialGroup()
-                                        .addComponent(nameP)
-                                        .addComponent(rankingMoneyP)
-                                )
-                                .addComponent(compositeP)
-                                .addGroup(layOverview.createSequentialGroup()
-                                        .addComponent(rankingsP)
-                                        .addComponent(playTopP)
-                                        .addComponent(playBotP)
-                                        .addComponent(hotSP)
-                                        .addComponent(badSP)
-                                )
-                        )
-        );
-        layOverview.setVerticalGroup(
-                layOverview.createSequentialGroup()
-                        .addGroup(layOverview.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(nameP)
-                                .addComponent(rankingMoneyP)
-                        )
-                        .addGroup(layOverview.createParallelGroup(GroupLayout.Alignment.CENTER)
-                                .addComponent(compositeP)
 
-                        )
-                        .addGroup(layOverview.createParallelGroup(GroupLayout.Alignment.CENTER)
-                                .addComponent(hotSP)
-                                .addComponent(rankingsP)
-                                .addComponent(playTopP)
-                                .addComponent(playBotP)
-                                .addComponent(badSP)
-                        )
-        );
         return base;
     }
 
@@ -185,14 +158,18 @@ public class GUIOverview {
         base.remove(playBotP);
         base.remove(rankingsP);
 
+        //Ranking Panel
         Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
         rankingMoneyP = new JPanel();
         rankingMoneyP.setLayout(null);
-        rankingMoneyP.setSize(300,50);
+        rankingMoneyP.setSize(300, 50);
+        rankingMoneyP.setLocation(275, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
         rankMonLab = new JLabel("Ranking: NA   Money: NA   Assets: NA");
         rankMonLab.setFont(mHeading);
         rankMonLab.setSize(300, 50);
+        rankMonLab.setHorizontalAlignment(SwingConstants.CENTER);
+        rankMonLab.setVerticalAlignment(SwingConstants.CENTER);
         rankMonLab.setLocation(0, 0);
         rankingMoneyP.add(rankMonLab);
         base.add(rankingMoneyP);
@@ -201,12 +178,14 @@ public class GUIOverview {
         Font cHeading = new Font("Trebuchet MS", Font.PLAIN, 40);
         compositeP = new JPanel();
         compositeP.setLayout(null);
-        compositeP.setPreferredSize(new Dimension(1377, 300));
-        compositeP.setMaximumSize(new Dimension(1377, 300));
+        compositeP.setSize(1200, 250);
+        compositeP.setLocation(50, 100);
         compositeP.setBackground(new Color(198, 240, 198));
         compLab = new JLabel("<Insert Composite Graph Here>");
         compLab.setFont(cHeading);
-        compLab.setSize(1377, 300);
+        compLab.setSize(1200, 250);
+        compLab.setHorizontalAlignment(SwingConstants.CENTER);
+        compLab.setVerticalAlignment(SwingConstants.CENTER);
         compLab.setLocation(0, 0);
         compositeP.add(compLab);
         base.add(compositeP);
@@ -214,51 +193,53 @@ public class GUIOverview {
         //Top 5 Stocks Overall
         hotSP = new JPanel();
         hotSP.setLayout(null);
-        hotSP.setPreferredSize(new Dimension(250, 300));
-        hotSP.setMaximumSize(new Dimension(250, 300));
+        hotSP.setSize(220, 200);
+        hotSP.setLocation(50, 375);
         hotSP.setBackground(new Color(198, 240, 198));
-        nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 250, "Top 5 Stocks");
+        nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 220, "Top 5 Stocks");
         nPTop5WidgetP = new JScrollPane(nPTop5Widget);
-        nPTop5WidgetP.setSize(250, 300);
+        nPTop5WidgetP.setSize(220, 200);
         nPTop5WidgetP.setLocation(0, 0);
         hotSP.add(nPTop5WidgetP);
         base.add(hotSP);
 
-        //Worst 5 Stocks Overall
-        badSP = new JPanel();
-        badSP.setLayout(null);
-        badSP.setPreferredSize(new Dimension(250, 300));
-        badSP.setMaximumSize(new Dimension(250, 300));
-        badSP.setBackground(new Color(198, 240, 198));
-        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 250, "Worst 5 Stocks");
-        nPBot5WidgetP = new JScrollPane(nPBot5Widget);
-        nPBot5WidgetP.setSize(250, 300);
-        nPBot5WidgetP.setLocation(0, 0);
-        badSP.add(nPBot5WidgetP);
-        base.add(badSP);
 
         //Player's top 5 Stocks
         playTopP = new JPanel();
         playTopP.setLayout(null);
-        playTopP.setPreferredSize(new Dimension(250, 300));
-        playTopP.setMaximumSize(new Dimension(250, 300));
+        playTopP.setSize(220, 200);
+        playTopP.setLocation(295, 375);
         playTopP.setBackground(new Color(198, 240, 198));
-        pTop5Widget = FilingWidget.playStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 250, "Your Top 5 Stocks");
+        pTop5Widget = FilingWidget.playStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 220, "Your Top 5 Stocks");
         pTop5WidgetP = new JScrollPane(pTop5Widget);
-        pTop5WidgetP.setSize(250, 300);
+        pTop5WidgetP.setSize(220, 200);
         pTop5WidgetP.setLocation(0, 0);
         playTopP.add(pTop5WidgetP);
         base.add(playTopP);
 
+
+        //Worst 5 Stocks Overall
+        badSP = new JPanel();
+        badSP.setLayout(null);
+        badSP.setSize(220, 200);
+        badSP.setLocation(540, 375);
+        badSP.setBackground(new Color(198, 240, 198));
+        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 220, "Worst 5 Stocks");
+        nPBot5WidgetP = new JScrollPane(nPBot5Widget);
+        nPBot5WidgetP.setSize(220, 200);
+        nPBot5WidgetP.setLocation(0, 0);
+        badSP.add(nPBot5WidgetP);
+        base.add(badSP);
+
         //Player's worst 5 stocks
         playBotP = new JPanel();
         playBotP.setLayout(null);
-        playBotP.setPreferredSize(new Dimension(250, 300));
-        playBotP.setMaximumSize(new Dimension(250, 300));
+        playBotP.setSize(220, 200);
+        playBotP.setLocation(785, 375);
         playBotP.setBackground(new Color(198, 240, 198));
-        pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 250, "Your Worst 5 Stocks");
+        pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 220, "Your Worst 5 Stocks");
         pBot5WidgetP = new JScrollPane(pBot5Widget);
-        pBot5WidgetP.setSize(250, 300);
+        pBot5WidgetP.setSize(220, 200);
         pBot5WidgetP.setLocation(0, 0);
         playBotP.add(pBot5WidgetP);
         base.add(playBotP);
@@ -266,8 +247,8 @@ public class GUIOverview {
         //Ranking Panel
         rankingsP = new JPanel();
         rankingsP.setLayout(null);
-        rankingsP.setPreferredSize(new Dimension(250, 300));
-        rankingsP.setMaximumSize(new Dimension(250, 300));
+        rankingsP.setSize(220, 200);
+        rankingsP.setLocation(1030, 375);
         rankingsP.setBackground(new Color(198, 240, 198));
         Object[][] rankings = new Object[][]{
                 {"JD", "23,300"},
@@ -275,61 +256,18 @@ public class GUIOverview {
                 {"Brody", "19,900"},
                 {"Will", "16,300"}
         };
-        rankWidget = FilingWidget.makeRankingWidget(rankings, 300);
+        rankWidget = FilingWidget.makeRankingWidget(rankings, 220);
         rankWidgetP = new JScrollPane(rankWidget);
-        rankWidgetP.setSize(250, 300);
+        rankWidgetP.setSize(220, 200);
         rankWidgetP.setLocation(0, 0);
-        rankWidget.add(rankingsP);
+        rankingsP.add(rankWidgetP);
         base.add(rankingsP);
 
-        try {
-            GroupLayout layOverview = new GroupLayout(base);
-            base.setLayout(layOverview);
-            layOverview.setAutoCreateGaps(true);
-            layOverview.setAutoCreateContainerGaps(true);
-            layOverview.setHorizontalGroup(
-                    layOverview.createSequentialGroup()
-                            .addGroup(layOverview.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addGroup(layOverview.createSequentialGroup()
-                                            .addComponent(nameP)
-                                            .addComponent(rankingMoneyP)
-                                    )
-                                    .addComponent(compositeP)
-                                    .addGroup(layOverview.createSequentialGroup()
-                                            .addComponent(rankingsP)
-                                            .addComponent(playTopP)
-                                            .addComponent(playBotP)
-                                            .addComponent(hotSP)
-                                            .addComponent(badSP)
-                                    )
-                            )
-            );
-            layOverview.setVerticalGroup(
-                    layOverview.createSequentialGroup()
-                            .addGroup(layOverview.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(nameP)
-                                    .addComponent(rankingMoneyP)
-                            )
-                            .addGroup(layOverview.createParallelGroup(GroupLayout.Alignment.CENTER)
-                                    .addComponent(compositeP)
-
-                            )
-                            .addGroup(layOverview.createParallelGroup(GroupLayout.Alignment.CENTER)
-                                    .addComponent(hotSP)
-                                    .addComponent(rankingsP)
-                                    .addComponent(playTopP)
-                                    .addComponent(playBotP)
-                                    .addComponent(badSP)
-                            )
-            );
-        }catch(IllegalStateException e){
-            System.out.println("IllegalStateException: GUIOverview.UpdateOverview()");
-        }catch(ConcurrentModificationException e){
-            System.out.println("ConcurrentModificationException: GUIOverview.UpdateOverview()");
-        }
 
         base.revalidate();
         base.repaint();
+
+        System.out.println("GUI.Overview Updated!");
 
     }
 }

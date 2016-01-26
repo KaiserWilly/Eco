@@ -1,6 +1,7 @@
 package client;
 
 import main.Values;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.*;
 import java.net.BindException;
@@ -39,6 +40,7 @@ public class clientServerHandler extends Thread {
             while (true) {
 
                 Object[][] dataArray = (Object[][]) in.readObject();
+                System.out.println("Update Received!");
                 boolean dataUp = false;
                 while (!dataUp) {
                     try {
