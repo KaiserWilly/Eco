@@ -86,7 +86,6 @@ public class GUIOverview {
         hotSP.setLocation(50, 375);
         hotSP.setBackground(new Color(198, 240, 198));
         nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 220, "Top 5 Stocks");
-        System.out.println("Getting Those Stocks LOL");
         nPTop5WidgetP = new JScrollPane(nPTop5Widget);
         nPTop5WidgetP.setSize(220, 200);
         nPTop5WidgetP.setLocation(0, 0);
@@ -205,7 +204,6 @@ public class GUIOverview {
         hotSP.setLocation(50, 375);
         hotSP.setBackground(new Color(198, 240, 198));
         nPTop5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 220, "Top 5 Stocks");
-        System.out.println("Getting Top 5 Stocks");
         nPTop5WidgetP = new JScrollPane(nPTop5Widget);
         nPTop5WidgetP.setSize(220, 200);
         nPTop5WidgetP.setLocation(0, 0);
