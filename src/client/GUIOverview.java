@@ -5,6 +5,8 @@ import Filing.FilingWidget;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ConcurrentModificationException;
 
 /**
@@ -30,7 +32,12 @@ public class GUIOverview {
         nameP.setSize(200, 50);
         nameP.setLocation(50, 25);
         nameP.setBackground(new Color(198, 240, 198));
-        JLabel name = new JLabel("<Insert Name>");
+        JLabel name = null;
+        try {
+            name = new JLabel(InetAddress.getLocalHost().getHostName());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         name.setSize(200, 50);
         name.setLocation(0, 0);
         name.setHorizontalAlignment(SwingConstants.CENTER);
