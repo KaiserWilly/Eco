@@ -22,7 +22,7 @@ public class EcoEngine {
     }
 
     public static Object[][] stockInfo;
-    static int numberOfStocks;
+    public static int numberOfStocks;
 
     public static void initializeEngine(int numStocks) {
         numberOfStocks = numStocks;
