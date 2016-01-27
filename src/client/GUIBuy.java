@@ -8,8 +8,8 @@ import java.awt.*;
  */
 public class GUIBuy {
 
-    JPanel base, cOHP,assetsP;
-    JLabel cOHLab,assetsLab;
+    JPanel base, cOHP, assetsP, stocksP;
+    JLabel cOHLab, assetsLab, stocksLab;
     Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
 
     public JPanel buyPanel() {
@@ -49,6 +49,21 @@ public class GUIBuy {
         assetsP.add(assetsLab);
         base.add(assetsP);
 
+        //Composite Panel
+        Font cHeading = new Font("Trebuchet MS", Font.PLAIN, 40);
+        stocksP = new JPanel();
+        stocksP.setLayout(null);
+        stocksP.setSize(1225, 425);
+        stocksP.setLocation(50, 100);
+        stocksP.setBackground(new Color(198, 240, 198));
+        stocksLab = new JLabel("<Insert Stock Widget Here>");
+        stocksLab.setFont(cHeading);
+        stocksLab.setSize(1225, 425);
+        stocksLab.setHorizontalAlignment(SwingConstants.CENTER);
+        stocksLab.setVerticalAlignment(SwingConstants.CENTER);
+        stocksLab.setLocation(0, 0);
+        stocksP.add(stocksLab);
+        base.add(stocksP);
 
         return base;
     }
