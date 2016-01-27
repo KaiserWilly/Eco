@@ -9,27 +9,40 @@ import java.util.ArrayList;
  */
 public class StockHistory {
 
-    public ArrayList<ArrayList<Object>> stockHistoryArrayList = new ArrayList<>();
+    public static ArrayList<ArrayList<Object>> stockHistoryArrayList = new ArrayList<>();
 
-    int numberOfStocks = EcoEngine.numberOfStocks;
+    public static Object[] stockHistory;
 
-    public ArrayList<ArrayList<Object>> getStockHistory() {
+    public static int numberOfStocks = EcoEngine.numberOfStocks;
+
+    public void createStockHistory() {
+        for (int i = 0; i < numberOfStocks; i++) {
+            ArrayList<Object> newRow = new ArrayList<>();
+            newRow.add(0, EcoEngine.getData()[i][0]);
+            stockHistoryArrayList.add(i, newRow);
+        }
+    }
+
+    public static Object[] getStockHistory(String stockName) {
+        for (int i = 0; i < numberOfStocks; i++) {
+            if (stockHistoryArrayList.get(i).get(0).toString().equals(stockName)) {
+                Object[] stockHistory = stockHistoryArrayList.get(i).toArray();
+            }
+        }
+        return stockHistory;
+    }
+
+    public void generateStockHistory() {
         if (stockHistoryArrayList.size() < 60) {
             for (int i = 0; i < numberOfStocks; i++) {
-                ArrayList<Object> newRow = new ArrayList<>();
-                newRow.add(EcoEngine.getData()[i][1]);
-                stockHistoryArrayList.add(i, newRow);
+                stockHistoryArrayList.get(i).add(EcoEngine.getData()[i][1]);
             }
 
         } else if (stockHistoryArrayList.size() > 60) {
             for (int i = 0; i < numberOfStocks; i++) {
-                ArrayList<Object> newRow = new ArrayList<>();
-                newRow.remove(0);
-                newRow.add(EcoEngine.getData()[i][1]);
-                stockHistoryArrayList.set(i, newRow);
+                stockHistoryArrayList.get(i).remove(0);
+                stockHistoryArrayList.get(i).set(60, EcoEngine.getData()[i][1]);
             }
         }
-
-        return stockHistoryArrayList;
     }
 }
