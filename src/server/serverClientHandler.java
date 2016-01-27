@@ -14,6 +14,8 @@ public class ServerClientHandler extends Thread {
     private Socket socketToClient;
     int ID;
 
+    int number = 0;
+
     public ServerClientHandler(Socket socket, int id) {
         socketToClient = socket;
         ID = id;
@@ -22,7 +24,8 @@ public class ServerClientHandler extends Thread {
 
     public void run() {
         try {
-            ObjectOutputStream out = new ObjectOutputStream(socketToClient.getOutputStream());
+            OutputStream outputStream = socketToClient.getOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(outputStream);
             int secCount = 0;
             System.out.println("New client connected!");
             while (true) {
@@ -31,8 +34,10 @@ public class ServerClientHandler extends Thread {
 //                    for (int i=0;i<ServerTimer.dataArray.length;i++){
 //                        System.out.println(Arrays.toString(ServerTimer.dataArray[i]));
 //                    }
+
                     EcoEngine.genereateData();
                     out.writeObject(EcoEngine.getData());
+                    out.reset();
                     //System.out.println("Sending Data");
                     //out.writeObject(ServerTimer.dataArray);
                 }

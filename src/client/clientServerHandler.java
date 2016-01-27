@@ -13,6 +13,11 @@ public class ClientServerHandler extends Thread {
     int count = 0;
     String serverIP;
 
+    static InputStream is;
+    static ObjectInputStream in;
+
+    static Object[][] dataArray = null;
+
     public ClientServerHandler(String IP) {
         serverIP = IP;
     }
@@ -26,17 +31,15 @@ public class ClientServerHandler extends Thread {
         try {
             Socket clientSocket = new Socket(serverIP, 1180);
             System.out.println("Permanent Connection Made!");
-            InputStream is = clientSocket.getInputStream();
-//            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
-
             ClientMain.startGUI();
             Thread.sleep(100);
 
-            while (true) {
+            is = clientSocket.getInputStream();
+//            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            in = new ObjectInputStream(is);
 
-                Object[][] dataArray = (Object[][]) in.readObject();
-                System.out.println("Update Received!");
+            while (true) {
+                dataArray = (Object[][]) in.readObject();
                 boolean dataUp = false;
                 while (!dataUp) {
                     try {
