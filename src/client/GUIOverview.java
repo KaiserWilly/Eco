@@ -278,7 +278,7 @@ public class GUIOverview {
         base.revalidate();
         base.repaint();
 
-        System.out.println("GUI.Overview Updated!");
+        //System.out.println("GUI.Overview Updated!");
 
     }
 }

@@ -160,7 +160,7 @@ public class EcoEngine {
     public static double changeStockPrice(double priceToBeChanged, boolean trending, int directionOfTrend, int currentDurationOfTrend) {
         Random percentageAdjustment = new Random();
         double percentageChange;
-        percentageChange = Math.pow(priceToBeChanged, -.507);
+        percentageChange = Math.pow(priceToBeChanged, .907); //(-.507)
         percentageChange = percentageChange / 10;
         if (trending) {
             if (directionOfTrend == 1) { //If direction of trend is 1, the stock is trending up
