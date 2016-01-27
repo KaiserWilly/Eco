@@ -8,9 +8,9 @@ import java.util.ArrayList;
  * Created by trostrn on 1/27/2016.
  */
 public class StockHistory {
-    ArrayList<ArrayList<Object>> stockHistoryArrayList = new ArrayList<>();
 
-    Object[][] stockHistoryArray = new Object[EcoEngine.numberOfStocks][60];
+    public ArrayList<ArrayList<Object>> stockHistoryArrayList = new ArrayList<>();
+
     int numberOfStocks = EcoEngine.numberOfStocks;
 
     public ArrayList<ArrayList<Object>> getStockHistory() {
