@@ -14,8 +14,6 @@ public class ServerClientHandler extends Thread {
     private Socket socketToClient;
     int ID;
 
-    int number = 0;
-
     public ServerClientHandler(Socket socket, int id) {
         socketToClient = socket;
         ID = id;
@@ -35,11 +33,8 @@ public class ServerClientHandler extends Thread {
 //                        System.out.println(Arrays.toString(ServerTimer.dataArray[i]));
 //                    }
 
-                    EcoEngine.genereateData();
                     out.writeObject(EcoEngine.getData());
                     out.reset();
-                    //System.out.println("Sending Data");
-                    //out.writeObject(ServerTimer.dataArray);
                 }
                 Thread.sleep(1000);
             }
