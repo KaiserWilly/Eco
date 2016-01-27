@@ -1,7 +1,56 @@
 package client;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Created by james on 1/26/2016.
  */
 public class GUIBuy {
+
+    JPanel base, cOHP,assetsP;
+    JLabel cOHLab,assetsLab;
+    Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
+
+    public JPanel buyPanel() {
+        base = new JPanel();
+        base.setBackground(new Color(213, 255, 213));
+        base.setLayout(null);
+        base.setSize(1275, 550);
+
+        //Cash on Hand panel
+        cOHP = new JPanel();
+        cOHP.setLayout(null);
+        cOHP.setSize(200, 50);
+        cOHP.setLocation(50, 25);
+        cOHP.setBackground(new Color(198, 240, 198));
+        cOHLab = new JLabel("<Cash on Hand>");
+        cOHLab.setFont(mHeading);
+        cOHLab.setSize(200, 50);
+        cOHLab.setHorizontalAlignment(SwingConstants.CENTER);
+        cOHLab.setVerticalAlignment(SwingConstants.CENTER);
+        cOHLab.setLocation(0, 0);
+        cOHP.add(cOHLab);
+        base.add(cOHP);
+
+        //Assets Panel
+        Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
+        assetsP = new JPanel();
+        assetsP.setLayout(null);
+        assetsP.setSize(300, 50);
+        assetsP.setLocation(275, 25);
+        assetsP.setBackground(new Color(198, 240, 198));
+        assetsLab = new JLabel("Assets: NA   Net Change: NA   Assets: NA");
+        assetsLab.setFont(mHeading);
+        assetsLab.setSize(300, 50);
+        assetsLab.setHorizontalAlignment(SwingConstants.CENTER);
+        assetsLab.setVerticalAlignment(SwingConstants.CENTER);
+        assetsLab.setLocation(0, 0);
+        assetsP.add(assetsLab);
+        base.add(assetsP);
+
+
+        return base;
+    }
+
 }
