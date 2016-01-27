@@ -17,6 +17,8 @@ public class GUIOverview {
     static JLabel rankMonLab, rankPlayL, compLab;
     static JScrollPane nPTop5WidgetP, pTop5WidgetP, nPBot5WidgetP, pBot5WidgetP, rankWidgetP;
 
+    static int test = 0;
+
 
     public JPanel OverviewPanel() {
         base = new JPanel();
@@ -258,11 +260,14 @@ public class GUIOverview {
         Object[][] rankings = new Object[][]{
                 {"Daniel", "23,300"},
                 {"JD", "22,600"},
-                {"Toast", "19,900"},
+                {"Toast", test},
                 {"Will", "16,300"},
                 {"Brody", "16,000"}
         };
-        rankWidget = FilingWidget.makeRankingWidget(rankings, 225);
+
+        test++;
+
+        rankWidget = FilingWidget.makeRankingWidget(rankings, 300);
         rankWidgetP = new JScrollPane(rankWidget);
         rankWidgetP.setSize(225, 175);
         rankWidgetP.setLocation(0, 0);

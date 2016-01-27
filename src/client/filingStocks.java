@@ -12,7 +12,7 @@ public class FilingStocks {
     //Method that generates average price across all stocks
         public static double getStockAverage() {
             for (int i = 0; i < EcoEngine.numberOfStocks; i++) {
-                total += (double)EcoEngine.stockInfo[i][1];
+                total += (double)EcoEngine.getData()[i][1];
             }
 
             average = (total / EcoEngine.numberOfStocks);

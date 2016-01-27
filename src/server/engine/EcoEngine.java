@@ -130,6 +130,7 @@ public class EcoEngine {
                 if (stockVolatility <= stockChangeParameter.nextInt(100 + 1)) {
                     double originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
                     double newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
+                    stockInput[i][1] = newStockPrice;
                     stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1; //Increases the value of the trend by 1 turn, in other words, the stock is now trending
 //                    System.out.println("Original Price of Stock:" + originalStockPrice);
 //                    System.out.println("New Price for Stock:" + newStockPrice);
@@ -137,6 +138,7 @@ public class EcoEngine {
             } else if (stockVolatility <= stockChangeParameter.nextInt(100 + 1)) {
                 double originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
                 double newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
+                stockInput[i][1] = newStockPrice;
                 if (Integer.parseInt(String.valueOf(stockInput[i][3])) <= stockChangeParameter.nextInt(100 + 1)) {
                     stockInput[i][4] = true;
                     if (originalStockPrice > newStockPrice) {

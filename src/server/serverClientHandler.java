@@ -1,6 +1,7 @@
 package server;
 
 import main.Values;
+import server.engine.EcoEngine;
 
 import java.io.*;
 import java.net.Socket;
@@ -30,7 +31,10 @@ public class ServerClientHandler extends Thread {
 //                    for (int i=0;i<ServerTimer.dataArray.length;i++){
 //                        System.out.println(Arrays.toString(ServerTimer.dataArray[i]));
 //                    }
-                    out.writeObject(ServerTimer.dataArray);
+                    EcoEngine.genereateData();
+                    out.writeObject(EcoEngine.getData());
+                    //System.out.println("Sending Data");
+                    //out.writeObject(ServerTimer.dataArray);
                 }
                 Thread.sleep(1000);
             }
