@@ -1,6 +1,7 @@
 package server;
 
 import client.FilingStocks;
+import client.StockHistory;
 import main.Values;
 
 import java.util.Timer;
@@ -25,6 +26,7 @@ public class ServerTimer {
                 dataArray = server.engine.EcoEngine.getData();
                 Values.secCount++;
                 server.engine.EcoEngine.genereateData();
+                StockHistory.generateStockHistory();
                 ServerFile.showTimeStamp("Data Update Sent; SEC: " + Values.secCount);
                 ServerFile.showTimeStamp("Average Stock Price: $" + FilingStocks.getStockAverage());
             }
