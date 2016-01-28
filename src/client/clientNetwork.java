@@ -7,6 +7,7 @@ import java.net.Socket;
  */
 public class ClientNetwork {
     public static boolean testConnection(String IP) {
+        //Tests The Connection Between Client and Server
         try {
             Socket socket = new Socket(IP, 1180);
             socket.close();

@@ -29,30 +29,28 @@ public class ClientServerHandler extends Thread {
             e.printStackTrace();
         }
         try {
+            // Connects Client To Server
             Socket clientSocket = new Socket(serverIP, 1180);
             System.out.println("Permanent Connection Made!");
             ClientMain.startGUI();
             Thread.sleep(100);
 
-            is = clientSocket.getInputStream();
-//            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            in = new ObjectInputStream(is);
+            is = clientSocket.getInputStream(); //Gets the client's input stream
+            in = new ObjectInputStream(is); //Creates an Object Input Stream from the client's input stream
 
             while (true) {
-                dataArray = (Object[][]) in.readObject();
+                dataArray = (Object[][]) in.readObject(); //Reads the Stock Information Array from the socket
+
                 boolean dataUp = false;
                 while (!dataUp) {
                     try {
-                        Values.dataArray = dataArray;
+                        Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
                         dataUp = true;
-//                        for (int i = 0; i < dataArray.length; i++) { // Print out each row of data in array for testing
-//                            System.out.println(Arrays.toString(dataArray[i]));
-//                        }
                     } catch (ConcurrentModificationException e) {
                         System.out.println("Can't Write Data");
                     }
                 }
-                GUIFrame.PaneFrameMain.reloadTab();
+                GUIFrame.PaneFrameMain.reloadTab(); //Refreshes the GUI
             }
         } catch (Exception e) {
             e.printStackTrace();
