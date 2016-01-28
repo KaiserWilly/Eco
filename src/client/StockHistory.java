@@ -35,7 +35,7 @@ public class StockHistory {
         return compositeStockHistory;
     }
 
-    public void createStockHistory() {
+    public static void createStockHistory() {
         for (int i = 0; i < numberOfStocks; i++) {
             ArrayList<Object> newRow = new ArrayList<>();
             newRow.add(0, EcoEngine.getData()[i][0]);
@@ -46,22 +46,22 @@ public class StockHistory {
     public static Object[] getStockHistory(String stockName) {
         for (int i = 0; i < numberOfStocks; i++) {
             if (stockHistoryArrayList.get(i).get(0).toString().equals(stockName)) {
-                Object[] stockHistory = stockHistoryArrayList.get(i).toArray();
+                stockHistory = stockHistoryArrayList.get(i).toArray();
             }
         }
         return stockHistory;
     }
 
-    public void generateStockHistory() {
-        if (stockHistoryArrayList.size() < 60) {
+    public static void generateStockHistory() {
+        if (stockHistoryArrayList.get(1).size() < 30) {
             for (int i = 0; i < numberOfStocks; i++) {
                 stockHistoryArrayList.get(i).add(EcoEngine.getData()[i][1]);
             }
 
-        } else if (stockHistoryArrayList.size() > 60) {
+        } else if (stockHistoryArrayList.get(1).size() > 30) {
             for (int i = 0; i < numberOfStocks; i++) {
                 stockHistoryArrayList.get(i).remove(0);
-                stockHistoryArrayList.get(i).set(60, EcoEngine.getData()[i][1]);
+                stockHistoryArrayList.get(i).set(30, EcoEngine.getData()[i][1]);
             }
         }
     }

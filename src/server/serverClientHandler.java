@@ -1,5 +1,6 @@
 package server;
 
+import client.StockHistory;
 import main.Values;
 import server.engine.EcoEngine;
 
@@ -29,10 +30,8 @@ public class ServerClientHandler extends Thread {
             while (true) {
                 if (secCount < Values.secCount) {
                     secCount = Values.secCount;
-//                    for (int i=0;i<ServerTimer.dataArray.length;i++){
-//                        System.out.println(Arrays.toString(ServerTimer.dataArray[i]));
-//                    }
 
+                    StockHistory.generateStockHistory();
                     out.writeObject(EcoEngine.getData());
                     out.reset();
                 }

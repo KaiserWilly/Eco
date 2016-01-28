@@ -1,5 +1,7 @@
 package server;
 
+import client.StockHistory;
+
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -16,6 +18,7 @@ public class ServerMain {
             ServerSocket listeningSocket = new ServerSocket(1180);
             ServerFile.showTimeStamp("Socket Created");
             server.engine.EcoEngine.initializeEngine(50);
+            StockHistory.createStockHistory();
             ServerFile.showTimeStamp("Engine Initialized");
             ServerTimer.startTimer();
             ServerFile.showTimeStamp("Update Control Started, game beginning in 10 seconds");
