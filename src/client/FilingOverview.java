@@ -60,11 +60,11 @@ public class FilingOverview {
 
     public static Object[][] calcWorst5Stocks(Object[][] dataArray) {
         Object[][] placeA = new Object[][]{
-                {"NONE", 0},
-                {"NONE", 0},
-                {"NONE", 0},
-                {"NONE", 0},
-                {"NONE", 0},
+                {"NONE", 50},
+                {"NONE", 50},
+                {"NONE", 50},
+                {"NONE", 50},
+                {"NONE", 50},
         };
         if (dataArray == null) return placeA;
 

@@ -25,6 +25,7 @@ public class ServerClientHandler extends Thread {
         try {
             OutputStream outputStream = socketToClient.getOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(outputStream);
+
             int secCount = 0;
             System.out.println("New client connected!");
             while (true) {
