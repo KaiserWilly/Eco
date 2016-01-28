@@ -64,19 +64,12 @@ public class GUIOverview {
         base.add(rankingMoneyP);
 
         //Composite Panel
-        Font cHeading = new Font("Trebuchet MS", Font.PLAIN, 40);
         compositeP = new JPanel();
         compositeP.setLayout(null);
         compositeP.setSize(1225, 250);
         compositeP.setLocation(50, 100);
         compositeP.setBackground(new Color(198, 240, 198));
-        compLab = new JLabel("<Insert Composite Graph Here>");
-        compLab.setFont(cHeading);
-        compLab.setSize(1250, 250);
-        compLab.setHorizontalAlignment(SwingConstants.CENTER);
-        compLab.setVerticalAlignment(SwingConstants.CENTER);
-        compLab.setLocation(0, 0);
-        compositeP.add(compLab);
+        compositeP.add(new ChartOverview(StockHistory.getCompositeHistory()));
         base.add(compositeP);
 
         //Top 5 Stocks Overall
@@ -182,19 +175,12 @@ public class GUIOverview {
         base.add(rankingMoneyP);
 
         //Composite Panel
-        Font cHeading = new Font("Trebuchet MS", Font.PLAIN, 40);
         compositeP = new JPanel();
         compositeP.setLayout(null);
         compositeP.setSize(1225, 250);
         compositeP.setLocation(50, 100);
         compositeP.setBackground(new Color(198, 240, 198));
-        compLab = new JLabel("<Insert Composite Graph Here>");
-        compLab.setFont(cHeading);
-        compLab.setSize(1250, 250);
-        compLab.setHorizontalAlignment(SwingConstants.CENTER);
-        compLab.setVerticalAlignment(SwingConstants.CENTER);
-        compLab.setLocation(0, 0);
-        compositeP.add(compLab);
+        compositeP.add(new ChartOverview(StockHistory.getCompositeHistory()));
         base.add(compositeP);
 
         //Top 5 Stocks Overall
