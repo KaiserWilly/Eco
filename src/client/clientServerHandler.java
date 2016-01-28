@@ -10,7 +10,6 @@ import java.util.ConcurrentModificationException;
  * Created by james on 1/13/2016.
  */
 public class ClientServerHandler extends Thread {
-    int count = 0;
     String serverIP;
 
     static InputStream is;
@@ -33,6 +32,9 @@ public class ClientServerHandler extends Thread {
             Socket clientSocket = new Socket(serverIP, 1180);
             System.out.println("Permanent Connection Made!");
             ClientMain.startGUI();
+
+            //Score.generateAssetsArray();
+
             Thread.sleep(100);
 
             is = clientSocket.getInputStream(); //Gets the client's input stream

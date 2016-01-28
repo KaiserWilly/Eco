@@ -67,7 +67,7 @@ public class GUIBuy {
 
         return base;
     }
-    public static void updateBuy(){
+    public static void updateBuy() {
 
     }
 

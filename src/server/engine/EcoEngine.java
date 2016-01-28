@@ -144,6 +144,7 @@ public class EcoEngine {
                     if (originalStockPrice > newStockPrice) {
                         stockInput[i][5] = 0;
                     }
+                    stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1;
                 }
 //                System.out.println("Original Price of Stock:" + originalStockPrice);
 //                System.out.println("New Price for Stock:" + newStockPrice);
@@ -154,6 +155,11 @@ public class EcoEngine {
 //        for (int i = 0; i < stockInput.length; i++) {
 //            System.out.println(Arrays.toString(stockInput[i]));
 //        }
+        for (int i = 0; i < numberOfStocks; i++) {
+            if ((double)stockInput[i][1] < 0) {
+                stockInput[i][1] = 0.0;
+            }
+        }
         stockInfo = stockInput;
     }
 
