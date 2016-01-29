@@ -31,6 +31,7 @@ public class ClientServerHandler extends Thread {
             // Connects Client To Server
             Socket clientSocket = new Socket(serverIP, 1180);
             System.out.println("Permanent Connection Made!");
+            StockHistory.createCompositeHistory();
             ClientMain.startGUI();
 
             //Score.generateAssetsArray();
@@ -52,6 +53,7 @@ public class ClientServerHandler extends Thread {
                         System.out.println("Can't Write Data");
                     }
                 }
+                StockHistory.updateComposite(FilingStocks.getClientStockAverage(dataArray));
                 GUIFrame.PaneFrameMain.reloadTab(); //Refreshes the GUI
             }
         } catch (Exception e) {
