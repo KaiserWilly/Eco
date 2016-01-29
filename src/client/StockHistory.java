@@ -3,6 +3,7 @@ package client;
 import server.engine.EcoEngine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -18,14 +19,12 @@ public class StockHistory {
     public static int numberOfStocks = EcoEngine.numberOfStocks;
 
     public static void createCompositeHistory() {
-        for (int i = 0; i < 30; i++) {
-            compositeStockHistory[i] = 0;
-        }
+        Arrays.fill(compositeStockHistory, 0);
     }
 
     public static void updateComposite(double d) {
-        for (int i = 29; i > 1; i--) {
-            compositeStockHistory[i - 1] = compositeStockHistory[i];
+        for (int i = 1; i <= 29; i++) {
+            compositeStockHistory[i-1] = compositeStockHistory[i];
         }
         compositeStockHistory[29] = d;
 
