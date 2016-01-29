@@ -24,7 +24,7 @@ public class GUIBuy {
         cOHP.setSize(200, 50);
         cOHP.setLocation(50, 25);
         cOHP.setBackground(new Color(198, 240, 198));
-        cOHLab = new JLabel("<Cash on Hand>");
+        cOHLab = new JLabel("Cash On Hand: $" + Score.cashOnHand);
         cOHLab.setFont(mHeading);
         cOHLab.setSize(200, 50);
         cOHLab.setHorizontalAlignment(SwingConstants.CENTER);
@@ -40,7 +40,7 @@ public class GUIBuy {
         assetsP.setSize(300, 50);
         assetsP.setLocation(275, 25);
         assetsP.setBackground(new Color(198, 240, 198));
-        assetsLab = new JLabel("Assets: NA   Net Change: NA   Assets: NA");
+        assetsLab = new JLabel("Assets: $" + Score.assets + "   Net Change: $ " + NetChangeOfAssets.getNetChange() + " Assets: NA");
         assetsLab.setFont(mHeading);
         assetsLab.setSize(300, 50);
         assetsLab.setHorizontalAlignment(SwingConstants.CENTER);

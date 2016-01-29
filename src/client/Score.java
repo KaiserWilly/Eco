@@ -8,21 +8,22 @@ import java.util.Arrays;
 
 public class Score {
     public static double score;
-    public static double cashOnHand;
-    public static double assets;
+    public static double cashOnHand = 10000.00;
+    public static double assets = 0;
 
-    public static int numberOfStocks = ClientServerHandler.dataArray.length;
+    public static int numberOfStocks;
 
-    public static int[] assetArray = new int[numberOfStocks];
-    public static double[] stockPrices = new double[numberOfStocks];
+    public static int[] assetArray;
+    public static double[] stockPrices;
 
+    public static void createArrays() {
+        numberOfStocks = ClientServerHandler.dataArray.length;
+        assetArray = new int[numberOfStocks];
+        stockPrices = new double[numberOfStocks];
+    }
     public static double getScore() {
         score = cashOnHand + calcuateAssetsValue();
         return score;
-    }
-
-    public static void generateAssetsArray() {
-        Arrays.fill(assetArray, 0);
     }
 
     public static double[] getStockPrices () {
@@ -41,7 +42,8 @@ public class Score {
         return assetArray;
     }
 
-    private static double calcuateAssetsValue() {
+    public static double calcuateAssetsValue() {
+        NetChangeOfAssets.oldAssets = assets;
         assets = 0;
 
         getStockPrices();
@@ -53,6 +55,7 @@ public class Score {
 
         assets = (double) Math.round(assets * 100) / 100;
 
+        NetChangeOfAssets.newAssets = assets;
         return assets;
     }
 }

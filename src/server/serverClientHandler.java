@@ -28,6 +28,7 @@ public class ServerClientHandler extends Thread {
 
             int secCount = 0;
             System.out.println("New client connected!");
+
             while (true) {
                 if (secCount < Values.secCount) {
                     secCount = Values.secCount;
