@@ -27,8 +27,8 @@ public class ServerTimer {
                 Values.secCount++;
                 server.engine.EcoEngine.genereateData();
                 StockHistory.generateStockHistory();
-                ServerFile.showTimeStamp("Data Update Sent; SEC: " + Values.secCount);
-                ServerFile.showTimeStamp("Average Stock Price: $" + FilingStocks.getServerStockAverage());
+                //ServerFile.showTimeStamp("Data Update Sent; SEC: " + Values.secCount);
+                //ServerFile.showTimeStamp("Average Stock Price: $" + FilingStocks.getServerStockAverage());
             }
         };
     }

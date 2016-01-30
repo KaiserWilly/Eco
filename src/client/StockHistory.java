@@ -15,10 +15,9 @@ public class StockHistory {
     public static double[] compositeStockHistory = new double[30];
 
     public static Object[] stockHistory;
+    //public static double[] stockHistoryDouble;
 
     public static int numberOfStocks = EcoEngine.numberOfStocks;
-
-    static int placeMarker;
 
     public static double percentChange;
 
@@ -46,18 +45,25 @@ public class StockHistory {
         }
     }
 
-    public static Object[] getStockHistory(String stockName) {
+    public static double[] getStockHistory(String stockName) {
         for (int i = 0; i < numberOfStocks; i++) {
             if (stockHistoryArrayList.get(i).get(0).toString().equals(stockName)) {
                 stockHistory = stockHistoryArrayList.get(i).toArray();
             }
         }
-        getStockPercentChange(stockHistory);
-        return stockHistory;
+
+        double[] stockHistoryDouble = new double[stockHistory.length - 1];
+
+        for (int i = 1; i < stockHistory.length; i++) {
+            stockHistoryDouble[i-1] = (double)stockHistory[i];
+        }
+
+        getStockPercentChange(stockHistoryDouble);
+        return stockHistoryDouble;
     }
 
-    public static double getStockPercentChange(Object[] data) {
-        percentChange = (((double)data[data.length - 1] - (double)data[1]) / (double) data[1]) * 100;
+    public static double getStockPercentChange(double[] data) {
+        percentChange = ((data[data.length - 1] - data[0]) /  data[0]) * 100;
         System.out.println(percentChange);
         return percentChange;
     }
