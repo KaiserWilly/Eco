@@ -1,7 +1,10 @@
 package filing;
 
+import client.FilingStocks;
+
 import javax.swing.*;
 import java.awt.*;
+import java.text.DecimalFormat;
 
 /**
  * Created by JD Isenhart on 9/16/2015.
@@ -42,7 +45,7 @@ public class FilingWidget {
         int panelLoc = 20;
         JPanel base = new JPanel();
         base.setBackground(new Color(198, 240, 198));
-        base.setSize(width,300);
+        base.setSize(width, 300);
         base.setLayout(null);
         JLabel title = new JLabel(wTitle);
         title.setVerticalAlignment(SwingConstants.CENTER);
@@ -98,6 +101,45 @@ public class FilingWidget {
             base.add(widgetPanel);
             panelLoc = panelLoc + 30;
         }
+        return base;
+    }
+
+    public static JPanel buyWidget(String stockName, int wid, int hei) {
+        JPanel base = new JPanel();
+        base.setSize(wid, hei);
+        base.setLayout(null);
+        Font nameF = new Font("Tahoma", Font.BOLD, 8);
+        JLabel name = new JLabel(stockName);
+        name.setSize(100, 10);
+        name.setVerticalAlignment(SwingConstants.CENTER);
+        name.setHorizontalAlignment(SwingConstants.CENTER);
+        name.setLocation(0, 0);
+        name.setFont(nameF);
+        base.add(name);
+
+//        StockHistory.getStockHistory(stockName);
+        DecimalFormat df = new DecimalFormat("$#,###.##");
+        double change = 3.7/*Double.parseDouble(df.format(StockHistory.percentChange))*/;
+        JLabel perChange = new JLabel(/*Double.toString(change) + "%"*/ "3.4%");
+        if (change >= 0) {
+            perChange.setForeground(new Color(0, 0, 0));
+        } else {
+            perChange.setForeground(new Color(225, 149, 152));
+        }
+        perChange.setSize(100, 10);
+        perChange.setVerticalAlignment(SwingConstants.CENTER);
+        perChange.setHorizontalAlignment(SwingConstants.CENTER);
+        perChange.setLocation(100, 0);
+        perChange.setFont(nameF);
+        base.add(perChange);
+
+        JLabel price = new JLabel(df.format(FilingStocks.getPrice(stockName)));
+        price.setSize(100, 10);
+        price.setVerticalAlignment(SwingConstants.CENTER);
+        price.setHorizontalAlignment(SwingConstants.CENTER);
+        price.setLocation(250, 0);
+        price.setFont(nameF);
+        base.add(price);
         return base;
     }
 }

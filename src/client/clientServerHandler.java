@@ -1,10 +1,10 @@
 package client;
 
-import main.Values;
+        import main.Values;
 
-import java.io.*;
-import java.net.Socket;
-import java.util.ConcurrentModificationException;
+        import java.io.*;
+        import java.net.Socket;
+        import java.util.ConcurrentModificationException;
 
 /**
  * Created by james on 1/13/2016.
@@ -48,19 +48,12 @@ public class ClientServerHandler extends Thread {
             while (true) {
                 dataArray = (Object[][]) in.readObject(); //Reads the Stock Information Array from the socket
                 Score.createArrays();
-
-                boolean dataUp = false;
-                while (!dataUp) {
-                    try {
-                        Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
-                        dataUp = true;
-                        Score.getScore();
-                    } catch (ConcurrentModificationException e) {
-                        System.out.println("Can't Write Data");
-                    }
-                }
+                Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
+                Score.getScore();
+                FilingStocks.makePriceMap();
                 StockHistory.updateComposite(FilingStocks.getClientStockAverage(dataArray));
                 Score.getCashOnHand();
+                FilingBuy.createWidget();
                 GUIFrame.PaneFrameMain.reloadTab(); //Refreshes the GUI
             }
         } catch (Exception e) {

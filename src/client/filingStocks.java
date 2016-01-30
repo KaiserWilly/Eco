@@ -1,6 +1,12 @@
 package client;
 
+import filing.FilingMain;
 import server.engine.EcoEngine;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Random;
 
 /**
  * Created by isenhartjd on 1/25/2016.
@@ -8,6 +14,7 @@ import server.engine.EcoEngine;
 public class FilingStocks {
     static double total;
     static double average;
+    static Map priceMap = new HashMap<>();
 
     //Method that generates average price across all stocks
     public static double getServerStockAverage() {
@@ -55,5 +62,17 @@ public class FilingStocks {
             }
         }
         return (int) Math.floor(minVal);
+    }
+
+    public static double getPrice(String stock) {
+        return (double) priceMap.get(stock);
+    }
+
+    public static void makePriceMap() {
+        Object[][] data = FilingMain.getData();
+        priceMap = new HashMap<>();
+        for (int i = 0; i < data.length; i++) {
+            priceMap.put((String) data[i][0], (double) data[i][1]);
+        }
     }
 }

@@ -13,7 +13,6 @@ public class GUIBuy {
 
     static JPanel base, cOHP, assetsP, stocksP, buyWidBase;
     static JLabel cOHLab, assetsLab, stocksLab;
-    static JScrollPane buyWidPane;
     static Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
 
     public JPanel buyPanel() {
@@ -26,7 +25,7 @@ public class GUIBuy {
         cOHP = new JPanel();
         cOHP.setLayout(null);
         cOHP.setSize(200, 50);
-        cOHP.setLocation(50, 25);
+        cOHP.setLocation(500, 25);
         cOHP.setBackground(new Color(198, 240, 198));
         cOHLab = new JLabel("Cash On Hand: $" + Score.cashOnHandFormatted);
         cOHLab.setFont(mHeading);
@@ -42,9 +41,9 @@ public class GUIBuy {
         assetsP = new JPanel();
         assetsP.setLayout(null);
         assetsP.setSize(500, 50);
-        assetsP.setLocation(275, 25);
+        assetsP.setLocation(725, 25);
         assetsP.setBackground(new Color(198, 240, 198));
-        assetsLab = new JLabel("Assets: $" + Score.assetsFormatted + "   Net Change: $ " + NetChangeOfAssets.netChangeFormateed);
+        assetsLab = new JLabel("Assets: $" + Score.assetsFormatted + "   Net Change: $ " + NetChangeOfAssets.netChangeFormatted);
         assetsLab.setFont(mHeading);
         assetsLab.setSize(500, 50);
         assetsLab.setHorizontalAlignment(SwingConstants.CENTER);
@@ -53,18 +52,13 @@ public class GUIBuy {
         assetsP.add(assetsLab);
         base.add(assetsP);
 
-        //Buy Widget
-//        if (FilingMain.getData() != null) {
-//
-//            JPanel widBase = new JPanel();
-//            widBase.setBackground(new Color(213, 255, 213, 0));
-//            widBase.setSize(425, 425);
-//            widBase.setLocation(50, 100);
-//
+        //BuyWidget Panel
+        if (FilingMain.getData() != null) {
 //            int panelLoc = 20;
 //            buyWidBase = new JPanel();
 //            buyWidBase.setBackground(new Color(136, 172, 136));
-//            buyWidBase.setPreferredSize(new Dimension(425, 30 * FilingMain.getData().length));
+//            buyWidBase.setSize(425, 500);
+//            buyWidBase.setLocation(25, 25);
 //            buyWidBase.setLayout(null);
 //            JLabel title = new JLabel("Stocks Available");
 //            title.setVerticalAlignment(SwingConstants.CENTER);
@@ -74,32 +68,15 @@ public class GUIBuy {
 //            title.setBackground(new Color(198, 240, 198, 0));
 //            buyWidBase.add(title);
 //            for (int playIndex = 0; playIndex < FilingMain.getData().length; playIndex++) {
-//                BuyWidget wid = new BuyWidget((String) FilingMain.getData()[playIndex][0], 425, 30);
+//                JPanel wid = FilingWidget.buyWidget((String) FilingMain.getData()[playIndex][0], 425, 10);
 //                wid.setLocation(0, panelLoc);
 //                wid.setBackground(new Color(136, 172, 136));
 //                buyWidBase.add(wid);
-//                panelLoc = panelLoc + 30;
+//                panelLoc = panelLoc + 10;
 //            }
-//            buyWidPane = new JScrollPane(buyWidBase);
-//            buyWidPane.setPreferredSize(new Dimension(425, 425));
-//            buyWidPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-//            widBase.add(buyWidPane);
-//
-//            GroupLayout layFrame = new GroupLayout(widBase);
-//            widBase.setLayout(layFrame);
-//            layFrame.setAutoCreateGaps(true);
-//            layFrame.setAutoCreateContainerGaps(true);
-//            layFrame.setHorizontalGroup(
-//                    layFrame.createSequentialGroup()
-//                            .addComponent(buyWidPane)
-//            );
-//            layFrame.setVerticalGroup(
-//                    layFrame.createSequentialGroup()
-//
-//                            .addComponent(buyWidPane)
-//            );
-//            base.add(widBase);
-//        }
+            buyWidBase = FilingBuy.getWidBase;
+            base.add(buyWidBase);
+        }
 
 
         //GUIBuy return DO NOT DELETE
@@ -110,16 +87,17 @@ public class GUIBuy {
         base.remove(cOHP);
         base.remove(assetsP);
         try {
-            base.remove(buyWidPane);
+            base.remove(buyWidBase);
         } catch (NullPointerException e) {
             System.out.println("Non existent Widget!");
         }
         System.out.println("GUI Buy Updated!");
 
+        //Cash on Hand panel
         cOHP = new JPanel();
         cOHP.setLayout(null);
         cOHP.setSize(200, 50);
-        cOHP.setLocation(50, 25);
+        cOHP.setLocation(500, 25);
         cOHP.setBackground(new Color(198, 240, 198));
         cOHLab = new JLabel("Cash On Hand: $" + Score.cashOnHandFormatted);
         cOHLab.setFont(mHeading);
@@ -131,13 +109,12 @@ public class GUIBuy {
         base.add(cOHP);
 
         //Assets Panel
-
         assetsP = new JPanel();
         assetsP.setLayout(null);
         assetsP.setSize(500, 50);
-        assetsP.setLocation(275, 25);
+        assetsP.setLocation(725, 25);
         assetsP.setBackground(new Color(198, 240, 198));
-        assetsLab = new JLabel("Assets: $" + Score.assetsFormatted + "   Net Change: $ " + NetChangeOfAssets.getNetChange());
+        assetsLab = new JLabel("Assets: $" + Score.assetsFormatted /*+"   Net Change: $ " + NetChangeOfAssets.netChangeFormateed*/);
         assetsLab.setFont(mHeading);
         assetsLab.setSize(500, 50);
         assetsLab.setHorizontalAlignment(SwingConstants.CENTER);
@@ -146,51 +123,31 @@ public class GUIBuy {
         assetsP.add(assetsLab);
         base.add(assetsP);
 
-
-//        if (FilingMain.getData() != null) {
-            JPanel widBase = new JPanel();
-            widBase.setBackground(new Color(213, 255, 213, 0));
-            widBase.setSize(425, 425);
-            widBase.setLocation(50, 100);
-            int panelLoc = 20;
-            buyWidBase = new JPanel();
-            buyWidBase.setBackground(new Color(136, 172, 136));
-            buyWidBase.setPreferredSize(new Dimension(425, (30 * FilingMain.getData().length) + 20));
-            buyWidBase.setLayout(null);
-            JLabel title = new JLabel("Stocks Available");
-            title.setVerticalAlignment(SwingConstants.CENTER);
-            title.setHorizontalAlignment(SwingConstants.CENTER);
-            title.setSize(100, 20);
-            title.setLocation((425 / 2) - 50, 0);
-            title.setBackground(new Color(198, 240, 198, 0));
-            buyWidBase.add(title);
-            for (int playIndex = 0; playIndex < FilingMain.getData().length; playIndex++) {
-                JPanel wid = FilingWidget.buyWidget((String) FilingMain.getData()[playIndex][0], 425, 30);
-                wid.setLocation(0, panelLoc);
-                wid.setBackground(new Color(136, 172, 136));
-                buyWidBase.add(wid);
-                panelLoc = panelLoc + 30;
-            }
-            buyWidPane = new JScrollPane(buyWidBase);
-            buyWidPane.setPreferredSize(new Dimension(425, 425));
-            buyWidPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            widBase.add(buyWidPane);
-
-            GroupLayout layFrame = new GroupLayout(widBase);
-            widBase.setLayout(layFrame);
-            layFrame.setAutoCreateGaps(true);
-            layFrame.setAutoCreateContainerGaps(true);
-            layFrame.setHorizontalGroup(
-                    layFrame.createSequentialGroup()
-                            .addComponent(buyWidPane)
-            );
-            layFrame.setVerticalGroup(
-                    layFrame.createSequentialGroup()
-
-                            .addComponent(buyWidPane)
-            );
-            base.add(widBase);
-//        }
+        //BuyWidget Panel
+        if (FilingMain.getData() != null) {
+//            int panelLoc = 20;
+//            buyWidBase = new JPanel();
+//            buyWidBase.setBackground(new Color(136, 172, 136));
+//            buyWidBase.setSize(425, 500);
+//            buyWidBase.setLocation(25, 25);
+//            buyWidBase.setLayout(null);
+//            JLabel title = new JLabel("Stocks Available");
+//            title.setVerticalAlignment(SwingConstants.CENTER);
+//            title.setHorizontalAlignment(SwingConstants.CENTER);
+//            title.setSize(100, 20);
+//            title.setLocation((425 / 2) - 50, 0);
+//            title.setBackground(new Color(198, 240, 198, 0));
+//            buyWidBase.add(title);
+//            for (int playIndex = 0; playIndex < FilingMain.getData().length; playIndex++) {
+//                JPanel wid = FilingWidget.buyWidget((String) FilingMain.getData()[playIndex][0], 425, 10);
+//                wid.setLocation(0, panelLoc);
+//                wid.setBackground(new Color(136, 172, 136));
+//                buyWidBase.add(wid);
+//                panelLoc = panelLoc + 10;
+//            }
+            buyWidBase = FilingBuy.getWidBase;
+            base.add(buyWidBase);
+        }
 
         base.revalidate();
         base.repaint();
