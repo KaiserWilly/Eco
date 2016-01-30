@@ -58,7 +58,7 @@ public class StockHistory {
 
     public static double getStockPercentChange(Object[] data) {
         for (int i = 0; i < data.length; i++) {
-            if ((int)data[i] == 0) {
+            if (data[i] == null) {
                 placeMarker = i;
                 break;
             }

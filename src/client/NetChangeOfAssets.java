@@ -9,6 +9,7 @@ import java.util.Locale;
  */
 public class NetChangeOfAssets {
     static double netChange;
+    static String netChangeFormateed;
 
     static double oldAssets = 0;
     static double newAssets = 0;
@@ -18,7 +19,7 @@ public class NetChangeOfAssets {
     public static double getNetChange() {
         netChange = newAssets - oldAssets;
 
-        netChange = Double.parseDouble(formatter.format(netChange));
+        netChangeFormateed = formatter.format(netChange);
 
         return netChange;
     }
