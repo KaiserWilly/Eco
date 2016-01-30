@@ -19,24 +19,41 @@ public class ChartOverview extends JPanel {
 
 
     public void paintComponent(Graphics g) {
+        int minVal = FilingStocks.getMinValue(gData);
+        int maxVal = FilingStocks.getMaxValue(gData);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(2));
         g.drawRect(25, 25, 1175, 200);
         g.drawString("Avg. Price over last 60 seconds", 538, 15);
-        //System.out.println(Arrays.toString(gData));
-        int x1 = 25;
-        int x2 = x1 + 39;
-        int y1 = 0;
-        g.setColor(Color.BLUE);
-        for (int i = 0; i < gData.length; i++) {
-            int val = (int)(175 - ((gData[i]-23) * 75));
+        g.drawLine(25, 25, 22, 25);
+        g.drawLine(25, 225, 22, 225);
+        g.drawString("$" + maxVal, 0, 30);
+        g.drawString("$" + minVal, 0, 230);
 
-            if (val != 175) {
-                g2.drawLine(x1, y1, x2, val);
+        int x1 = 25;
+        int x2 = x1 + 40;
+        int arrayDiff = maxVal - minVal;
+        int y1;
+        if (gData[0] == 0) {
+            y1 = 0;
+        } else {
+            y1 = (int) (175 - (150 * ((gData[0] - minVal)) / arrayDiff));
+        }
+
+        System.out.println(Arrays.toString(gData));
+        System.out.println("Min: " + minVal + " Max: " + maxVal + " y1: " + y1);
+        g.setColor(Color.BLUE);
+        for (int i = 1; i < gData.length; i++) {
+            if (gData[i] != 0) {
+                int val = (int) (175 - (150 * ((gData[i] - minVal)) / arrayDiff));
+                if (y1 != 0) {
+                    g2.drawLine(x1, y1, x2, val);
+                }
+                y1 = val;
             }
             x1 = x2;
-            x2 = x1 + 39;
-            y1 = val;
+            x2 = x1 + 40;
+
         }
 
     }
