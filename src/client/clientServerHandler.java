@@ -1,10 +1,10 @@
 package client;
 
-        import main.Values;
+import main.Values;
 
-        import java.io.*;
-        import java.net.Socket;
-        import java.util.ConcurrentModificationException;
+import java.io.*;
+import java.net.Socket;
+import java.util.ConcurrentModificationException;
 
 /**
  * Created by james on 1/13/2016.
@@ -14,7 +14,6 @@ public class ClientServerHandler extends Thread {
 
     static InputStream is;
     static ObjectInputStream in;
-
     static OutputStream outputStream;
     static ObjectOutputStream objectOutputStream;
 
@@ -54,6 +53,8 @@ public class ClientServerHandler extends Thread {
                 StockHistory.updateComposite(FilingStocks.getClientStockAverage(dataArray));
                 Score.getCashOnHand();
                 FilingBuy.createWidget();
+                FilingBuy.createLabels();
+                FilingBuy.createBuyPanel(GUIBuy.stockbuy);
                 GUIFrame.PaneFrameMain.reloadTab(); //Refreshes the GUI
             }
         } catch (Exception e) {

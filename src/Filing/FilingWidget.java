@@ -110,7 +110,7 @@ public class FilingWidget {
         base.setLayout(null);
         Font nameF = new Font("Tahoma", Font.BOLD, 8);
         JLabel name = new JLabel(stockName);
-        name.setSize(100, 10);
+        name.setSize(100, hei);
         name.setVerticalAlignment(SwingConstants.CENTER);
         name.setHorizontalAlignment(SwingConstants.CENTER);
         name.setLocation(0, 0);
@@ -126,7 +126,7 @@ public class FilingWidget {
         } else {
             perChange.setForeground(new Color(225, 149, 152));
         }
-        perChange.setSize(100, 10);
+        perChange.setSize(100, hei);
         perChange.setVerticalAlignment(SwingConstants.CENTER);
         perChange.setHorizontalAlignment(SwingConstants.CENTER);
         perChange.setLocation(100, 0);
@@ -134,7 +134,7 @@ public class FilingWidget {
         base.add(perChange);
 
         JLabel price = new JLabel(df.format(FilingStocks.getPrice(stockName)));
-        price.setSize(100, 10);
+        price.setSize(100, hei);
         price.setVerticalAlignment(SwingConstants.CENTER);
         price.setHorizontalAlignment(SwingConstants.CENTER);
         price.setLocation(250, 0);

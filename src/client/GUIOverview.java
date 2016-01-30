@@ -35,8 +35,8 @@ public class GUIOverview {
         nameP.setBackground(new Color(198, 240, 198));
         JLabel name = null;
         try {
-            name = new JLabel(InetAddress.getLocalHost().getHostName());
-        } catch (UnknownHostException e) {
+            name = new JLabel(/*InetAddress.getLocalHost().getHostName()*/"Phillip McGinn");
+        } catch (Exception e) {
             name = new JLabel("<Name not found>");
         }
         name.setSize(200, 50);

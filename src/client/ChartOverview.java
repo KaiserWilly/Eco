@@ -23,6 +23,9 @@ public class ChartOverview extends JPanel {
         int maxVal = FilingStocks.getMaxValue(gData);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(2));
+        g.setColor(Color.WHITE);
+        g.fillRect(25, 25, 1175, 200);
+        g.setColor(Color.BLACK);
         g.drawRect(25, 25, 1175, 200);
         g.drawString("Avg. Price over last 60 seconds", 538, 15);
         g.drawLine(25, 25, 22, 25);
@@ -39,9 +42,6 @@ public class ChartOverview extends JPanel {
         } else {
             y1 = (int) (175 - (150 * ((gData[0] - minVal)) / arrayDiff));
         }
-
-//        System.out.println(Arrays.toString(gData));
-//        System.out.println("Min: " + minVal + " Max: " + maxVal + " y1: " + y1);
         g.setColor(Color.BLUE);
         for (int i = 1; i < gData.length; i++) {
             if (gData[i] != 0) {

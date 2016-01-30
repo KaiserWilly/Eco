@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 public class BuyWidget extends JPanel implements FocusListener {
     static String stockName;
     static int wid, hei;
-    static Font nameF = new Font("Tahoma", Font.BOLD, 20);
+    static Font nameF = new Font("Tahoma", Font.BOLD, 5);
 
     public BuyWidget(String stockN, int width, int height) {
         stockName = stockN;
@@ -31,7 +31,7 @@ public class BuyWidget extends JPanel implements FocusListener {
         base.setLayout(null);
 
         JLabel name = new JLabel(stockName);
-        name.setSize(100, 30);
+        name.setSize(100, hei);
         name.setVerticalAlignment(SwingConstants.CENTER);
         name.setHorizontalAlignment(SwingConstants.CENTER);
         name.setLocation(0, 0);
@@ -47,7 +47,7 @@ public class BuyWidget extends JPanel implements FocusListener {
         } else {
             perChange.setForeground(new Color(225, 149, 152));
         }
-        perChange.setSize(100, 30);
+        perChange.setSize(100, hei);
         perChange.setVerticalAlignment(SwingConstants.CENTER);
         perChange.setHorizontalAlignment(SwingConstants.CENTER);
         perChange.setLocation(100, 0);
@@ -55,7 +55,7 @@ public class BuyWidget extends JPanel implements FocusListener {
         base.add(perChange);
 
         JLabel price = new JLabel(String.valueOf(FilingStocks.getPrice(stockName)));
-        price.setSize(100, 30);
+        price.setSize(100, hei);
         price.setVerticalAlignment(SwingConstants.CENTER);
         price.setHorizontalAlignment(SwingConstants.CENTER);
         price.setLocation(250, 0);
@@ -66,7 +66,10 @@ public class BuyWidget extends JPanel implements FocusListener {
 
     @Override
     public void focusGained(FocusEvent e) {
-
+        GUIBuy.stockbuy = stockName;
+        FilingBuy.createLabels();
+        FilingBuy.createWidget();
+        FilingBuy.createBuyPanel(stockName);
     }
 
     @Override
