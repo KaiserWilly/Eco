@@ -180,7 +180,7 @@ public class EcoEngine {
 //        }
         for (int i = 0; i < numberOfStocks; i++) {
             if ((double)stockInput[i][1] < 0) {
-                stockInput[i][1] = 0.0;
+                stockInput[i][1] = 0.01;
             }
         }
         stockInfo = stockInput;

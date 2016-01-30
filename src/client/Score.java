@@ -22,6 +22,7 @@ public class Score {
     static String assetsFormatted;
 
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
+    //asdf
 
     public static void createArrays() {
         numberOfStocks = ClientServerHandler.dataArray.length;
@@ -30,6 +31,7 @@ public class Score {
     }
     public static double getScore() {
         score = cashOnHand + calcuateAssetsValue();
+        System.out.println("Score: $" + score);
         return score;
     }
 
@@ -70,8 +72,6 @@ public class Score {
         assetsFormatted = formatter.format(assets);
 
         NetChangeOfAssets.newAssets = assets;
-
-        System.out.println("Assets: " + assets);
         return assets;
     }
 }
