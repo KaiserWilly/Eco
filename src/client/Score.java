@@ -22,6 +22,7 @@ public class Score {
     static String assetsFormatted;
 
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
+    //asdf
 
     public static void createArrays() {
         numberOfStocks = ClientServerHandler.dataArray.length;
