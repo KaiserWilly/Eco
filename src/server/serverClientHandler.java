@@ -21,16 +21,10 @@ public class ServerClientHandler extends Thread {
         start();
     }
 
-    static InputStream is;
-    static ObjectInputStream in;
-
     public void run() {
         try {
             OutputStream outputStream = socketToClient.getOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(outputStream);
-
-            is = socketToClient.getInputStream();
-            in = new ObjectInputStream(is);
 
             int secCount = 0;
             System.out.println("New client connected!");
@@ -42,8 +36,6 @@ public class ServerClientHandler extends Thread {
                     StockHistory.generateStockHistory();
                     out.writeObject(EcoEngine.getData());
                     out.reset();
-
-                    System.out.println("Client " + ID + " Score: "  + in.readDouble());
                 }
                 Thread.sleep(1000);
             }

@@ -51,6 +51,12 @@ public class StockHistory {
         return stockHistory;
     }
 
+    public static void getStockPercentChange(Object[] data) {
+        for (int i = 0; i < data.length; i++) {
+
+        }
+    }
+
     public static void generateStockHistory() {
         if (stockHistoryArrayList.get(1).size() < 30) {
             for (int i = 0; i < numberOfStocks; i++) {
