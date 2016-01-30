@@ -139,6 +139,7 @@ public class EcoEngine {
                     stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1; //Increases the value of the trend by 1 turn, in other words, the stock is now trending
 //                    System.out.println("Original Price of Stock:" + originalStockPrice);
 //                    System.out.println("New Price for Stock:" + newStockPrice);
+                    // For Pushing Purposes only
                 }
             } else if (stockVolatility <= stockChangeParameter.nextInt(100 + 1)) {
                 if (Values.secCount > 0) {
