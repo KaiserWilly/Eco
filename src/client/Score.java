@@ -31,7 +31,6 @@ public class Score {
     }
     public static double getScore() {
         score = cashOnHand + calcuateAssetsValue();
-        System.out.println("Score: $" + score);
         return score;
     }
 
@@ -72,6 +71,8 @@ public class Score {
         assetsFormatted = formatter.format(assets);
 
         NetChangeOfAssets.newAssets = assets;
+
+        System.out.println("Assets: " + assets);
         return assets;
     }
 }
