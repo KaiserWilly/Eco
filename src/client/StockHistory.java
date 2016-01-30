@@ -52,6 +52,7 @@ public class StockHistory {
                 stockHistory = stockHistoryArrayList.get(i).toArray();
             }
         }
+        getStockPercentChange(stockHistory);
         return stockHistory;
     }
 
@@ -62,6 +63,7 @@ public class StockHistory {
                 break;
             }
         }
+        percentChange = (((double)data[placeMarker]) - ((double)data[0])) / ((double) data[0]);
         return percentChange;
     }
 
