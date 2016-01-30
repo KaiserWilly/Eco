@@ -49,6 +49,8 @@ public class ClientServerHandler extends Thread {
 
             while (true) {
                 dataArray = (Object[][]) in.readObject(); //Reads the Stock Information Array from the socket
+                objectOutputStream.writeDouble(Score.getScore());
+                objectOutputStream.reset();
                 Score.createArrays();
 
                 boolean dataUp = false;
@@ -62,6 +64,7 @@ public class ClientServerHandler extends Thread {
                     }
                 }
                 StockHistory.updateComposite(FilingStocks.getClientStockAverage(dataArray));
+                Score.getCashOnHand();
                 GUIFrame.PaneFrameMain.reloadTab(); //Refreshes the GUI
             }
         } catch (Exception e) {
