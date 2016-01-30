@@ -141,23 +141,7 @@ public class EcoEngine {
 //                    System.out.println("New Price for Stock:" + newStockPrice);
                 }
             } else if (stockVolatility <= stockChangeParameter.nextInt(100 + 1)) {
-                if (Values.secCount > 0){
-                    if (originalStockPrice >= newStockPrice){ //Checks to see if the change in the stock market price was negative
-                        if (positivePriceChange){ // Checks to see if the change in the stock price was positive after the initial negative
-                            originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1])) + totalPriceChange; // If it is positive, it bases the new price off of the last positive value, so as to keep the same level of possible increas in price
-                            newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
-                            stockInput[i][1] = newStockPrice;
-                            if (Integer.parseInt(String.valueOf(stockInput[i][3])) <= stockChangeParameter.nextInt(100 + 1)) {
-                                stockInput[i][4] = true;
-                                if (originalStockPrice > newStockPrice) {
-                                    stockInput[i][5] = 0;
-                                }
-                                stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1;
-                            }
-                        }
-                    }
-                }
-                else {
+
                     originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
                     newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
                     stockInput[i][1] = newStockPrice;
@@ -170,7 +154,6 @@ public class EcoEngine {
                     }
 //                System.out.println("Original Price of Stock:" + originalStockPrice);
 //                System.out.println("New Price for Stock:" + newStockPrice);
-                }
             } else {
 //                System.out.println("No Change in Stock Price for Stock: " + stockInput[i][0]);
             }
