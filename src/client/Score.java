@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Score {
     public static double score;
-    public static double cashOnHand = 10000.00;
+    public static double cashOnHand = 100000.00;
     public static double assets = 0;
 
     public static int numberOfStocks;
@@ -56,6 +56,8 @@ public class Score {
         assets = (double) Math.round(assets * 100) / 100;
 
         NetChangeOfAssets.newAssets = assets;
+
+        System.out.println("Assets: " + assets);
         return assets;
     }
 }

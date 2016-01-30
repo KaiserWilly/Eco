@@ -40,7 +40,7 @@ public class GUIBuy {
         assetsP.setSize(300, 50);
         assetsP.setLocation(275, 25);
         assetsP.setBackground(new Color(198, 240, 198));
-        assetsLab = new JLabel("Assets: $" + Score.assets + "   Net Change: $ " + NetChangeOfAssets.getNetChange() + " Assets: NA");
+        assetsLab = new JLabel("Assets: $" + Score.assets + "   Net Change: $ " + NetChangeOfAssets.getNetChange() + " Assets: " + Score.assets);
         assetsLab.setFont(mHeading);
         assetsLab.setSize(300, 50);
         assetsLab.setHorizontalAlignment(SwingConstants.CENTER);

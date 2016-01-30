@@ -11,6 +11,9 @@ public class NetChangeOfAssets {
 
     public static double getNetChange() {
         netChange = newAssets - oldAssets;
+
+        netChange = (double) Math.round(netChange * 100) / 100;
+
         return netChange;
     }
 }

@@ -23,7 +23,7 @@ public class ChartOverview extends JPanel {
         g2.setStroke(new BasicStroke(2));
         g.drawRect(25, 25, 1175, 200);
         g.drawString("Avg. Price over last 60 seconds", 538, 15);
-        System.out.println(Arrays.toString(gData));
+        //System.out.println(Arrays.toString(gData));
         int x1 = 25;
         int x2 = x1 + 39;
         int y1 = 0;

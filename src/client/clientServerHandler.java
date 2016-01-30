@@ -15,6 +15,9 @@ public class ClientServerHandler extends Thread {
     static InputStream is;
     static ObjectInputStream in;
 
+    static OutputStream outputStream;
+    static ObjectOutputStream objectOutputStream;
+
     static Object[][] dataArray = null;
 
     public ClientServerHandler(String IP) {
@@ -41,14 +44,19 @@ public class ClientServerHandler extends Thread {
             is = clientSocket.getInputStream(); //Gets the client's input stream
             in = new ObjectInputStream(is); //Creates an Object Input Stream from the client's input stream
 
+            outputStream = clientSocket.getOutputStream();
+            objectOutputStream = new ObjectOutputStream(outputStream);
+
             while (true) {
                 dataArray = (Object[][]) in.readObject(); //Reads the Stock Information Array from the socket
+                Score.createArrays();
 
                 boolean dataUp = false;
                 while (!dataUp) {
                     try {
                         Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
                         dataUp = true;
+                        Score.getScore();
                     } catch (ConcurrentModificationException e) {
                         System.out.println("Can't Write Data");
                     }
