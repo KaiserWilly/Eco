@@ -51,7 +51,7 @@ public class GUIOverview {
         Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
         rankingMoneyP = new JPanel();
         rankingMoneyP.setLayout(null);
-        rankingMoneyP.setSize(300, 50);
+        rankingMoneyP.setSize(400, 50);
         rankingMoneyP.setLocation(275, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
         rankMonLab = new JLabel("Ranking: NA   Money: NA   Assets: NA");
