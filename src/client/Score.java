@@ -1,6 +1,8 @@
 package client;
 
-import java.util.Arrays;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 /**
  * Created by Ryan Trost on 1/27/2016.
@@ -16,6 +18,11 @@ public class Score {
     public static int[] assetArray;
     public static double[] stockPrices;
 
+    static String cashOnHandFormatted;
+    static String assetsFormatted;
+
+    static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
+
     public static void createArrays() {
         numberOfStocks = ClientServerHandler.dataArray.length;
         assetArray = new int[numberOfStocks];
@@ -24,6 +31,11 @@ public class Score {
     public static double getScore() {
         score = cashOnHand + calcuateAssetsValue();
         return score;
+    }
+
+    public static String getCashOnHand() {
+        cashOnHandFormatted = formatter.format(cashOnHand);
+        return cashOnHandFormatted;
     }
 
     public static double[] getStockPrices () {
@@ -53,7 +65,7 @@ public class Score {
             assets += stockPrices[i] * assetArray[i];
         }
 
-        assets = (double) Math.round(assets * 100) / 100;
+        assetsFormatted = formatter.format(assets);
 
         NetChangeOfAssets.newAssets = assets;
 
