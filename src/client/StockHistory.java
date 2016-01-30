@@ -18,6 +18,10 @@ public class StockHistory {
 
     public static int numberOfStocks = EcoEngine.numberOfStocks;
 
+    static int placeMarker;
+
+    public static double percentChange;
+
     public static void createCompositeHistory() {
         Arrays.fill(compositeStockHistory, 0);
     }
@@ -51,10 +55,14 @@ public class StockHistory {
         return stockHistory;
     }
 
-    public static void getStockPercentChange(Object[] data) {
+    public static double getStockPercentChange(Object[] data) {
         for (int i = 0; i < data.length; i++) {
-
+            if ((int)data[i] == 0) {
+                placeMarker = i;
+                break;
+            }
         }
+        return percentChange;
     }
 
     public static void generateStockHistory() {
