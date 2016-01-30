@@ -165,7 +165,7 @@ public class GUIOverview {
         rankingMoneyP.setSize(300, 50);
         rankingMoneyP.setLocation(275, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
-        rankMonLab = new JLabel("Ranking: NA   Money: $" + Score.getCashOnHand()+ "  Assets: $" + Score.assetsFormatted);
+        rankMonLab = new JLabel("Ranking: NA   Money: $" + Score.cashOnHandFormatted+ "  Assets: $" + Score.assetsFormatted);
         rankMonLab.setFont(mHeading);
         rankMonLab.setSize(300, 50);
         rankMonLab.setHorizontalAlignment(SwingConstants.CENTER);

@@ -33,9 +33,11 @@ public class Score {
         return score;
     }
 
-    public static String getCashOnHand() {
+    public static double getCashOnHand() {
+        cashOnHand = cashOnHand;// + ((#stocks bought or sold) * (buy or sell value))
+
         cashOnHandFormatted = formatter.format(cashOnHand);
-        return cashOnHandFormatted;
+        return cashOnHand;
     }
 
     public static double[] getStockPrices () {

@@ -16,14 +16,9 @@ public class NetChangeOfAssets {
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
 
     public static double getNetChange() {
-//        for (int i = 0; i < XPTabData.length; i++) {
-//            XPTabData[i][1] = formatter.format(Integer.parseInt(String.valueOf(XPTabData[i][1])));
-//        }
         netChange = newAssets - oldAssets;
 
         netChange = Double.parseDouble(formatter.format(netChange));
-
-        //netChange = (double) Math.round(netChange * 100) / 100;
 
         return netChange;
     }
