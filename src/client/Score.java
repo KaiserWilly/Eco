@@ -34,7 +34,7 @@ public class Score {
     }
 
     public static double getCashOnHand() {
-        cashOnHand = cashOnHand;// + ((#stocks bought or sold) * (buy or sell value))
+        //cashOnHand = cashOnHand + ((#stocks bought or sold) * (buy or sell value))
 
         cashOnHandFormatted = formatter.format(cashOnHand);
         return cashOnHand;
