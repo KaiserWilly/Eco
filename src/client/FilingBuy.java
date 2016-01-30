@@ -11,6 +11,7 @@ import java.awt.*;
  */
 public class FilingBuy {
     public static JPanel getWidBase,getCOH,getAssets;
+    static Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
 
     public static void createWidget() {
         if (FilingMain.getData() != null) {
@@ -51,7 +52,7 @@ public class FilingBuy {
         cOHLab.setVerticalAlignment(SwingConstants.CENTER);
         cOHLab.setLocation(0, 0);
         cOHP.add(cOHLab);
-        base.add(cOHP);
+        //base.add(cOHP);
 
         //Assets Panel
         JPanel assetsP = new JPanel();
@@ -66,6 +67,6 @@ public class FilingBuy {
         assetsLab.setVerticalAlignment(SwingConstants.CENTER);
         assetsLab.setLocation(0, 0);
         assetsP.add(assetsLab);
-        base.add(assetsP);
+        //base.add(assetsP);
     }
 }

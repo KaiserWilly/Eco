@@ -27,6 +27,8 @@ public class EcoEngine {
     public static boolean positivePriceChange;
     public static double totalPriceChange;
 
+    public static double[] clientScores;
+
     public static void initializeEngine(int numStocks) {
         numberOfStocks = numStocks;
         EcoEngine.createStocks();

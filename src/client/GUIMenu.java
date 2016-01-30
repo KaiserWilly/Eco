@@ -103,7 +103,8 @@ public class GUIMenu {
                     IP = (String) JOptionPane.showInputDialog(joinGame, "Enter the IP address of the Server:", "Join Game", JOptionPane.PLAIN_MESSAGE, null, null, null);
                     System.out.println(IP);
                     if (IP == null) break;
-                    ipValid = ClientNetwork.testConnection(IP);
+                    //ipValid = ClientNetwork.testConnection(IP);
+                    ipValid = true;
                 }
                 if (ipValid) {
                     System.out.println("It connected!");
