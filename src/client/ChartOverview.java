@@ -40,8 +40,8 @@ public class ChartOverview extends JPanel {
             y1 = (int) (175 - (150 * ((gData[0] - minVal)) / arrayDiff));
         }
 
-        System.out.println(Arrays.toString(gData));
-        System.out.println("Min: " + minVal + " Max: " + maxVal + " y1: " + y1);
+//        System.out.println(Arrays.toString(gData));
+//        System.out.println("Min: " + minVal + " Max: " + maxVal + " y1: " + y1);
         g.setColor(Color.BLUE);
         for (int i = 1; i < gData.length; i++) {
             if (gData[i] != 0) {

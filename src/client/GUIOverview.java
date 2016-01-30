@@ -47,16 +47,16 @@ public class GUIOverview {
         nameP.add(name);
         base.add(nameP);
 
-//Ranking Panel
+        //Ranking Panel
         Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
         rankingMoneyP = new JPanel();
         rankingMoneyP.setLayout(null);
-        rankingMoneyP.setSize(400, 50);
+        rankingMoneyP.setSize(500, 50);
         rankingMoneyP.setLocation(275, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
         rankMonLab = new JLabel("Ranking: NA   Money: NA   Assets: NA");
         rankMonLab.setFont(mHeading);
-        rankMonLab.setSize(300, 50);
+        rankMonLab.setSize(500, 50);
         rankMonLab.setHorizontalAlignment(SwingConstants.CENTER);
         rankMonLab.setVerticalAlignment(SwingConstants.CENTER);
         rankMonLab.setLocation(0, 0);
@@ -162,12 +162,12 @@ public class GUIOverview {
         Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
         rankingMoneyP = new JPanel();
         rankingMoneyP.setLayout(null);
-        rankingMoneyP.setSize(300, 50);
+        rankingMoneyP.setSize(500, 50);
         rankingMoneyP.setLocation(275, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
         rankMonLab = new JLabel("Ranking: NA   Money: $" + Score.cashOnHandFormatted+ "  Assets: $" + Score.assetsFormatted);
         rankMonLab.setFont(mHeading);
-        rankMonLab.setSize(300, 50);
+        rankMonLab.setSize(500, 50);
         rankMonLab.setHorizontalAlignment(SwingConstants.CENTER);
         rankMonLab.setVerticalAlignment(SwingConstants.CENTER);
         rankMonLab.setLocation(0, 0);

@@ -72,7 +72,7 @@ public class Score {
 
         NetChangeOfAssets.newAssets = assets;
 
-        System.out.println("Assets: " + assets);
+//        System.out.println("Assets: " + assets);
         return assets;
     }
 }

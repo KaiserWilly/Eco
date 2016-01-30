@@ -19,7 +19,7 @@ import java.io.IOException;
  */
 public class GUIFrame {
     public static int dimX = 1366, dimY = 700;
-    public static JPanel pStatistics, cStatistics, base;
+    public static JPanel base;
     public static JFrame mainFrame;
     public static JTabbedPane tPane;
     public static JLabel panelIcon;
@@ -39,8 +39,6 @@ public class GUIFrame {
             mainFrame.setMinimumSize(new Dimension(600, 400));
             mainFrame.setJMenuBar(null);
             mainFrame.setMaximumSize(new Dimension(1366, 700));
-//            mainFrame.addComponentListener(new frameResizedListener() {
-//            });
             JFrame.setDefaultLookAndFeelDecorated(false);
             PaneFrameMain index = new PaneFrameMain();
             mainFrame.setIconImage(icon.getFrameIcon());
