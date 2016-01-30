@@ -5,6 +5,7 @@ package server.engine;
  */
 
 import main.Values;
+import server.ServerTimer;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -23,6 +24,8 @@ public class EcoEngine {
 
     public static Object[][] stockInfo;
     public static int numberOfStocks;
+    public static boolean positivePriceChange;
+    public static double totalPriceChange;
 
     public static void initializeEngine(int numStocks) {
         numberOfStocks = numStocks;
@@ -122,32 +125,52 @@ public class EcoEngine {
 
     public static void simulateStocks(Object[][] stockInput) { //Simulating the stocks by randomly changing random stock values
         int stockVolatility;
+        double originalStockPrice = 0;
+        double newStockPrice = 0;
         Random stockChangeParameter = new Random(); //Sets the parameter against the volatility is checked to see if there is a change in stock value
         for (int i = 0; i < numberOfStocks; i++) {
 //            System.out.println("Volatility Value of Stock: " + String.valueOf(stockInput[i][2]));
             stockVolatility = Integer.parseInt(String.valueOf(stockInput[i][2]));
             if (Boolean.getBoolean(String.valueOf(stockInput[i][4]))) { //Changes the price of the stock if it is trending
                 if (stockVolatility <= stockChangeParameter.nextInt(100 + 1)) {
-                    double originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
-                    double newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
+                    originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
+                    newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
                     stockInput[i][1] = newStockPrice;
                     stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1; //Increases the value of the trend by 1 turn, in other words, the stock is now trending
 //                    System.out.println("Original Price of Stock:" + originalStockPrice);
 //                    System.out.println("New Price for Stock:" + newStockPrice);
                 }
             } else if (stockVolatility <= stockChangeParameter.nextInt(100 + 1)) {
-                double originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
-                double newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
-                stockInput[i][1] = newStockPrice;
-                if (Integer.parseInt(String.valueOf(stockInput[i][3])) <= stockChangeParameter.nextInt(100 + 1)) {
-                    stockInput[i][4] = true;
-                    if (originalStockPrice > newStockPrice) {
-                        stockInput[i][5] = 0;
+                if (Values.secCount > 0){
+                    if (originalStockPrice >= newStockPrice){ //Checks to see if the change in the stock market price was negative
+                        if (positivePriceChange){ // Checks to see if the change in the stock price was positive after the initial negative
+                            originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1])) + totalPriceChange; // If it is positive, it bases the new price off of the last positive value, so as to keep the same level of possible increas in price
+                            newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
+                            stockInput[i][1] = newStockPrice;
+                            if (Integer.parseInt(String.valueOf(stockInput[i][3])) <= stockChangeParameter.nextInt(100 + 1)) {
+                                stockInput[i][4] = true;
+                                if (originalStockPrice > newStockPrice) {
+                                    stockInput[i][5] = 0;
+                                }
+                                stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1;
+                            }
+                        }
                     }
-                    stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1;
                 }
+                else {
+                    originalStockPrice = Double.parseDouble(String.valueOf(stockInput[i][1]));
+                    newStockPrice = changeStockPrice(originalStockPrice, Boolean.parseBoolean(String.valueOf(stockInput[i][4])), Integer.parseInt(String.valueOf(stockInput[i][5])), Integer.parseInt(String.valueOf(stockInput[i][6])));
+                    stockInput[i][1] = newStockPrice;
+                    if (Integer.parseInt(String.valueOf(stockInput[i][3])) <= stockChangeParameter.nextInt(100 + 1)) {
+                        stockInput[i][4] = true;
+                        if (originalStockPrice > newStockPrice) {
+                            stockInput[i][5] = 0;
+                        }
+                        stockInput[i][6] = Integer.parseInt(String.valueOf(stockInput[i][6])) + 1;
+                    }
 //                System.out.println("Original Price of Stock:" + originalStockPrice);
 //                System.out.println("New Price for Stock:" + newStockPrice);
+                }
             } else {
 //                System.out.println("No Change in Stock Price for Stock: " + stockInput[i][0]);
             }
@@ -165,44 +188,47 @@ public class EcoEngine {
 
     public static double changeStockPrice(double priceToBeChanged, boolean trending, int directionOfTrend, int currentDurationOfTrend) {
         Random percentageAdjustment = new Random();
-        double percentageChange;
-        percentageChange = Math.pow(priceToBeChanged, .907); //(-.507)
-        percentageChange = percentageChange / 10;
+        totalPriceChange = Math.pow(priceToBeChanged, .907); //(-.507)
+        totalPriceChange = totalPriceChange / 10;
         if (trending) {
             if (directionOfTrend == 1) { //If direction of trend is 1, the stock is trending up
                 if (percentageAdjustment.nextInt() <= 50 - (10 - currentDurationOfTrend)) {
                     if (percentageAdjustment.nextInt(101) <= 50) {
-                        percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
+                        totalPriceChange = totalPriceChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
                     } else {
-                        percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
+                        totalPriceChange = totalPriceChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                     }
-                    priceToBeChanged = priceToBeChanged + percentageChange;
+                    priceToBeChanged = priceToBeChanged + totalPriceChange;
+                    positivePriceChange = true;
 //                    System.out.println("Percent the Value Changed: " + percentageChange);
                 } else {
                     if (percentageAdjustment.nextInt(101) <= 50) {
-                        percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
+                        totalPriceChange = totalPriceChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
                     } else {
-                        percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
+                        totalPriceChange = totalPriceChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                     }
-                    priceToBeChanged = priceToBeChanged - percentageChange;
+                    priceToBeChanged = priceToBeChanged - totalPriceChange;
+                    positivePriceChange = false;
 //                    System.out.println("Percent the Value Changed: " + percentageChange);
                 }
             } else {
                 if (percentageAdjustment.nextInt() <= 50 + (10 - currentDurationOfTrend)) {
                     if (percentageAdjustment.nextInt(101) <= 50) {
-                        percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
+                        totalPriceChange = totalPriceChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
                     } else {
-                        percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
+                        totalPriceChange = totalPriceChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                     }
-                    priceToBeChanged = priceToBeChanged + percentageChange;
+                    priceToBeChanged = priceToBeChanged + totalPriceChange;
+                    positivePriceChange = true;
 //                    System.out.println("Percent the Value Changed: " + percentageChange);
                 } else {
                     if (percentageAdjustment.nextInt(101) <= 50) {
-                        percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
+                        totalPriceChange = totalPriceChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
                     } else {
-                        percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
+                        totalPriceChange = totalPriceChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                     }
-                    priceToBeChanged = priceToBeChanged - percentageChange;
+                    priceToBeChanged = priceToBeChanged - totalPriceChange;
+                    positivePriceChange = false;
 //                    System.out.println("Percent the Value Changed: " + percentageChange);
                 }
                 priceToBeChanged = (double) Math.round(priceToBeChanged * 100) / 100;
@@ -210,19 +236,21 @@ public class EcoEngine {
         } else {
             if (percentageAdjustment.nextInt() <= 50) {
                 if (percentageAdjustment.nextInt(101) <= 50) {
-                    percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
+                    totalPriceChange = totalPriceChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
                 } else {
-                    percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
+                    totalPriceChange = totalPriceChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                 }
-                priceToBeChanged = priceToBeChanged + percentageChange;
+                priceToBeChanged = priceToBeChanged + totalPriceChange;
+                positivePriceChange = true;
 //                System.out.println("Percent the Value Changed: " + percentageChange);
             } else {
                 if (percentageAdjustment.nextInt(101) <= 50) {
-                    percentageChange = percentageChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
+                    totalPriceChange = totalPriceChange + (.0001 * percentageAdjustment.nextInt(100 + 1));
                 } else {
-                    percentageChange = percentageChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
+                    totalPriceChange = totalPriceChange - (.0001 * percentageAdjustment.nextInt(100 + 1));
                 }
-                priceToBeChanged = priceToBeChanged - percentageChange;
+                priceToBeChanged = priceToBeChanged - totalPriceChange;
+                positivePriceChange = false;
 //                System.out.println("Percent the Value Changed: " + percentageChange);
             }
             priceToBeChanged = (double) Math.round(priceToBeChanged * 100) / 100;
