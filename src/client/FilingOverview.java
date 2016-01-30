@@ -1,5 +1,10 @@
 package client;
 
+import server.engine.EcoEngine;
+
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
  * Created by james on 1/13/2016.
  */
@@ -112,4 +117,70 @@ public class FilingOverview {
         return placeA;
     }
 
+    public static Object[][] getRankings() {
+        Object[][] rankings = new Object[][]{
+                {"NONE", 50},
+                {"NONE", 50},
+                {"NONE", 50},
+                {"NONE", 50},
+                {"NONE", 50},
+        };
+        try {
+            for (int i = 0; i < EcoEngine.clientScores.size(); i++) {
+                rankings[i][0] = EcoEngine.clientScores.get(i)[0];
+                rankings[i][1] = EcoEngine.clientScores.get(i)[1];
+            }
+        } catch (Exception e) {
+            rankings = new Object[][]{
+                    {"NONE", 50},
+                    {"NONE", 50},
+                    {"NONE", 50},
+                    {"NONE", 50},
+                    {"NONE", 50},
+            };
+        }
+
+        for (int i = 0; i < EcoEngine.clientScores.size(); i++) {
+            String username = (String) EcoEngine.clientScores.get(i)[0];
+            double score = (double) EcoEngine.clientScores.get(i)[1];
+            if (score >= Double.parseDouble(String.valueOf(rankings[0][1]))) {
+                rankings[4][0] = rankings[3][0];
+                rankings[4][1] = rankings[3][1];
+                rankings[3][0] = rankings[2][0];
+                rankings[3][1] = rankings[2][1];
+                rankings[2][0] = rankings[1][0];
+                rankings[2][1] = rankings[1][1];
+                rankings[1][0] = rankings[0][0];
+                rankings[1][1] = rankings[0][1];
+                rankings[0][0] = username;
+                rankings[0][1] = score;
+            } else if (score >= Double.parseDouble(String.valueOf(rankings[1][1]))) {
+                rankings[4][0] = rankings[3][0];
+                rankings[4][1] = rankings[3][1];
+                rankings[3][0] = rankings[2][0];
+                rankings[3][1] = rankings[2][1];
+                rankings[2][0] = rankings[1][0];
+                rankings[2][1] = rankings[1][1];
+                rankings[1][0] = username;
+                rankings[1][1] = score;
+            } else if (score >= Double.parseDouble(String.valueOf(rankings[2][1]))) {
+                rankings[4][0] = rankings[3][0];
+                rankings[4][1] = rankings[3][1];
+                rankings[3][0] = rankings[2][0];
+                rankings[3][1] = rankings[2][1];
+                rankings[2][0] = username;
+                rankings[2][1] = score;
+            } else if (score >= Double.parseDouble(String.valueOf(rankings[3][1]))) {
+                rankings[4][0] = rankings[3][0];
+                rankings[4][1] = rankings[3][1];
+                rankings[3][0] = username;
+                rankings[3][1] = score;
+            } else if (score >= Double.parseDouble(String.valueOf(rankings[4][1]))) {
+                rankings[4][0] = username;
+                rankings[4][1] = score;
+            }
+            System.out.println(Arrays.toString(rankings[i]));
+        }
+        return rankings;
+    }
 }
