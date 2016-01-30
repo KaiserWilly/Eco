@@ -1,6 +1,7 @@
 package server;
 
 import client.StockHistory;
+import server.engine.EcoEngine;
 
 import java.net.BindException;
 import java.net.ServerSocket;
@@ -25,7 +26,7 @@ public class ServerMain {
 
             while (true) {
                 Socket socketToClient = listeningSocket.accept();
-                new ServerClientHandler(socketToClient, ID);
+                new ServerClientHandler(socketToClient, ID).start();
                 ID++;
             }
         } catch (BindException e) {
