@@ -6,10 +6,10 @@ import java.awt.*;
 /**
  * Created by james on 1/30/2016.
  */
-public class ChartBuy extends JPanel{
+public class ChartBuySell extends JPanel{
     double[] gData;
 
-    public ChartBuy(double[] data) {
+    public ChartBuySell(double[] data) {
         gData = data;
         setSize(725, 200);
         setLocation(0, 0);

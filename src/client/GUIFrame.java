@@ -27,6 +27,7 @@ public class GUIFrame {
     public static GUIOverview overview = new GUIOverview();
     public static GUIStocks stocks = new GUIStocks();
     public static GUIBuy buy = new GUIBuy();
+    public static GUISell sell = new GUISell();
     static int times = 0;
 
 
@@ -59,7 +60,7 @@ public class GUIFrame {
             tPane.addTab("Game Overview", null, overview.OverviewPanel(), "Overview of the Game");
             tPane.addTab("Your Stocks", null, stocks.guiStocks(), "Overview of stock performance");
             tPane.addTab("Buy", null, buy.buyPanel(), "Buy Stocks");
-            tPane.addTab("Sell", null, new JPanel(), "Sell Stocks");
+            tPane.addTab("Sell", null, sell.sellPanel(), "Sell Stocks");
 //            tPane.addChangeListener(this);
             base.add(tPane);
 
@@ -119,27 +120,23 @@ public class GUIFrame {
                     break;
                 case 1:
                     System.out.println(" (Player Stocks)");
-//                    mainFrame.setJMenuBar(comStats.getTheMenuBar());
                     mainFrame.revalidate();
                     mainFrame.repaint();
                     GUIStocks.updateGUIStocks();
                     break;
                 case 2:
                     System.out.println(" (Buy)");
-//                    mainFrame.setJMenuBar(partyStats.pMenuBar());
                     mainFrame.revalidate();
                     mainFrame.repaint();
                     GUIBuy.updateBuy();
                     break;
                 case 3:
                     System.out.println(" (Sell)");
-//                    mainFrame.setJMenuBar(loot.lootMenuBar());
                     mainFrame.revalidate();
                     mainFrame.repaint();
-//                    loot.updateStats();
+                    GUISell.updateSell();
                     break;
                 default:
-//                    mainFrame.setJMenuBar(null);
                     mainFrame.revalidate();
                     mainFrame.repaint();
             }

@@ -11,18 +11,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by james on 1/30/2016.
+ * Created by james on 1/31/2016.
  */
-public class FilingBuy {
+public class FilingSell {
     static JPanel base;
     public static JPanel getWidBase = new JPanel(), getCOH = new JPanel(), getAssets = new JPanel(), getBuyPanel = new JPanel();
-    public static JScrollPane widPane;
     static Font assetsHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
-    static Font buyHeading = new Font("Tahoma", Font.BOLD, 56);
+    static Font SellHeading = new Font("Tahoma", Font.BOLD, 56);
     public static int sliderPosition = 0;
     static JSlider slider;
     static JLabel slideValue;
-    static JButton buyButton;
+    static JButton sellButton;
 
     public static void createWidget() {
         if (FilingMain.getData() != null) {
@@ -40,7 +39,7 @@ public class FilingBuy {
             title.setBackground(new Color(198, 240, 198, 0));
             buyWidBase.add(title);
             for (int playIndex = 0; playIndex < FilingMain.getData().length; playIndex++) {
-                JPanel wid = FilingWidget.buyWidget((String) FilingMain.getData()[playIndex][0], 425, 10);
+                JPanel wid = FilingWidget.sellWidget((String) FilingMain.getData()[playIndex][0], 425, 10);
                 wid.setLocation(0, panelLoc);
                 wid.setBackground(new Color(136, 172, 136));
                 buyWidBase.add(wid);
@@ -82,7 +81,7 @@ public class FilingBuy {
         getAssets = assetsP;
     }
 
-    public static void createBuyPanel(String stock) {
+    public static void createSellPanel(String stock) {
         base = new JPanel();
         base.setSize(725, 425);
         base.setLocation(500, 100);
@@ -98,7 +97,7 @@ public class FilingBuy {
             stockN.setBackground(Color.BLUE);
             stockN.setHorizontalAlignment(SwingConstants.LEFT);
             stockN.setVerticalAlignment(SwingConstants.TOP);
-            stockN.setFont(buyHeading);
+            stockN.setFont(SellHeading);
             base.add(stockN);
 
             JPanel compositeP = new JPanel();
@@ -109,7 +108,7 @@ public class FilingBuy {
             compositeP.add(new ChartBuySell(StockHistory.getCompositeHistory()));
             base.add(compositeP);
 
-            slider = new JSlider(JSlider.HORIZONTAL, 0, 1000, 0);
+            slider = new JSlider(JSlider.HORIZONTAL, 0, 1000/*Change to reflect number of shares of user*/, 0);
             slider.addChangeListener(new slidLis());
             slider.setValue(sliderPosition);
             slider.setSize(600, 50);
@@ -123,11 +122,11 @@ public class FilingBuy {
             slideValue.setLocation(600, 300);
             base.add(slideValue);
 
-            buyButton = new JButton("Buy Shares");
-            buyButton.setSize(100, 50);
-            buyButton.setLocation(625, 375);
-            buyButton.addActionListener(new butLis());
-            base.add(buyButton);
+            sellButton = new JButton("Sell Shares");
+            sellButton.setSize(100, 50);
+            sellButton.setLocation(625, 375);
+            sellButton.addActionListener(new butLis());
+            base.add(sellButton);
 
             getBuyPanel = base;
         }
@@ -166,5 +165,4 @@ public class FilingBuy {
             base.repaint();
         }
     }
-
 }
