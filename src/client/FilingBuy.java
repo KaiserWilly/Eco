@@ -73,7 +73,7 @@ public class FilingBuy {
         assetsP.setSize(500, 50);
         assetsP.setLocation(725, 25);
         assetsP.setBackground(new Color(198, 240, 198));
-        JLabel assetsLab = new JLabel("Assets: $" + Score.assetsFormatted /*+"   Net Change: $ " + NetChangeOfAssets.netChangeFormateed*/);
+        JLabel assetsLab = new JLabel("Assets: $" + Score.assetsFormatted +"   Net Change: $ " + NetChangeOfAssets.netChangeFormatted);
         assetsLab.setFont(assetsHeading);
         assetsLab.setSize(500, 50);
         assetsLab.setHorizontalAlignment(SwingConstants.CENTER);
