@@ -1,9 +1,6 @@
 package filing;
 
-import client.FilingBuy;
-import client.FilingStocks;
-import client.GUIBuy;
-import client.GUIFrame;
+import client.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -147,30 +144,97 @@ public class FilingWidget {
         base.add(price);
 
         JButton lookin = new JButton("Look In!");
-        lookin.setSize(100,10);
-        lookin.setLocation(300,0);
+        lookin.setSize(100, 10);
+        lookin.setLocation(300, 0);
         lookin.setFont(nameF);
-        lookin.addActionListener(new ActLis(stockName));
+        lookin.addActionListener(new BuyActLis(stockName));
         base.add(lookin);
 
         return base;
 
     }
 
-    public static class ActLis implements ActionListener {
+    public static JPanel sellWidget(String stockName, int wid, int hei) {
+        JPanel base = new JPanel();
+        base.setSize(wid, hei);
+        base.setLayout(null);
+        Font nameF = new Font("Tahoma", Font.BOLD, 8);
+        JLabel name = new JLabel(stockName);
+        name.setSize(100, hei);
+        name.setVerticalAlignment(SwingConstants.CENTER);
+        name.setHorizontalAlignment(SwingConstants.CENTER);
+        name.setLocation(0, 0);
+        name.setFont(nameF);
+        base.add(name);
+
+//        StockHistory.getStockHistory(stockName);
+        DecimalFormat df = new DecimalFormat("$#,###.##");
+        double change = 3.7/*Double.parseDouble(df.format(StockHistory.percentChange))*/;
+        JLabel perChange = new JLabel(/*Double.toString(change) + "%"*/ "3.4%");
+        if (change >= 0) {
+            perChange.setForeground(new Color(0, 0, 0));
+        } else {
+            perChange.setForeground(new Color(225, 149, 152));
+        }
+        perChange.setSize(100, hei);
+        perChange.setVerticalAlignment(SwingConstants.CENTER);
+        perChange.setHorizontalAlignment(SwingConstants.CENTER);
+        perChange.setLocation(100, 0);
+        perChange.setFont(nameF);
+        base.add(perChange);
+
+        JLabel price = new JLabel(df.format(FilingStocks.getPrice(stockName)));
+        price.setSize(100, hei);
+        price.setVerticalAlignment(SwingConstants.CENTER);
+        price.setHorizontalAlignment(SwingConstants.CENTER);
+        price.setLocation(200, 0);
+        price.setFont(nameF);
+        base.add(price);
+
+        JButton lookin = new JButton("Look In!");
+        lookin.setSize(100, 10);
+        lookin.setLocation(300, 0);
+        lookin.setFont(nameF);
+        lookin.addActionListener(new SellActLis(stockName));
+        base.add(lookin);
+
+        return base;
+
+    }
+
+    public static class BuyActLis implements ActionListener {
         String stockName;
 
-        public ActLis(String stockname) {
+        public BuyActLis(String stockname) {
             stockName = stockname;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            FilingBuy.sliderPosition = 0;
             GUIBuy.stockbuy = stockName;
             FilingBuy.createLabels();
             FilingBuy.createWidget();
             FilingBuy.createBuyPanel(stockName);
             GUIBuy.updateBuy();
+        }
+    }
+
+    public static class SellActLis implements ActionListener {
+        String stockName;
+
+        public SellActLis(String stockname) {
+            stockName = stockname;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            FilingSell.sliderPosition = 0;
+            GUISell.stockSell = stockName;
+            FilingSell.createLabels();
+            FilingSell.createWidget();
+            FilingSell.createSellPanel(stockName);
+            GUISell.updateSell();
         }
     }
 }

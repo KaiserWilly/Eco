@@ -4,7 +4,6 @@ import main.Values;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ConcurrentModificationException;
 
 /**
  * Created by james on 1/13/2016.
@@ -55,6 +54,9 @@ public class ClientServerHandler extends Thread {
                 FilingBuy.createWidget();
                 FilingBuy.createLabels();
                 FilingBuy.createBuyPanel(GUIBuy.stockbuy);
+                FilingSell.createWidget();
+                FilingSell.createLabels();
+                FilingSell.createSellPanel(GUISell.stockSell);
                 GUIFrame.PaneFrameMain.reloadTab(); //Refreshes the GUI
             }
         } catch (Exception e) {
