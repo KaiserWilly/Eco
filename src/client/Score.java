@@ -49,6 +49,10 @@ public class Score {
         return stockPrices;
     }
 
+    public static void buyAssets() {
+
+    }
+
     public static int[] getAssets () {
         for (int i = 0; i < numberOfStocks; i++) {
             assetArray[i] = 1; //Client Stocks

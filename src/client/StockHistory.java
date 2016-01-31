@@ -17,7 +17,7 @@ public class StockHistory {
     public static Object[] stockHistory;
     //public static double[] stockHistoryDouble;
 
-    public static int numberOfStocks = EcoEngine.numberOfStocks;
+    public static int numberOfStocks;
 
     public static double percentChange;
 
@@ -38,16 +38,18 @@ public class StockHistory {
     }
 
     public static void createStockHistory() {
-        for (int i = 0; i < numberOfStocks; i++) {
+        for (int i = 0; i < 50; i++) {
             ArrayList<Object> newRow = new ArrayList<>();
-            newRow.add(0, EcoEngine.getData()[i][0]);
+            newRow.add(0, ClientServerHandler.dataArray[i][0]);
             stockHistoryArrayList.add(i, newRow);
         }
     }
 
     public static double[] getStockHistory(String stockName) {
-        for (int i = 0; i < numberOfStocks; i++) {
+        for (int i = 0; i < 50; i++) {
             if (stockHistoryArrayList.get(i).get(0).toString().equals(stockName)) {
+                System.out.println(stockHistoryArrayList.get(i).get(0).toString());
+                System.out.println(Arrays.toString(stockHistoryArrayList.get(i).toArray()));
                 stockHistory = stockHistoryArrayList.get(i).toArray();
             }
         }
@@ -55,7 +57,7 @@ public class StockHistory {
         double[] stockHistoryDouble = new double[stockHistory.length - 1];
 
         for (int i = 1; i < stockHistory.length; i++) {
-            stockHistoryDouble[i-1] = (double)stockHistory[i];
+            stockHistoryDouble[i - 1] = (double)stockHistory[i];
         }
 
         getStockPercentChange(stockHistoryDouble);
@@ -63,6 +65,7 @@ public class StockHistory {
     }
 
     public static double getStockPercentChange(double[] data) {
+        System.out.println(Arrays.toString(data));
         percentChange = ((data[data.length - 1] - data[0]) /  data[0]) * 100;
         System.out.println(percentChange);
         return percentChange;
@@ -71,13 +74,13 @@ public class StockHistory {
     public static void generateStockHistory() {
         if (stockHistoryArrayList.get(1).size() < 30) {
             for (int i = 0; i < numberOfStocks; i++) {
-                stockHistoryArrayList.get(i).add(EcoEngine.getData()[i][1]);
+                stockHistoryArrayList.get(i).add(ClientServerHandler.dataArray[i][1]);
             }
 
         } else if (stockHistoryArrayList.get(1).size() > 30) {
             for (int i = 0; i < numberOfStocks; i++) {
                 stockHistoryArrayList.get(i).remove(0);
-                stockHistoryArrayList.get(i).set(30, EcoEngine.getData()[i][1]);
+                stockHistoryArrayList.get(i).set(30, ClientServerHandler.dataArray[i][1]);
             }
         }
     }
