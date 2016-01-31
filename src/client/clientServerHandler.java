@@ -22,6 +22,8 @@ public class ClientServerHandler extends Thread {
         serverIP = IP;
     }
 
+    static int count = 0;
+
     public void run() {
         try {
             Thread.sleep(1000);
@@ -45,6 +47,17 @@ public class ClientServerHandler extends Thread {
 
             while (true) {
                 dataArray = (Object[][]) in.readObject(); //Reads the Stock Information Array from the socket
+                StockHistory.numberOfStocks = dataArray.length;
+                if (count == 0) {
+                    StockHistory.createStockHistory();
+                }
+
+                if (count > 1) {
+                    //Twest
+                    StockHistory.getStockHistory((String)dataArray[0][0]);
+                    System.out.println(StockHistory.percentChange);
+                }
+
                 Score.createArrays();
                 Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
                 Score.getScore();
@@ -58,6 +71,10 @@ public class ClientServerHandler extends Thread {
                 FilingSell.createLabels();
                 FilingSell.createSellPanel(GUISell.stockSell);
                 GUIFrame.PaneFrameMain.reloadTab(); //Refreshes the GUI
+
+                count++;
+                StockHistory.generateStockHistory();
+
             }
         } catch (Exception e) {
             e.printStackTrace();
