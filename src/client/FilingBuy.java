@@ -101,6 +101,15 @@ public class FilingBuy {
             stockN.setFont(buyHeading);
             base.add(stockN);
 
+            JLabel stockP = new JLabel("$" + String.valueOf(FilingStocks.getPrice(stock)));
+            stockP.setSize(300, 100);
+            stockP.setLocation(423, 0);
+            stockP.setBackground(Color.BLUE);
+            stockP.setHorizontalAlignment(SwingConstants.RIGHT);
+            stockP.setVerticalAlignment(SwingConstants.TOP);
+            stockP.setFont(buyHeading);
+            base.add(stockP);
+
             JPanel compositeP = new JPanel();
             compositeP.setLayout(null);
             compositeP.setSize(725, 200);
@@ -126,7 +135,7 @@ public class FilingBuy {
             buyButton = new JButton("Buy Shares");
             buyButton.setSize(100, 50);
             buyButton.setLocation(625, 375);
-            buyButton.addActionListener(new butLis());
+            buyButton.addActionListener(new butLis(stock));
             base.add(buyButton);
 
             getBuyPanel = base;
@@ -151,6 +160,11 @@ public class FilingBuy {
     }
 
     public static class butLis implements ActionListener {
+        String stockName;
+
+        public butLis(String stockN) {
+            stockName = stockN;
+        }
 
         @Override
         public void actionPerformed(ActionEvent e) {

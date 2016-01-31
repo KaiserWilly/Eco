@@ -17,7 +17,7 @@ public class FilingSell {
     static JPanel base;
     public static JPanel getWidBase = new JPanel(), getCOH = new JPanel(), getAssets = new JPanel(), getBuyPanel = new JPanel();
     static Font assetsHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
-    static Font SellHeading = new Font("Tahoma", Font.BOLD, 56);
+    static Font sellHeading = new Font("Tahoma", Font.BOLD, 56);
     public static int sliderPosition = 0;
     static JSlider slider;
     static JLabel slideValue;
@@ -97,8 +97,17 @@ public class FilingSell {
             stockN.setBackground(Color.BLUE);
             stockN.setHorizontalAlignment(SwingConstants.LEFT);
             stockN.setVerticalAlignment(SwingConstants.TOP);
-            stockN.setFont(SellHeading);
+            stockN.setFont(sellHeading);
             base.add(stockN);
+
+            JLabel stockP = new JLabel("$"+String.valueOf(FilingStocks.getPrice(stock)));
+            stockP.setSize(300, 100);
+            stockP.setLocation(423, 0);
+            stockP.setBackground(Color.BLUE);
+            stockP.setHorizontalAlignment(SwingConstants.RIGHT);
+            stockP.setVerticalAlignment(SwingConstants.TOP);
+            stockP.setFont(sellHeading);
+            base.add(stockP);
 
             JPanel compositeP = new JPanel();
             compositeP.setLayout(null);
