@@ -162,7 +162,6 @@ public class FilingBuy {
     }
 
     public static class butLis implements ActionListener {
-        String stockName;
 
         public butLis(String stockN) {
             stockName = stockN;
@@ -171,7 +170,7 @@ public class FilingBuy {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Register buy
-            Score.assetArray[1] = sliderPosition;
+            Score.buyOrSellAssets(stockName, sliderPosition);
             sliderPosition = 0;
             base.remove(slideValue);
             slideValue = new JLabel(sliderPosition + " shares");

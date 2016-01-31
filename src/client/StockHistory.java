@@ -48,8 +48,6 @@ public class StockHistory {
     public static double[] getStockHistory(String stockName) {
         for (int i = 0; i < 50; i++) {
             if (stockHistoryArrayList.get(i).get(0).toString().equals(stockName)) {
-                System.out.println(stockHistoryArrayList.get(i).get(0).toString());
-                System.out.println(Arrays.toString(stockHistoryArrayList.get(i).toArray()));
                 stockHistory = stockHistoryArrayList.get(i).toArray();
             }
         }
@@ -65,9 +63,7 @@ public class StockHistory {
     }
 
     public static double getStockPercentChange(double[] data) {
-        System.out.println(Arrays.toString(data));
         percentChange = ((data[data.length - 1] - data[0]) /  data[0]) * 100;
-        System.out.println(percentChange);
         return percentChange;
     }
 
@@ -77,10 +73,10 @@ public class StockHistory {
                 stockHistoryArrayList.get(i).add(ClientServerHandler.dataArray[i][1]);
             }
 
-        } else if (stockHistoryArrayList.get(1).size() > 30) {
+        } else if (stockHistoryArrayList.get(1).size() >= 30) {
             for (int i = 0; i < numberOfStocks; i++) {
-                stockHistoryArrayList.get(i).remove(0);
-                stockHistoryArrayList.get(i).set(30, ClientServerHandler.dataArray[i][1]);
+                stockHistoryArrayList.get(i).remove(1);
+                stockHistoryArrayList.get(i).set(28, ClientServerHandler.dataArray[i][1]);
             }
         }
     }

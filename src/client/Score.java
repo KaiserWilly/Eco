@@ -2,6 +2,7 @@ package client;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Arrays;
 import java.util.Locale;
 
 /**
@@ -18,15 +19,17 @@ public class Score {
     public static int[] assetArray;
     public static double[] stockPrices;
 
+    static int stockLocation;
+
     static String cashOnHandFormatted;
     static String assetsFormatted;
 
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
-    //asdf
 
     public static void createArrays() {
         numberOfStocks = ClientServerHandler.dataArray.length;
         assetArray = new int[numberOfStocks];
+        //Arrays.fill(assetArray, 0);
         stockPrices = new double[numberOfStocks];
     }
     public static double getScore() {
@@ -49,15 +52,25 @@ public class Score {
         return stockPrices;
     }
 
-    public static void buyAssets() {
+    public static void buyOrSellAssets(String stockName, int numberOfBuy) {
+        for (int i = 0; i < ClientServerHandler.dataArray.length; i++) {
+            String name = (String)ClientServerHandler.dataArray[i][0];
+            if (stockName.equals(name)) {
+                stockLocation = i;
+            }
+        }
 
+        if ((assetArray[stockLocation] + numberOfBuy < 0)) {
+            System.out.println("You cant sell stocks you dont have");
+        } else if ((cashOnHand - (stockPrices[stockLocation] * numberOfBuy)) < 0) {
+            System.out.println("You dont have enough cash to buy those stocks");
+        } else {
+            assetArray[stockLocation] = assetArray[stockLocation] + numberOfBuy;
+            cashOnHand = cashOnHand - (stockPrices[stockLocation] * numberOfBuy);
+        }
     }
 
     public static int[] getAssets () {
-        for (int i = 0; i < numberOfStocks; i++) {
-            assetArray[i] = 1; //Client Stocks
-        }
-
         return assetArray;
     }
 
@@ -68,6 +81,8 @@ public class Score {
         getStockPrices();
         getAssets();
 
+        System.out.println(Arrays.toString(assetArray));
+
         for (int i = 0; i < numberOfStocks; i++) {
             assets += stockPrices[i] * assetArray[i];
         }
@@ -76,7 +91,7 @@ public class Score {
 
         NetChangeOfAssets.newAssets = assets;
 
-//        System.out.println("Assets: " + assets);
+        System.out.println("Assets: " + assets);
         return assets;
     }
 }

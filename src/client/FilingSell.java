@@ -23,6 +23,8 @@ public class FilingSell {
     static JLabel slideValue;
     static JButton sellButton;
 
+    static String stockName;
+
     public static void createWidget() {
         if (FilingMain.getData() != null) {
             int panelLoc = 20;
@@ -82,6 +84,7 @@ public class FilingSell {
     }
 
     public static void createSellPanel(String stock) {
+        stockName = stock;
         base = new JPanel();
         base.setSize(725, 425);
         base.setLocation(500, 100);
@@ -162,7 +165,8 @@ public class FilingSell {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //Register buy
+            //Register Sell
+            Score.buyOrSellAssets(stockName, (sliderPosition * -1));
             sliderPosition = 0;
             base.remove(slideValue);
             slideValue = new JLabel(sliderPosition + " shares");
