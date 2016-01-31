@@ -117,7 +117,8 @@ public class FilingBuy {
             compositeP.setSize(725, 200);
             compositeP.setLocation(0, 100);
             compositeP.setBackground(new Color(198, 240, 198));
-            compositeP.add(new ChartBuySell(StockHistory.getCompositeHistory()));
+            //compositeP.add(new ChartBuySell(StockHistory.getCompositeHistory()));
+            compositeP.add(new ChartBuySell(StockHistory.getStockHistory(stockName)));
             base.add(compositeP);
 
             slider = new JSlider(JSlider.HORIZONTAL, 0, 1000, 0);

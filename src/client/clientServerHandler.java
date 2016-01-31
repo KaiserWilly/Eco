@@ -50,17 +50,17 @@ public class ClientServerHandler extends Thread {
                 StockHistory.numberOfStocks = dataArray.length;
                 if (count == 0) {
                     StockHistory.createStockHistory();
+                    Score.createArrays();
                 }
 
                 if (count > 1) {
                     //Twest
                     StockHistory.getStockHistory((String)dataArray[0][0]);
-                    System.out.println(StockHistory.percentChange);
                 }
 
-                Score.createArrays();
                 Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
                 Score.getScore();
+                NetChangeOfAssets.getNetChange();
                 FilingStocks.makePriceMap();
                 StockHistory.updateComposite(FilingStocks.getClientStockAverage(dataArray));
                 Score.getCashOnHand();

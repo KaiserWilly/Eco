@@ -119,36 +119,42 @@ public class FilingWidget {
         name.setFont(nameF);
         base.add(name);
 
-//        StockHistory.getStockHistory(stockName);
-        DecimalFormat df = new DecimalFormat("$#,###.##");
-        double change = 3.7/*Double.parseDouble(df.format(StockHistory.percentChange))*/;
-        JLabel perChange = new JLabel(/*Double.toString(change) + "%"*/ "3.4%");
-        if (change >= 0) {
-            perChange.setForeground(new Color(0, 0, 0));
-        } else {
-            perChange.setForeground(new Color(225, 149, 152));
+        try {
+            StockHistory.getStockHistory(stockName);
+            DecimalFormat df = new DecimalFormat("$#,###.##");
+            DecimalFormat percentChangeDF = new DecimalFormat("##.##");
+            double change = 3.7/*Double.parseDouble(df.format(StockHistory.percentChange))*/;
+            String change2 = percentChangeDF.format(StockHistory.percentChange);
+            JLabel perChange = new JLabel(/*Double.toString(change) + "%"*/ change2);
+            if (change >= 0) {
+                perChange.setForeground(new Color(0, 0, 0));
+            } else {
+                perChange.setForeground(new Color(225, 149, 152));
+            }
+            perChange.setSize(100, hei);
+            perChange.setVerticalAlignment(SwingConstants.CENTER);
+            perChange.setHorizontalAlignment(SwingConstants.CENTER);
+            perChange.setLocation(100, 0);
+            perChange.setFont(nameF);
+            base.add(perChange);
+
+            JLabel price = new JLabel(df.format(FilingStocks.getPrice(stockName)));
+            price.setSize(100, hei);
+            price.setVerticalAlignment(SwingConstants.CENTER);
+            price.setHorizontalAlignment(SwingConstants.CENTER);
+            price.setLocation(200, 0);
+            price.setFont(nameF);
+            base.add(price);
+
+            JButton lookin = new JButton("Look In!");
+            lookin.setSize(100, 10);
+            lookin.setLocation(300, 0);
+            lookin.setFont(nameF);
+            lookin.addActionListener(new BuyActLis(stockName));
+            base.add(lookin);
+        } catch (Exception e) {
+
         }
-        perChange.setSize(100, hei);
-        perChange.setVerticalAlignment(SwingConstants.CENTER);
-        perChange.setHorizontalAlignment(SwingConstants.CENTER);
-        perChange.setLocation(100, 0);
-        perChange.setFont(nameF);
-        base.add(perChange);
-
-        JLabel price = new JLabel(df.format(FilingStocks.getPrice(stockName)));
-        price.setSize(100, hei);
-        price.setVerticalAlignment(SwingConstants.CENTER);
-        price.setHorizontalAlignment(SwingConstants.CENTER);
-        price.setLocation(200, 0);
-        price.setFont(nameF);
-        base.add(price);
-
-        JButton lookin = new JButton("Look In!");
-        lookin.setSize(100, 10);
-        lookin.setLocation(300, 0);
-        lookin.setFont(nameF);
-        lookin.addActionListener(new BuyActLis(stockName));
-        base.add(lookin);
 
         return base;
 
@@ -167,37 +173,43 @@ public class FilingWidget {
         name.setFont(nameF);
         base.add(name);
 
-//        StockHistory.getStockHistory(stockName);
-        DecimalFormat df = new DecimalFormat("$#,###.##");
-        double change = 3.7/*Double.parseDouble(df.format(StockHistory.percentChange))*/;
-        JLabel perChange = new JLabel(/*Double.toString(change) + "%"*/ "3.4%");
-        if (change >= 0) {
-            perChange.setForeground(new Color(0, 0, 0));
-        } else {
-            perChange.setForeground(new Color(225, 149, 152));
+        try {
+            StockHistory.getStockHistory(stockName);
+            DecimalFormat df = new DecimalFormat("$#,###.##");
+            DecimalFormat percentChangeDF = new DecimalFormat("##.##");
+            double change = 3.7/*Double.parseDouble(df.format(StockHistory.percentChange))*/;
+            String change2 = percentChangeDF.format(StockHistory.percentChange);
+            JLabel perChange = new JLabel(/*Double.toString(change) + "%"*/ change2);
+
+            if (change >= 0) {
+                perChange.setForeground(new Color(0, 0, 0));
+            } else {
+                perChange.setForeground(new Color(225, 149, 152));
+            }
+            perChange.setSize(100, hei);
+            perChange.setVerticalAlignment(SwingConstants.CENTER);
+            perChange.setHorizontalAlignment(SwingConstants.CENTER);
+            perChange.setLocation(100, 0);
+            perChange.setFont(nameF);
+            base.add(perChange);
+
+            JLabel price = new JLabel(df.format(FilingStocks.getPrice(stockName)));
+            price.setSize(100, hei);
+            price.setVerticalAlignment(SwingConstants.CENTER);
+            price.setHorizontalAlignment(SwingConstants.CENTER);
+            price.setLocation(200, 0);
+            price.setFont(nameF);
+            base.add(price);
+
+            JButton lookin = new JButton("Look In!");
+            lookin.setSize(100, 10);
+            lookin.setLocation(300, 0);
+            lookin.setFont(nameF);
+            lookin.addActionListener(new SellActLis(stockName));
+            base.add(lookin);
+        } catch (Exception e) {
+
         }
-        perChange.setSize(100, hei);
-        perChange.setVerticalAlignment(SwingConstants.CENTER);
-        perChange.setHorizontalAlignment(SwingConstants.CENTER);
-        perChange.setLocation(100, 0);
-        perChange.setFont(nameF);
-        base.add(perChange);
-
-        JLabel price = new JLabel(df.format(FilingStocks.getPrice(stockName)));
-        price.setSize(100, hei);
-        price.setVerticalAlignment(SwingConstants.CENTER);
-        price.setHorizontalAlignment(SwingConstants.CENTER);
-        price.setLocation(200, 0);
-        price.setFont(nameF);
-        base.add(price);
-
-        JButton lookin = new JButton("Look In!");
-        lookin.setSize(100, 10);
-        lookin.setLocation(300, 0);
-        lookin.setFont(nameF);
-        lookin.addActionListener(new SellActLis(stockName));
-        base.add(lookin);
-
         return base;
 
     }
