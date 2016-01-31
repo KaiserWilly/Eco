@@ -28,6 +28,9 @@ public class GUIBuy {
         assetsP = FilingBuy.getAssets;
         base.add(assetsP);
 
+        stocksP = FilingBuy.getBuyPanel;
+        base.add(stocksP);
+
         if (FilingMain.getData() != null) {
             buyWidBase = FilingBuy.getWidBase;
             base.add(buyWidBase);
@@ -41,6 +44,7 @@ public class GUIBuy {
     public static void updateBuy() {
         base.remove(cOHP);
         base.remove(assetsP);
+        base.remove(stocksP);
         try {
             base.remove(buyWidBase);
         } catch (NullPointerException e) {
@@ -53,6 +57,10 @@ public class GUIBuy {
 
         assetsP = FilingBuy.getAssets;
         base.add(assetsP);
+
+        stocksP = FilingBuy.getBuyPanel;
+        base.add(stocksP);
+
 
         //BuyWidget Panel
         if (FilingMain.getData() != null) {

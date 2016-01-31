@@ -106,7 +106,7 @@ public class GUIOverview {
         badSP.setSize(225, 175);
         badSP.setLocation(550, 375);
         badSP.setBackground(new Color(198, 240, 198));
-        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Worst 5 Stocks");
+        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Lowest 5 Stocks");
         nPBot5WidgetP = new JScrollPane(nPBot5Widget);
         nPBot5WidgetP.setSize(225, 175);
         nPBot5WidgetP.setLocation(0, 0);
@@ -119,7 +119,7 @@ public class GUIOverview {
         playBotP.setSize(225, 175);
         playBotP.setLocation(800, 375);
         playBotP.setBackground(new Color(198, 240, 198));
-        pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Your Worst 5 Stocks");
+        pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Your Lowest 5 Stocks");
         pBot5WidgetP = new JScrollPane(pBot5Widget);
         pBot5WidgetP.setSize(225, 175);
         pBot5WidgetP.setLocation(0, 0);
@@ -217,7 +217,7 @@ public class GUIOverview {
         badSP.setSize(225, 175);
         badSP.setLocation(550, 375);
         badSP.setBackground(new Color(198, 240, 198));
-        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Worst 5 Stocks");
+        nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Lowest 5 Stocks");
         nPBot5WidgetP = new JScrollPane(nPBot5Widget);
         nPBot5WidgetP.setSize(225, 175);
         nPBot5WidgetP.setLocation(0, 0);
@@ -230,7 +230,7 @@ public class GUIOverview {
         playBotP.setSize(225, 175);
         playBotP.setLocation(800, 375);
         playBotP.setBackground(new Color(198, 240, 198));
-        pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Your Worst 5 Stocks");
+        pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Your Lowest 5 Stocks");
         pBot5WidgetP = new JScrollPane(pBot5Widget);
         pBot5WidgetP.setSize(225, 175);
         pBot5WidgetP.setLocation(0, 0);

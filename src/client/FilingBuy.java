@@ -2,8 +2,11 @@ package client;
 
 import filing.FilingMain;
 import filing.FilingWidget;
+import sun.awt.image.codec.JPEGParam;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
@@ -12,11 +15,14 @@ import java.awt.event.AdjustmentListener;
  * Created by james on 1/30/2016.
  */
 public class FilingBuy {
-    public static JPanel getWidBase = new JPanel(), getCOH = new JPanel(), getAssets = new JPanel();
+    static JPanel base;
+    public static JPanel getWidBase = new JPanel(), getCOH = new JPanel(), getAssets = new JPanel(), getBuyPanel = new JPanel();
     public static JScrollPane widPane;
     static Font assetsHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
-    static Font buyHeading = new Font("Trebuchet MS", Font.PLAIN, 40);
-    static int vScrollLoc = 0;
+    static Font buyHeading = new Font("Trebuchet MS", Font.PLAIN, 56);
+    static int sliderPosition = 0;
+    static JSlider slider;
+    static JLabel slideValue;
 
     public static void createWidget() {
         if (FilingMain.getData() != null) {
@@ -43,7 +49,8 @@ public class FilingBuy {
             getWidBase = buyWidBase;
         }
     }
-    public static void createLabels(){
+
+    public static void createLabels() {
         //Cash on Hand panel
         JPanel cOHP = new JPanel();
         cOHP.setLayout(null);
@@ -75,37 +82,66 @@ public class FilingBuy {
         getAssets = assetsP;
     }
 
-    public static JPanel createBuyPanel(String stock) {
-        JPanel base = new JPanel();
-        base.setSize(425,700);
-        base.setLocation(425,100);
+    public static void createBuyPanel(String stock) {
+        base = new JPanel();
+        base.setSize(725, 425);
+        base.setLocation(500, 100);
+        base.setBackground(new Color(213, 255, 213));
         base.setLayout(null);
         if (stock == null) {
-            return base;
-        }
-        else{
-        JLabel stockN = new JLabel(stock);
-            stockN.setSize(200,100);
-            stockN.setLocation(5,5);
-            stockN.setHorizontalAlignment(SwingConstants.CENTER);
-            stockN.setVerticalAlignment(SwingConstants.CENTER);
+            getBuyPanel = base;
+        } else {
+            base.setBackground(new Color(146, 185, 146));
+            JLabel stockN = new JLabel(stock);
+            stockN.setSize(150, 100);
+            stockN.setLocation(5, 0);
+            stockN.setBackground(Color.BLUE);
+            stockN.setHorizontalAlignment(SwingConstants.LEFT);
+            stockN.setVerticalAlignment(SwingConstants.TOP);
             stockN.setFont(buyHeading);
             base.add(stockN);
 
-            
+            JPanel compositeP = new JPanel();
+            compositeP.setLayout(null);
+            compositeP.setSize(725, 200);
+            compositeP.setLocation(0, 100);
+            compositeP.setBackground(new Color(198, 240, 198));
+            compositeP.add(new ChartBuy(StockHistory.getCompositeHistory()));
+            base.add(compositeP);
 
+            slider = new JSlider(JSlider.HORIZONTAL, 0, 1000, 0);
+            slider.addChangeListener(new slidLis());
+            slider.setValue(sliderPosition);
+            slider.setSize(600, 50);
+            slider.setLocation(0, 300);
+            slider.setBackground(new Color(146, 185, 146));
+            base.add(slider);
+
+            slideValue = new JLabel(sliderPosition + " shares");
+            slideValue.setSize(125, 50);
+            slideValue.setFont(assetsHeading);
+            slideValue.setLocation(600, 300);
+            base.add(slideValue);
+
+            getBuyPanel = base;
         }
-        return base;
 
     }
 
-    public static class adListener implements AdjustmentListener {
+    public static class slidLis implements ChangeListener {
 
         @Override
-        public void adjustmentValueChanged(AdjustmentEvent e) {
-
-            vScrollLoc = widPane.getVerticalScrollBar().getValue();
-            System.out.println("VScrollLoc: " + vScrollLoc);
+        public void stateChanged(ChangeEvent e) {
+            sliderPosition = slider.getValue();
+            base.remove(slideValue);
+            slideValue = new JLabel(sliderPosition + " shares");
+            slideValue.setSize(125, 50);
+            slideValue.setFont(assetsHeading);
+            slideValue.setLocation(600, 300);
+            base.add(slideValue);
+            base.revalidate();
+            base.repaint();
         }
     }
+
 }

@@ -1,9 +1,14 @@
 package filing;
 
+import client.FilingBuy;
 import client.FilingStocks;
+import client.GUIBuy;
+import client.GUIFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
 /**
@@ -137,9 +142,35 @@ public class FilingWidget {
         price.setSize(100, hei);
         price.setVerticalAlignment(SwingConstants.CENTER);
         price.setHorizontalAlignment(SwingConstants.CENTER);
-        price.setLocation(250, 0);
+        price.setLocation(200, 0);
         price.setFont(nameF);
         base.add(price);
+
+        JButton lookin = new JButton("Look In!");
+        lookin.setSize(100,10);
+        lookin.setLocation(300,0);
+        lookin.setFont(nameF);
+        lookin.addActionListener(new ActLis(stockName));
+        base.add(lookin);
+
         return base;
+
+    }
+
+    public static class ActLis implements ActionListener {
+        String stockName;
+
+        public ActLis(String stockname) {
+            stockName = stockname;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            GUIBuy.stockbuy = stockName;
+            FilingBuy.createLabels();
+            FilingBuy.createWidget();
+            FilingBuy.createBuyPanel(stockName);
+            GUIBuy.updateBuy();
+        }
     }
 }
