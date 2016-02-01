@@ -55,11 +55,13 @@ public class ClientServerHandler extends Thread {
 
                 if (count > 1) {
                     //Twest
-                    StockHistory.getStockHistory((String)dataArray[0][0]);
+                    StockHistory.getStockHistory((String) dataArray[0][0]);
                 }
 
                 Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
                 Score.getScore();
+                count++;
+                StockHistory.generateStockHistory();
                 NetChangeOfAssets.getNetChange();
                 Score.getPlayerStocks();
                 FilingStocks.makePriceMap();
@@ -71,10 +73,9 @@ public class ClientServerHandler extends Thread {
                 FilingSell.createWidget();
                 FilingSell.createLabels();
                 FilingSell.createSellPanel(GUISell.stockSell);
+                FilingPlayer.playerTable();
                 GUIFrame.PaneFrameMain.reloadTab(); //Refreshes the GUI
 
-                count++;
-                StockHistory.generateStockHistory();
 
             }
         } catch (Exception e) {

@@ -25,7 +25,7 @@ public class GUIFrame {
     public static JLabel panelIcon;
     public static GroupLayout layFrame;
     public static GUIOverview overview = new GUIOverview();
-    public static GUIStocks stocks = new GUIStocks();
+    public static GUIPlayer stocks = new GUIPlayer();
     public static GUIBuy buy = new GUIBuy();
     public static GUISell sell = new GUISell();
     static int times = 0;
@@ -122,7 +122,7 @@ public class GUIFrame {
                     System.out.println(" (Player Stocks)");
                     mainFrame.revalidate();
                     mainFrame.repaint();
-                    GUIStocks.updateGUIStocks();
+                    GUIPlayer.updateGUIStocks();
                     break;
                 case 2:
                     System.out.println(" (Buy)");

@@ -30,8 +30,8 @@ public class ChartOverview extends JPanel {
         g.drawString("Avg. Price over last 60 seconds", 538, 15);
         g.drawLine(25, 25, 22, 25);
         g.drawLine(25, 225, 22, 225);
-        g.drawString("$" + maxVal, 0, 30);
-        g.drawString("$" + minVal, 0, 230);
+        g.drawString("$" + maxVal, 0, 20);
+        g.drawString("$" + minVal, 0, 240);
 
         int x1 = 25;
         int x2 = x1 + 40;
