@@ -8,6 +8,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.geom.Arc2D;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 /**
  * Created by james on 1/26/2016.
@@ -30,7 +33,8 @@ public class GUIPlayer {
         rankingMoneyP.setSize(400, 50);
         rankingMoneyP.setLocation(25, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
-        JLabel rankMonLab = new JLabel("Money: $" + Score.cashOnHandFormatted + "  Assets: $" + Score.assetsFormatted);
+        DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
+        JLabel rankMonLab = new JLabel("Money: $" + Score.cashOnHandFormatted + "  Assets: $" + Score.assetsFormatted + " Total: $" + formatter.format(Score.getScore()));
         rankMonLab.setFont(mHeading);
         rankMonLab.setSize(400, 50);
         rankMonLab.setHorizontalAlignment(SwingConstants.CENTER);
@@ -46,7 +50,7 @@ public class GUIPlayer {
         playCompP.setLocation(50, 100);
         playCompP.setBackground(new Color(198, 240, 198));
         playCompP.add(new ChartOverview(Score.getAvgPlayerStockPrice(Score.getPlayerStocks())));
-      //  playCompP.add(new ChartOverview(Score.getAvgPlayerAssets()));
+        //  playCompP.add(new ChartOverview(Score.getAvgPlayerAssets()));
         base.add(playCompP);
 
         //Player Stock Table

@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 /**
  * Created by JD Isenhart on 9/15/2015.
@@ -138,7 +141,8 @@ public class GUIOverview {
         rankingMoneyP.setSize(500, 50);
         rankingMoneyP.setLocation(275, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
-        rankMonLab = new JLabel("Money: $" + Score.cashOnHandFormatted + "  Assets: $" + Score.assetsFormatted);
+        DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
+        rankMonLab = new JLabel("Money: $" + Score.cashOnHandFormatted + "  Assets: $" + Score.assetsFormatted + " Total: $" + formatter.format(Score.getScore()));
         rankMonLab.setFont(mHeading);
         rankMonLab.setSize(500, 50);
         rankMonLab.setHorizontalAlignment(SwingConstants.CENTER);
