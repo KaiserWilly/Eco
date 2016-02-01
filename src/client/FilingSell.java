@@ -55,12 +55,12 @@ public class FilingSell {
         //Cash on Hand panel
         JPanel cOHP = new JPanel();
         cOHP.setLayout(null);
-        cOHP.setSize(200, 50);
+        cOHP.setSize(300, 50);
         cOHP.setLocation(500, 25);
         cOHP.setBackground(new Color(198, 240, 198));
         JLabel cOHLab = new JLabel("Cash On Hand: $" + Score.cashOnHandFormatted);
         cOHLab.setFont(assetsHeading);
-        cOHLab.setSize(200, 50);
+        cOHLab.setSize(300, 50);
         cOHLab.setHorizontalAlignment(SwingConstants.CENTER);
         cOHLab.setVerticalAlignment(SwingConstants.CENTER);
         cOHLab.setLocation(0, 0);
@@ -70,12 +70,12 @@ public class FilingSell {
         //Assets Panel
         JPanel assetsP = new JPanel();
         assetsP.setLayout(null);
-        assetsP.setSize(500, 50);
-        assetsP.setLocation(725, 25);
+        assetsP.setSize(400, 50);
+        assetsP.setLocation(825, 25);
         assetsP.setBackground(new Color(198, 240, 198));
         JLabel assetsLab = new JLabel("Assets: $" + Score.assetsFormatted /*+"   Net Change: $ " + NetChangeOfAssets.netChangeFormateed*/);
         assetsLab.setFont(assetsHeading);
-        assetsLab.setSize(500, 50);
+        assetsLab.setSize(400, 50);
         assetsLab.setHorizontalAlignment(SwingConstants.CENTER);
         assetsLab.setVerticalAlignment(SwingConstants.CENTER);
         assetsLab.setLocation(0, 0);
