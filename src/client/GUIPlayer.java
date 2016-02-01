@@ -45,7 +45,7 @@ public class GUIPlayer {
         playCompP.setSize(1225, 250);
         playCompP.setLocation(50, 100);
         playCompP.setBackground(new Color(198, 240, 198));
-        playCompP.add(new ChartOverview(StockHistory.getCompositeHistory()));
+        playCompP.add(new ChartOverview(Score.getAvgPlayerStockPrice(Score.getPlayerStocks())));
         base.add(playCompP);
 
         //Player Stock Table
@@ -82,7 +82,7 @@ public class GUIPlayer {
         playCompP.setSize(1225, 250);
         playCompP.setLocation(50, 100);
         playCompP.setBackground(new Color(198, 240, 198));
-        playCompP.add(new ChartOverview(StockHistory.getCompositeHistory()));
+        playCompP.add(new ChartOverview(Score.getAvgPlayerStockPrice(Score.getPlayerStocks())));
         base.add(playCompP);
 
         //Player Stock Table

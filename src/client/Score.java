@@ -17,7 +17,7 @@ public class Score {
 
     public static int numberOfStocks;
 
-    public static int[] assetArray;
+    public static int[] assetArray = new int[0];
     public static double[] stockPrices;
 
     public static Object[][] playerStocks;
@@ -49,12 +49,12 @@ public class Score {
         avgPrice = (avgPrice / playerData.length);
 
         avgPriceList.add(avgPrice);
-
+        avgPriceArray = new double[avgPriceList.size()];
         for (int i = 0; i < avgPriceList.size(); i++) {
             avgPriceArray[i] = avgPriceList.get(i);
         }
 
-
+        System.out.println(Arrays.toString(avgPriceArray));
         return avgPriceArray;
     }
 
@@ -70,9 +70,9 @@ public class Score {
         return cashOnHand;
     }
 
-    public static double[] getStockPrices () {
+    public static double[] getStockPrices() {
         for (int i = 0; i < numberOfStocks; i++) {
-            stockPrices[i] = (double)ClientServerHandler.dataArray[i][1];
+            stockPrices[i] = (double) ClientServerHandler.dataArray[i][1];
         }
 
         return stockPrices;
@@ -109,7 +109,7 @@ public class Score {
 
     public static int getStockLocation(String stockName) {
         for (int i = 0; i < ClientServerHandler.dataArray.length; i++) {
-            String name = (String)ClientServerHandler.dataArray[i][0];
+            String name = (String) ClientServerHandler.dataArray[i][0];
             if (stockName.equals(name)) {
                 stockLocation = i;
             }
@@ -119,7 +119,7 @@ public class Score {
 
     public static void buyOrSellAssets(String stockName, int numberOfBuy) {
         for (int i = 0; i < ClientServerHandler.dataArray.length; i++) {
-            String name = (String)ClientServerHandler.dataArray[i][0];
+            String name = (String) ClientServerHandler.dataArray[i][0];
             if (stockName.equals(name)) {
                 stockLocation = i;
             }
@@ -135,7 +135,7 @@ public class Score {
         }
     }
 
-    public static int[] getAssets () {
+    public static int[] getAssets() {
         return assetArray;
     }
 

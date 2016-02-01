@@ -85,26 +85,11 @@ public class GUIOverview {
         hotSP.add(nPTop5WidgetP);
         base.add(hotSP);
 
-
-        //Player's top 5 Stocks
-        playTopP = new JPanel();
-        playTopP.setLayout(null);
-        playTopP.setSize(225, 175);
-        playTopP.setLocation(300, 375);
-        playTopP.setBackground(new Color(198, 240, 198));
-        pTop5Widget = FilingWidget.playStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 225, "Your Top 5 Stocks");
-        pTop5WidgetP = new JScrollPane(pTop5Widget);
-        pTop5WidgetP.setSize(225, 175);
-        pTop5WidgetP.setLocation(0, 0);
-        playTopP.add(pTop5WidgetP);
-        base.add(playTopP);
-
-
         //Worst 5 Stocks Overall
         badSP = new JPanel();
         badSP.setLayout(null);
         badSP.setSize(225, 175);
-        badSP.setLocation(550, 375);
+        badSP.setLocation(395, 375);
         badSP.setBackground(new Color(198, 240, 198));
         nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Lowest 5 Stocks");
         nPBot5WidgetP = new JScrollPane(nPBot5Widget);
@@ -113,38 +98,30 @@ public class GUIOverview {
         badSP.add(nPBot5WidgetP);
         base.add(badSP);
 
+        //Player's top 5 Stocks
+        playTopP = new JPanel();
+        playTopP.setLayout(null);
+        playTopP.setSize(225, 175);
+        playTopP.setLocation(683, 375);
+        playTopP.setBackground(new Color(198, 240, 198));
+        pTop5Widget = FilingWidget.playStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 225, "Your Top 5 Stocks");
+        pTop5WidgetP = new JScrollPane(pTop5Widget);
+        pTop5WidgetP.setSize(225, 175);
+        pTop5WidgetP.setLocation(0, 0);
+        playTopP.add(pTop5WidgetP);
+        base.add(playTopP);
+
         //Player's worst 5 stocks
         playBotP = new JPanel();
         playBotP.setLayout(null);
         playBotP.setSize(225, 175);
-        playBotP.setLocation(800, 375);
+        playBotP.setLocation(971, 375);
         playBotP.setBackground(new Color(198, 240, 198));
         pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Your Lowest 5 Stocks");
         pBot5WidgetP = new JScrollPane(pBot5Widget);
         pBot5WidgetP.setSize(225, 175);
         pBot5WidgetP.setLocation(0, 0);
-        playBotP.add(pBot5WidgetP);
         base.add(playBotP);
-
-        //Ranking Panel
-        rankingsP = new JPanel();
-        rankingsP.setLayout(null);
-        rankingsP.setSize(225, 175);
-        rankingsP.setLocation(1050, 375);
-        rankingsP.setBackground(new Color(198, 240, 198));
-        Object[][] rankings = new Object[][]{
-                {"Daniel", "23,300"},
-                {"JD", "22,600"},
-                {"Toast", "19,900"},
-                {"Will", "16,300"},
-                {"Brody", "16,000"}
-        };
-        rankWidget = FilingWidget.makeRankingWidget(rankings, 225);
-        rankWidgetP = new JScrollPane(rankWidget);
-        rankWidgetP.setSize(225, 175);
-        rankWidgetP.setLocation(0, 0);
-        rankingsP.add(rankWidgetP);
-        base.add(rankingsP);
 
         return base;
     }
@@ -156,7 +133,6 @@ public class GUIOverview {
         base.remove(rankingMoneyP);
         base.remove(playTopP);
         base.remove(playBotP);
-        base.remove(rankingsP);
 
         //Ranking Panel
         Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
@@ -183,6 +159,7 @@ public class GUIOverview {
         compositeP.add(new ChartOverview(StockHistory.getCompositeHistory()));
         base.add(compositeP);
 
+
         //Top 5 Stocks Overall
         hotSP = new JPanel();
         hotSP.setLayout(null);
@@ -196,26 +173,11 @@ public class GUIOverview {
         hotSP.add(nPTop5WidgetP);
         base.add(hotSP);
 
-
-        //Player's top 5 Stocks
-        playTopP = new JPanel();
-        playTopP.setLayout(null);
-        playTopP.setSize(225, 175);
-        playTopP.setLocation(300, 375);
-        playTopP.setBackground(new Color(198, 240, 198));
-        pTop5Widget = FilingWidget.playStockWidget(FilingOverview.calcTop5Stocks(Score.getPlayerStocks()), 225, "Your Top 5 Stocks");
-        pTop5WidgetP = new JScrollPane(pTop5Widget);
-        pTop5WidgetP.setSize(225, 175);
-        pTop5WidgetP.setLocation(0, 0);
-        playTopP.add(pTop5WidgetP);
-        base.add(playTopP);
-
-
         //Worst 5 Stocks Overall
         badSP = new JPanel();
         badSP.setLayout(null);
         badSP.setSize(225, 175);
-        badSP.setLocation(550, 375);
+        badSP.setLocation(395, 375);
         badSP.setBackground(new Color(198, 240, 198));
         nPBot5Widget = FilingWidget.nonPStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Lowest 5 Stocks");
         nPBot5WidgetP = new JScrollPane(nPBot5Widget);
@@ -224,42 +186,30 @@ public class GUIOverview {
         badSP.add(nPBot5WidgetP);
         base.add(badSP);
 
+        //Player's top 5 Stocks
+        playTopP = new JPanel();
+        playTopP.setLayout(null);
+        playTopP.setSize(225, 175);
+        playTopP.setLocation(683, 375);
+        playTopP.setBackground(new Color(198, 240, 198));
+        pTop5Widget = FilingWidget.playStockWidget(FilingOverview.calcTop5Stocks(FilingMain.getData()), 225, "Your Top 5 Stocks");
+        pTop5WidgetP = new JScrollPane(pTop5Widget);
+        pTop5WidgetP.setSize(225, 175);
+        pTop5WidgetP.setLocation(0, 0);
+        playTopP.add(pTop5WidgetP);
+        base.add(playTopP);
+
         //Player's worst 5 stocks
         playBotP = new JPanel();
         playBotP.setLayout(null);
         playBotP.setSize(225, 175);
-        playBotP.setLocation(800, 375);
+        playBotP.setLocation(971, 375);
         playBotP.setBackground(new Color(198, 240, 198));
-        pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(Score.getPlayerStocks()), 225, "Your Lowest 5 Stocks");
+        pBot5Widget = FilingWidget.playStockWidget(FilingOverview.calcWorst5Stocks(FilingMain.getData()), 225, "Your Lowest 5 Stocks");
         pBot5WidgetP = new JScrollPane(pBot5Widget);
         pBot5WidgetP.setSize(225, 175);
         pBot5WidgetP.setLocation(0, 0);
-        playBotP.add(pBot5WidgetP);
         base.add(playBotP);
-
-        //Ranking Panel
-        rankingsP = new JPanel();
-        rankingsP.setLayout(null);
-        rankingsP.setSize(225, 175);
-        rankingsP.setLocation(1050, 375);
-        rankingsP.setBackground(new Color(198, 240, 198));
-        Object[][] rankings = new Object[][]{
-                {"Daniel", "23,300"},
-                {"JD", "22,600"},
-                {"Toast", test},
-                {"Will", "16,300"},
-                {"Brody", "16,000"}
-        };
-
-        test++;
-
-        rankWidget = FilingWidget.makeRankingWidget(rankings, 300);
-        rankWidgetP = new JScrollPane(rankWidget);
-        rankWidgetP.setSize(225, 175);
-        rankWidgetP.setLocation(0, 0);
-        rankingsP.add(rankWidgetP);
-        base.add(rankingsP);
-
 
         base.revalidate();
         base.repaint();

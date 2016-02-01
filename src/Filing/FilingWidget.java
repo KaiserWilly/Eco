@@ -87,21 +87,23 @@ public class FilingWidget {
         title.setLocation((width / 2) - 75, 0);
         base.add(title);
         for (int playIndex = 0; playIndex < data.length; playIndex++) {
-            JPanel widgetPanel = new JPanel();
-            widgetPanel.setLayout(null);
-            widgetPanel.setSize(width, 30);
-            widgetPanel.setBackground(new Color(114, 114, 114, 120));
-            JLabel name = new JLabel(String.valueOf(data[playIndex][0]));
-            name.setSize(width / 2, 20);
-            name.setLocation(5, 5);
-            widgetPanel.add(name);
-            JLabel score = new JLabel(String.valueOf(data[playIndex][1]));
-            score.setSize(width / 2, 20);
-            score.setLocation(width / 2, 5);
-            widgetPanel.add(score);
-            widgetPanel.setLocation(0, panelLoc);
-            base.add(widgetPanel);
-            panelLoc = panelLoc + 30;
+            if (!String.valueOf(data[playIndex][1]).equals("5000") && !String.valueOf(data[playIndex][1]).equals("0")) {
+                JPanel widgetPanel = new JPanel();
+                widgetPanel.setLayout(null);
+                widgetPanel.setSize(width, 30);
+                widgetPanel.setBackground(new Color(114, 114, 114, 120));
+                JLabel name = new JLabel(String.valueOf(data[playIndex][0]));
+                name.setSize(width / 2, 20);
+                name.setLocation(5, 5);
+                widgetPanel.add(name);
+                JLabel score = new JLabel(String.valueOf(data[playIndex][1]));
+                score.setSize(width / 2, 20);
+                score.setLocation(width / 2, 5);
+                widgetPanel.add(score);
+                widgetPanel.setLocation(0, panelLoc);
+                base.add(widgetPanel);
+                panelLoc = panelLoc + 30;
+            }
         }
         return base;
     }
