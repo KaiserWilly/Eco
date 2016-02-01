@@ -3,9 +3,8 @@ package server;
 import client.StockHistory;
 import server.engine.EcoEngine;
 
-import java.net.BindException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import javax.swing.*;
+import java.net.*;
 
 /**
  * Created by james on 1/12/2016.
@@ -22,6 +21,12 @@ public class ServerMain {
             ServerFile.showTimeStamp("Engine Initialized");
             ServerTimer.startTimer();
             ServerFile.showTimeStamp("Update Control Started, game beginning in 10 seconds");
+            try {
+                JOptionPane.showMessageDialog(new JFrame(), "Have players connect to: "+ InetAddress.getLocalHost().getHostAddress()+" (Local Address) \n Server will not start until \'OK\' button is pressed.","Server Start", JOptionPane.NO_OPTION);
+            } catch (UnknownHostException e1) {
+                e1.printStackTrace();
+            }
+
 
             while (true) {
                 Socket socketToClient = listeningSocket.accept();
