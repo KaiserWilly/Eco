@@ -28,6 +28,8 @@ public class Score {
 
     static int count = 0;
 
+    static double avgPrice;
+
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
 
     public static void createArrays() {
@@ -35,6 +37,16 @@ public class Score {
         assetArray = new int[numberOfStocks];
         //Arrays.fill(assetArray, 0);
         stockPrices = new double[numberOfStocks];
+    }
+
+    public static double getAvgPlayerStockPrice(Object[][] playerData) {
+        for (int i = 0; i < playerData.length; i++) {
+            avgPrice += (double) playerData[i][1];
+        }
+
+        avgPrice = (avgPrice / playerData.length);
+
+        return avgPrice;
     }
 
     public static double getScore() {
