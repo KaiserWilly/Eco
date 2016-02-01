@@ -61,6 +61,7 @@ public class ClientServerHandler extends Thread {
                 Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
                 Score.getScore();
                 NetChangeOfAssets.getNetChange();
+                Score.getPlayerStocks();
                 FilingStocks.makePriceMap();
                 StockHistory.updateComposite(FilingStocks.getClientStockAverage(dataArray));
                 Score.getCashOnHand();

@@ -16,7 +16,7 @@ public class ServerTimer {
 
     public static void startTimer() {
         timer = new Timer();
-        timer.scheduleAtFixedRate(task(), 10000, 2000); //Task, delay, update spped
+        timer.scheduleAtFixedRate(task(), 500, 2000); //Task, delay, update spped
     }
 
     public static TimerTask task() {
