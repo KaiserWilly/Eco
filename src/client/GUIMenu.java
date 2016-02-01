@@ -121,11 +121,6 @@ public class GUIMenu {
             } else if (e.getSource() == startServer) {
                 frame.setVisible(false); //you can't see me!
                 frame.dispose(); //Destroy the JFrame object
-                try {
-                    JOptionPane.showMessageDialog(frame, "Have players connect to: "+ InetAddress.getLocalHost().getHostAddress(), "Value Error", JOptionPane.WARNING_MESSAGE);
-                } catch (UnknownHostException e1) {
-                    e1.printStackTrace();
-                }
                 ServerMain.startServer();
             }
 
