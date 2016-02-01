@@ -129,7 +129,7 @@ public class GUIMenu {
                 ServerMain.startServer();
             }
 
-        }fi
+        }
     }
 }
 
