@@ -200,8 +200,9 @@ public class EcoEngine {
 //        for (int i = 0; i < stockInput.length; i++) {
 //            System.out.println(Arrays.toString(stockInput[i]));
 //        }
-        } for (int i = 0; i < numberOfStocks; i++) {
-                if ((double) stockInput[i][1] < 0.01) {
+        }
+        for (int i = 0; i < numberOfStocks; i++) {
+                if (Double.parseDouble(stockInput[i][1].toString()) < 0.01) {
                     stockInput[i][1] = 0.01;
                 }
             }
@@ -210,7 +211,7 @@ public class EcoEngine {
 
     public static double changeStockPrice(double priceToBeChanged, boolean trending, int directionOfTrend, int currentDurationOfTrend) {
         Random percentageAdjustment = new Random();
-        totalPriceChange = Math.pow(priceToBeChanged, .907); //(-.507)
+        totalPriceChange = Math.pow(priceToBeChanged, .407); //(-.507)
         totalPriceChange = totalPriceChange / 10;
         if (trending) {
             if (directionOfTrend == 1) { //If direction of trend is 1, the stock is trending up
