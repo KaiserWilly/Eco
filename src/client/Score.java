@@ -2,6 +2,7 @@ package client;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -28,6 +29,8 @@ public class Score {
 
     static int count = 0;
 
+    static ArrayList<Double> avgPriceList = new ArrayList<>();
+    static double[] avgPriceArray;
     static double avgPrice;
 
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
@@ -35,18 +38,24 @@ public class Score {
     public static void createArrays() {
         numberOfStocks = ClientServerHandler.dataArray.length;
         assetArray = new int[numberOfStocks];
-        //Arrays.fill(assetArray, 0);
         stockPrices = new double[numberOfStocks];
     }
 
-    public static double getAvgPlayerStockPrice(Object[][] playerData) {
+    public static double[] getAvgPlayerStockPrice(Object[][] playerData) {
         for (int i = 0; i < playerData.length; i++) {
             avgPrice += (double) playerData[i][1];
         }
 
         avgPrice = (avgPrice / playerData.length);
 
-        return avgPrice;
+        avgPriceList.add(avgPrice);
+
+        for (int i = 0; i < avgPriceList.size(); i++) {
+            avgPriceArray[i] = avgPriceList.get(i);
+        }
+
+
+        return avgPriceArray;
     }
 
     public static double getScore() {
