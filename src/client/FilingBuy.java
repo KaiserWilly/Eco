@@ -73,7 +73,7 @@ public class FilingBuy {
         assetsP.setSize(400, 50);
         assetsP.setLocation(825, 25);
         assetsP.setBackground(new Color(198, 240, 198));
-        JLabel assetsLab = new JLabel("Assets: $" + Score.assetsFormatted +"   Net Change: $ " + NetChangeOfAssets.netChangeFormatted);
+        JLabel assetsLab = new JLabel("Assets: $" + Score.assetsFormatted + "   Net Change: $ " + NetChangeOfAssets.netChangeFormatted);
         assetsLab.setFont(assetsHeading);
         assetsLab.setSize(400, 50);
         assetsLab.setHorizontalAlignment(SwingConstants.CENTER);
@@ -120,8 +120,11 @@ public class FilingBuy {
             //compositeP.add(new ChartBuySell(StockHistory.getCompositeHistory()));
             compositeP.add(new ChartBuySell(StockHistory.getStockHistory(stockName)));
             base.add(compositeP);
-
-            slider = new JSlider(JSlider.HORIZONTAL, 0, (int) Math.floor(Score.getCashOnHand()/FilingStocks.getPrice(stockName)), 0);
+            if (Math.floor(Score.getCashOnHand() / FilingStocks.getPrice(stockName)) < 1000) {
+                slider = new JSlider(JSlider.HORIZONTAL, 0, (int) Math.floor(Score.getCashOnHand() / FilingStocks.getPrice(stockName)), 0);
+            } else {
+                slider = new JSlider(JSlider.HORIZONTAL, 0, 1000, 0);
+            }
             slider.addChangeListener(new slidLis());
             slider.setValue(sliderPosition);
             slider.setSize(600, 50);

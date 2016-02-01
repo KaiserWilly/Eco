@@ -107,6 +107,10 @@ public class GUIMenu {
                     ipValid = true;
                 }
                 if (ipValid) {
+                    GUIOverview.namePlayer = (String) JOptionPane.showInputDialog(joinGame, "Enter your username:", "Join Game", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                    if (GUIOverview.namePlayer == null) {
+                        GUIOverview.namePlayer = "Lazy SOB";
+                    }
                     System.out.println("It connected!");
                     frame.setVisible(false); //you can't see me!
                     frame.dispose(); //Destroy the JFrame object

@@ -16,6 +16,7 @@ public class GUIOverview {
             nPBot5Widget, pBot5Widget, rankWidget;
     static JLabel rankMonLab, rankPlayL, compLab;
     static JScrollPane nPTop5WidgetP, pTop5WidgetP, nPBot5WidgetP, pBot5WidgetP, rankWidgetP;
+    static String namePlayer = "Phillip the Chemical Engineer";
 
     static int test = 0;
 
@@ -33,12 +34,7 @@ public class GUIOverview {
         nameP.setSize(200, 50);
         nameP.setLocation(50, 25);
         nameP.setBackground(new Color(198, 240, 198));
-        JLabel name = null;
-        try {
-            name = new JLabel(/*InetAddress.getLocalHost().getHostName()*/"Phillip McGinn");
-        } catch (Exception e) {
-            name = new JLabel("<Name not found>");
-        }
+        JLabel name = new JLabel(namePlayer);
         name.setSize(200, 50);
         name.setLocation(0, 0);
         name.setHorizontalAlignment(SwingConstants.CENTER);
@@ -142,7 +138,7 @@ public class GUIOverview {
         rankingMoneyP.setSize(500, 50);
         rankingMoneyP.setLocation(275, 25);
         rankingMoneyP.setBackground(new Color(198, 240, 198));
-        rankMonLab = new JLabel("Money: $" + Score.cashOnHandFormatted+ "  Assets: $" + Score.assetsFormatted);
+        rankMonLab = new JLabel("Money: $" + Score.cashOnHandFormatted + "  Assets: $" + Score.assetsFormatted);
         rankMonLab.setFont(mHeading);
         rankMonLab.setSize(500, 50);
         rankMonLab.setHorizontalAlignment(SwingConstants.CENTER);
