@@ -1,5 +1,7 @@
 package client;
 
+import server.engine.EcoEngine;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
@@ -33,6 +35,9 @@ public class Score {
     static double[] avgPriceArray;
     static double avgPrice;
 
+    static ArrayList<Double> avgAssetPrice = new ArrayList<>();
+    static double[] avgAssetArray;
+
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
 
     public static void createArrays() {
@@ -42,20 +47,45 @@ public class Score {
     }
 
     public static double[] getAvgPlayerStockPrice(Object[][] playerData) {
+        avgPrice = 0;
         for (int i = 0; i < playerData.length; i++) {
-            avgPrice += (double) playerData[i][1];
+            double price = (double) playerData[i][1];
+            avgPrice += price;
+            System.out.println(avgPrice);
         }
 
         avgPrice = (avgPrice / playerData.length);
+        System.out.println(avgPrice);
 
-        avgPriceList.add(avgPrice);
+        if (avgPriceList.size() < 30 && avgPrice != 0) {
+            avgPriceList.add(avgPrice);
+        } else {
+            avgPriceList.remove(0);
+            avgPriceList.set(28, avgPrice);
+        }
         avgPriceArray = new double[avgPriceList.size()];
         for (int i = 0; i < avgPriceList.size(); i++) {
             avgPriceArray[i] = avgPriceList.get(i);
         }
 
-        System.out.println(Arrays.toString(avgPriceArray));
+       // System.out.println(Arrays.toString(avgPriceArray));
         return avgPriceArray;
+    }
+
+    public static double[] getAvgPlayerAssets() {
+
+        try {
+            if (avgAssetPrice.size() < 30 && assets != 0) {
+                avgAssetPrice.add(assets);
+            } else {
+                avgAssetPrice.remove(0);
+                avgAssetPrice.set(28, avgPrice);
+            }
+        } catch (Exception e) {
+
+        }
+
+        return avgAssetArray;
     }
 
     public static double getScore() {
@@ -95,14 +125,6 @@ public class Score {
                 playerStocks[count][1] = ClientServerHandler.dataArray[i][1];
                 count++;
             }
-        }
-
-        try {
-            for (int i = 0; i < playerStocks.length; i++) {
-                System.out.println(Arrays.toString(playerStocks[i]));
-            }
-        } catch (Exception e) {
-
         }
         return playerStocks;
     }
