@@ -64,6 +64,7 @@ public class ClientServerHandler extends Thread {
                 StockHistory.generateStockHistory();
                 NetChangeOfAssets.getNetChange();
                 Score.getPlayerStocks();
+                Score.getAvgPlayerStockPrice(Score.getPlayerStocks());
                 FilingStocks.makePriceMap();
                 StockHistory.updateComposite(FilingStocks.getClientStockAverage(dataArray));
                 Score.getCashOnHand();
