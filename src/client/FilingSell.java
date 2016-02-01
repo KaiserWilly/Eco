@@ -40,8 +40,8 @@ public class FilingSell {
             title.setLocation((425 / 2) - 50, 0);
             title.setBackground(new Color(198, 240, 198, 0));
             buyWidBase.add(title);
-            for (int playIndex = 0; playIndex < FilingMain.getData().length; playIndex++) {
-                JPanel wid = FilingWidget.sellWidget((String) FilingMain.getData()[playIndex][0], 425, 10);
+            for (int playIndex = 0; playIndex < Score.getPlayerStocks().length; playIndex++) {
+                JPanel wid = FilingWidget.sellWidget((String) Score.getPlayerStocks()[playIndex][0], 425, 10);
                 wid.setLocation(0, panelLoc);
                 wid.setBackground(new Color(136, 172, 136));
                 buyWidBase.add(wid);
@@ -121,7 +121,7 @@ public class FilingSell {
             compositeP.add(new ChartBuySell(StockHistory.getStockHistory(stockName)));
             base.add(compositeP);
 
-            slider = new JSlider(JSlider.HORIZONTAL, 0, 1000/*Change to reflect number of shares of user*/, 0);
+            slider = new JSlider(JSlider.HORIZONTAL, 0, Score.assetArray[Score.getStockLocation(stockName)] /*Change to reflect number of shares of user*/, 0);
             slider.addChangeListener(new slidLis());
             slider.setValue(sliderPosition);
             slider.setSize(600, 50);

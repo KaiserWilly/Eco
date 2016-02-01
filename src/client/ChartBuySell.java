@@ -26,11 +26,11 @@ public class ChartBuySell extends JPanel{
         g.fillRect(25, 25, 675, 150);
         g.setColor(Color.BLACK);
         g.drawRect(25, 25, 675, 150);
-        g.drawString("Avg. Price over last 60 seconds", 262, 15);
+        g.drawString("Price Over Last 60 Seconds", 262, 15);
         g.drawLine(25, 25, 22, 25);
         g.drawLine(25, 175, 22, 175);
-        g.drawString("$" + maxVal, 0, 30);
-        g.drawString("$" + minVal, 0, 180);
+        g.drawString("$" + maxVal, 0, 20);
+        g.drawString("$" + minVal, 0, 190);
 
         int x1 = 25;
         int x2 = x1 + 23;

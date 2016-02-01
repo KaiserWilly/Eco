@@ -15,7 +15,6 @@ public class StockHistory {
     public static double[] compositeStockHistory = new double[30];
 
     public static Object[] stockHistory;
-    //public static double[] stockHistoryDouble;
 
     public static int numberOfStocks;
 
