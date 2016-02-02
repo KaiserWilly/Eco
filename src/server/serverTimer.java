@@ -6,10 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created 12/29/15
- * Software Development
- * TSA Conference, 2016
- * ServerTimer: Class containing code that paces the market and data updates to the clients.
+ * Created by james on 1/12/2016.
  */
 public class ServerTimer {
     static Timer timer;
@@ -27,6 +24,7 @@ public class ServerTimer {
                 dataArray = server.engine.EcoEngine.getData();
                 Values.secCount++;
                 server.engine.EcoEngine.genereateData();
+                ServerFile.showTimeStamp("Data Update Sent; SEC: " + Values.secCount);
             }
         };
     }
