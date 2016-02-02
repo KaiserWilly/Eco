@@ -145,7 +145,7 @@ public class Score {
     }
 
     public static double calcuateAssetsValue() {
-        //Gets the value of the player's assets
+        //Gets the value of the player's assets and sets the Net change values
         NetChangeOfAssets.oldAssets = assets;
         assets = 0;
 
