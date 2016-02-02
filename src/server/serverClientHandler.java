@@ -1,17 +1,17 @@
 package server;
 
-import client.FilingOverview;
-import client.StockHistory;
 import main.Values;
 import server.engine.EcoEngine;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.Arrays;
 
 /**
- * Created by james on 1/12/2016.
+ * Created 12/27/15
+ * Software Development
+ * TSA Conference, 2016
+ * ServerClientHandler: Class containing code that interacts with the client
  */
 public class ServerClientHandler extends Thread {
     int ID;

@@ -5,29 +5,17 @@ import server.engine.EcoEngine;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
 
 /**
- * Created by isenhartjd on 1/25/2016.
+ * Created 11/23/15
+ * Software Development
+ * TSA Conference, 2016
+ * FilingStocks: Class containing code managing client-side stock info
  */
 public class FilingStocks {
     static double total;
     static double average;
     static Map priceMap = new HashMap<>();
-
-    //Method that generates average price across all stocks
-    public static double getServerStockAverage() {
-        for (int i = 0; i < EcoEngine.numberOfStocks; i++) {
-            total += (double) EcoEngine.getData()[i][1];
-        }
-
-        average = (total / EcoEngine.numberOfStocks);
-        average = (double) Math.round(average * 100) / 100;
-
-        total = 0;
-        return average;
-    }
 
     public static double getClientStockAverage(Object[][] data) {
         for (int i = 0; i < data.length; i++) {
@@ -72,7 +60,7 @@ public class FilingStocks {
         Object[][] data = FilingMain.getData();
         priceMap = new HashMap<>();
         for (int i = 0; i < data.length; i++) {
-            priceMap.put((String) data[i][0], (double) data[i][1]);
+            priceMap.put(data[i][0], data[i][1]);
         }
     }
 }

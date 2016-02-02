@@ -1,13 +1,14 @@
 package filing;
 
 import main.Values;
-import org.apache.commons.io.FilenameUtils;
 
-import java.io.File;
 import java.util.ConcurrentModificationException;
 
 /**
- * Created by JD Isenhart on 9/14/2015.
+ * Created 10/29/15
+ * Software Development
+ * TSA Conference, 2016
+ * FilingMain: Class containing code that fetches data updated by server
  */
 public class FilingMain {
 

@@ -1,14 +1,15 @@
 package server;
 
-import client.FilingStocks;
-import client.StockHistory;
 import main.Values;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by james on 1/12/2016.
+ * Created 12/29/15
+ * Software Development
+ * TSA Conference, 2016
+ * ServerTimer: Class containing code that paces the market and data updates to the clients.
  */
 public class ServerTimer {
     static Timer timer;
@@ -16,7 +17,7 @@ public class ServerTimer {
 
     public static void startTimer() {
         timer = new Timer();
-        timer.scheduleAtFixedRate(task(), 500, 2000); //Task, delay, update spped
+        timer.scheduleAtFixedRate(task(), 500, 2000); //Task, delay, update speed
     }
 
     public static TimerTask task() {
@@ -26,9 +27,6 @@ public class ServerTimer {
                 dataArray = server.engine.EcoEngine.getData();
                 Values.secCount++;
                 server.engine.EcoEngine.genereateData();
-                //StockHistory.generateStockHistory();
-                //ServerFile.showTimeStamp("Data Update Sent; SEC: " + Values.secCount);
-                //ServerFile.showTimeStamp("Average Stock Price: $" + FilingStocks.getServerStockAverage());
             }
         };
     }

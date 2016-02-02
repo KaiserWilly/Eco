@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.util.ConcurrentModificationException;
 
 /**
- * Created by james on 1/12/2016.
+ * Created 11/12/15
+ * Software Development
+ * TSA Conference, 2016
+ * ClientMain: Class containing code routing start up methods
  */
 public class ClientMain {
 
@@ -18,7 +21,7 @@ public class ClientMain {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    GUIFrame.PaneFrameMain.createGUI(); //Can't get it to recognize the reference
+                    GUIFrame.PaneFrameMain.createGUI();
                 } catch (IllegalStateException e) {
                     System.out.println("IllegalStateException: GUIFrame.startGUI()");
                 } catch (ConcurrentModificationException e) {

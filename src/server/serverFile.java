@@ -5,7 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * Created by james on 1/12/2016.
+ * Created 12/28/15
+ * Software Development
+ * TSA Conference, 2016
+ * ServerFile: Class containing code that stamps each console output
  */
 public class ServerFile {
     public static void showTimeStamp(String command){

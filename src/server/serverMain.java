@@ -1,13 +1,13 @@
 package server;
 
-import client.StockHistory;
-import server.engine.EcoEngine;
-
 import javax.swing.*;
 import java.net.*;
 
 /**
- * Created by james on 1/12/2016.
+ * Created 12/27/15
+ * Software Development
+ * TSA Conference, 2016
+ * ServerMain: Class containing code that starts the server
  */
 public class ServerMain {
     public static void startServer() {

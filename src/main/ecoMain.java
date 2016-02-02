@@ -7,7 +7,10 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * Created by james on 1/12/2016.
+ * Created 10/22/15
+ * Software Development
+ * TSA Conference, 2016
+ * EcoMain: Class containing code that starts program
  */
 public class EcoMain {
     public static void main(String[] args) throws UnknownHostException {
