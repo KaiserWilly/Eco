@@ -16,16 +16,11 @@ import java.net.SocketException;
 public class ServerClientHandler extends Thread {
     int ID;
 
-    InputStream is;
-    DataInputStream in;
-
+    //Variables For ObjectOutputStream
     OutputStream outputStream;
     ObjectOutputStream out;
 
     ServerClientHandler(Socket socket, int id) throws IOException {
-        is = socket.getInputStream();
-        in = new DataInputStream(is);
-
         outputStream = socket.getOutputStream();
         out = new ObjectOutputStream(outputStream);
 
@@ -35,32 +30,17 @@ public class ServerClientHandler extends Thread {
     public void run() {
         try {
             int secCount = 0;
-            System.out.println("New client connected!" + ID);
-
-            //Object[] userInfo = new Object[2];
-
-            //String username = in.readUTF();
-            //userInfo[0] = username;
-            //EcoEngine.clientScores.add(ID - 1, userInfo);
+            System.out.println("New client connected!");
 
             while (true) {
                 if (secCount < Values.secCount) {
                     secCount = Values.secCount;
 
-                    out.writeObject(EcoEngine.getData());
-                    out.reset();
+                    out.writeObject(EcoEngine.getData()); //Writes The Stock Data To The Client
+                    out.reset(); //Resets the Output Stream to clear to data inside
 
-                    //double score = in.readDouble();
-                    //userInfo[1] = score;
-
-                   // EcoEngine.clientScores.set(ID - 1, userInfo);
-
-                    String stockName = (String)EcoEngine.stockInfo[0][0];
-                    //StockHistory.getStockHistory(stockName);
-
-                    //FilingOverview.getRankings();
                 }
-                Thread.sleep(1000);
+                Thread.sleep(1000); //Sleeps the server
             }
         } catch (SocketException e) {
             ServerFile.showTimeStamp("Socket Error on Socket ID: "+ID);
