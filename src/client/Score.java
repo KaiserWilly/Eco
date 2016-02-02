@@ -28,7 +28,7 @@ public class Score {
     static ArrayList<Double> avgPriceList = new ArrayList<>();
     static double[] avgPriceArray;
     static double avgPrice;
-    static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
+    static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault())); //Formats Strings to have commas and dollar signs
 
     public static void createArrays() {
         numberOfStocks = ClientServerHandler.dataArray.length;
