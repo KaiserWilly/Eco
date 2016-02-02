@@ -9,7 +9,7 @@ import java.awt.*;
  * Created 11/12/15
  * Software Development
  * TSA Conference, 2016
- * FilingBuy: Class containing code that renders the Buy tab in GUI
+ * GUIBuy: Class containing code that renders the Buy tab in GUI
  */
 public class GUIBuy {
 
