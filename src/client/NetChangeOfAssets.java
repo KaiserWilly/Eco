@@ -8,7 +8,7 @@ import java.util.Locale;
  * Created 12/27/15
  * Software Development
  * TSA Conference, 2016
- * GUIMenu: Class containing code that formats incoming net change values
+ * NetChangeOfAssets: Class containing code that formats incoming net change values
  */
 public class NetChangeOfAssets {
     static double netChange;
