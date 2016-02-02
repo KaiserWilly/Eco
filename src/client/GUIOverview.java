@@ -5,24 +5,22 @@ import filing.FilingWidget;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
- * Created by JD Isenhart on 9/15/2015.
+ * Created 10/30/15
+ * Software Development
+ * TSA Conference, 2016
+ * GUIOverview: Class containing code that renders the Overview tab in GUI
  */
 public class GUIOverview {
-    static JPanel base, nameP, rankingMoneyP, compositeP, hotSP, badSP, playTopP, playBotP, rankingsP, nPTop5Widget, pTop5Widget,
-            nPBot5Widget, pBot5Widget, rankWidget;
-    static JLabel rankMonLab, rankPlayL, compLab;
-    static JScrollPane nPTop5WidgetP, pTop5WidgetP, nPBot5WidgetP, pBot5WidgetP, rankWidgetP;
+    static JPanel base, nameP, rankingMoneyP, compositeP, hotSP, badSP, playTopP, playBotP, nPTop5Widget, pTop5Widget,
+            nPBot5Widget, pBot5Widget;
+    static JLabel rankMonLab;
+    static JScrollPane nPTop5WidgetP, pTop5WidgetP, nPBot5WidgetP, pBot5WidgetP;
     static String namePlayer = "Phillip the Chemical Engineer";
-
-    static int test = 0;
-
 
     public JPanel OverviewPanel() {
         base = new JPanel();
@@ -216,8 +214,6 @@ public class GUIOverview {
 
         base.revalidate();
         base.repaint();
-
-        //System.out.println("GUI.Overview Updated!");
 
     }
 }

@@ -1,19 +1,14 @@
 package server.engine;
 
-/**
- * Created by james on 1/12/2016.
- */
-
 import main.Values;
-import server.ServerTimer;
-
-import java.io.*;
-import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
- * Created by Daniel Holt on 11/5/2015.
- * This is an engine for a Stock Market Simulator.
+ * Created 11/5/15
+ * Software Development
+ * TSA Conference, 2016
+ * EcoEngine: Class containing code that creates and updates the Engine for the market
  */
 
 
@@ -26,9 +21,6 @@ public class EcoEngine {
     public static int numberOfStocks;
     public static boolean positivePriceChange;
     public static double totalPriceChange;
-
-    public static ArrayList<Object[]> clientScores = new ArrayList<>();
-
 
     public static void initializeEngine(int numStocks) {
         numberOfStocks = numStocks;

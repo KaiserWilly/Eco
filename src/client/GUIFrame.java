@@ -14,8 +14,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- * Created by J.D. Isenhart on 4/5/2015
- * 5:56 PM
+ * Created 10/23/15
+ * Software Development
+ * TSA Conference, 2016
+ * GUIFrame: Class containing code that handles JFrame creation and updating
  */
 public class GUIFrame {
     public static int dimX = 1366, dimY = 700;
@@ -28,13 +30,14 @@ public class GUIFrame {
     public static GUIPlayer stocks = new GUIPlayer();
     public static GUIBuy buy = new GUIBuy();
     public static GUISell sell = new GUISell();
-    static int times = 0;
 
 
     public static class PaneFrameMain implements ChangeListener {
 
 
         public static void createGUI() throws IOException {
+
+            //Create and generate Frame
             GUIMenu icon = new GUIMenu();
             mainFrame = new JFrame("Echo v" + main.Values.VERSION);
             mainFrame.setMinimumSize(new Dimension(600, 400));
@@ -55,15 +58,17 @@ public class GUIFrame {
             base = new JPanel();
             base.setPreferredSize(new Dimension(dimX, dimY));
             base.setMinimumSize(new Dimension(dimX, dimY));
-            base.setBackground(new Color(198, 240, 198));
+            base.setBackground(new Color(213, 255, 213));
+
+            //TabbedPane
             tPane = new JTabbedPane();
             tPane.addTab("Game Overview", null, overview.OverviewPanel(), "Overview of the Game");
             tPane.addTab("Your Stocks", null, stocks.guiStocks(), "Overview of stock performance");
             tPane.addTab("Buy", null, buy.buyPanel(), "Buy Stocks");
             tPane.addTab("Sell", null, sell.sellPanel(), "Sell Stocks");
-//            tPane.addChangeListener(this);
             base.add(tPane);
 
+            //Add Logo to bottom
             BufferedImage pb = null;
             try {
                 pb = ImageIO.read(getClass().getResource("/rsc/EcoBanner.png"));
@@ -78,7 +83,7 @@ public class GUIFrame {
             }
             assert pb != null;
 
-
+            //Layout Manager
             layFrame = new GroupLayout(base);
             base.setLayout(layFrame);
             layFrame.setAutoCreateGaps(true);
@@ -110,12 +115,12 @@ public class GUIFrame {
             try {
                 tabIndex = tPane.getSelectedIndex();
             } catch (NullPointerException e) {
-
+                System.out.println("Invalid tabIndex!");
             }
-//            System.out.println("Selected Tab: " + tabIndex);
+
+            //Update pane in use
             switch (tabIndex) {
                 case 0:
-//                    System.out.println(" (Game Overview)");
                     GUIOverview.updateOverview();
                     break;
                 case 1:
@@ -141,38 +146,6 @@ public class GUIFrame {
                     mainFrame.repaint();
             }
         }
-
-        public static void updateUI() {
-            reloadTab();
-
-        }
     }
-
-    public static class frameResizedListener implements ComponentListener {
-        @Override
-        public void componentResized(ComponentEvent e) {
-//            System.out.println("Frame Resized; " + times + "times");
-            times++;
-            main.Values.frameDimension = mainFrame.getSize();
-//            System.out.println("Frame Dimensions: " + main.Values.frameDimension);
-        }
-
-        @Override
-        public void componentMoved(ComponentEvent e) {
-
-        }
-
-        @Override
-        public void componentShown(ComponentEvent e) {
-
-        }
-
-        @Override
-        public void componentHidden(ComponentEvent e) {
-
-        }
-    }
-
-
 }
 

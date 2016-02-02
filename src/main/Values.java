@@ -1,17 +1,16 @@
 package main;
 
-        import java.awt.*;
-        import java.nio.file.Path;
-        import java.nio.file.Paths;
+import java.awt.*;
 
 /**
- * Created by Kaiser on 9/14/2015.
+ * Created 10/29/15
+ * Software Development
+ * TSA Conference, 2016
+ * EcoMain: Class containing code that handles global variables
  */
 public class Values {
-    public static String serverIP = "0.0.0.1";
     public final static double VERSION = 1.0;
     public final static String HEADER = "Echo v" + VERSION;
-    public static Dimension frameDimension = new Dimension(0, 0);
     public static int secCount = 0;
     public static Object[][] dataArray = null;
 }

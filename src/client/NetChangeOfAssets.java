@@ -5,12 +5,14 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
- * Created by Ryan Trost on 1/28/2016.
+ * Created 12/27/15
+ * Software Development
+ * TSA Conference, 2016
+ * GUIMenu: Class containing code that formats incoming net change values
  */
 public class NetChangeOfAssets {
     static double netChange;
     static String netChangeFormatted;
-
     static double oldAssets = 0;
     static double newAssets = 0;
 
@@ -18,9 +20,7 @@ public class NetChangeOfAssets {
 
     public static double getNetChange() {
         netChange = newAssets - oldAssets;
-
         netChangeFormatted = formatter.format(netChange);
-
         return netChange;
     }
 }

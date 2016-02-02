@@ -2,19 +2,23 @@ package client;
 
 import main.Values;
 
-import java.io.*;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 
 /**
- * Created by james on 1/13/2016.
+ * Created 11/16/15
+ * Software Development
+ * TSA Conference, 2016
+ * ClientServerHandler: Class containing code interacting with server
  */
 public class ClientServerHandler extends Thread {
     String serverIP;
 
     static InputStream is;
     static ObjectInputStream in;
-    static OutputStream outputStream;
-    static ObjectOutputStream objectOutputStream;
 
     static Object[][] dataArray = null;
 
@@ -36,14 +40,9 @@ public class ClientServerHandler extends Thread {
             System.out.println("Permanent Connection Made!");
             StockHistory.createCompositeHistory();
             ClientMain.startGUI();
-
-            //Score.generateAssetsArray();
-
             Thread.sleep(100);
-
             is = clientSocket.getInputStream(); //Gets the client's input stream
             in = new ObjectInputStream(is); //Creates an Object Input Stream from the client's input stream
-
 
             while (true) {
                 dataArray = (Object[][]) in.readObject(); //Reads the Stock Information Array from the socket
@@ -52,12 +51,9 @@ public class ClientServerHandler extends Thread {
                     StockHistory.createStockHistory();
                     Score.createArrays();
                 }
-
                 if (count > 1) {
-                    //Twest
                     StockHistory.getStockHistory((String) dataArray[0][0]);
                 }
-
                 Values.dataArray = dataArray; //Stores the Stock Info Array to be used later.
                 Score.getScore();
                 count++;

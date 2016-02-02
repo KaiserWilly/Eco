@@ -4,9 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by james on 1/30/2016.
+ * Created 01/01/16
+ * Software Development
+ * TSA Conference, 2016
+ * ChartBuySell: Class containing code creating
+ * the Buy and Sell GUI graphs
  */
-public class ChartBuySell extends JPanel{
+public class ChartBuySell extends JPanel {
     double[] gData;
 
     public ChartBuySell(double[] data) {
@@ -16,16 +20,16 @@ public class ChartBuySell extends JPanel{
         setBackground(Color.WHITE);
     }
 
-
+    //Create actual graph components
     public void paintComponent(Graphics g) {
         int minVal = FilingStocks.getMinValue(gData);
         int maxVal = FilingStocks.getMaxValue(gData);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(2));
         g.setColor(Color.WHITE);
-        g.fillRect(25, 25, 675, 150);
+        g.fillRect(25, 25, 675, 150); //Background
         g.setColor(Color.BLACK);
-        g.drawRect(25, 25, 675, 150);
+        g.drawRect(25, 25, 675, 150); //Foreground
         g.drawString("Price Over Last 60 Seconds", 262, 15);
         g.drawLine(25, 25, 22, 25);
         g.drawLine(25, 175, 22, 175);
@@ -42,7 +46,7 @@ public class ChartBuySell extends JPanel{
             y1 = (int) (150 - (125 * ((gData[0] - minVal)) / arrayDiff));
         }
         g.setColor(Color.BLUE);
-        for (int i = 1; i < gData.length; i++) {
+        for (int i = 1; i < gData.length; i++) { // Draws lines displayed
             if (gData[i] != 0) {
                 int val = (int) (150 - (125 * ((gData[i] - minVal)) / arrayDiff));
                 if (y1 != 0) {

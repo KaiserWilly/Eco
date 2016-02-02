@@ -1,13 +1,14 @@
 package client;
 
-import server.engine.EcoEngine;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
- * Created by trostrn on 1/27/2016.
+ * Created 12/30/15
+ * Software Development
+ * TSA Conference, 2016
+ * StockHistory: Class containing code that manages Stocks over time,
+ * generating data to send to graphs and tables.
  */
 public class StockHistory {
 

@@ -6,12 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by james on 1/26/2016.
+ * Created 12/01/15
+ * Software Development
+ * TSA Conference, 2016
+ * GUISell: Class containing code that renders Sell tab in GUI
  */
 public class GUISell {
     static JPanel base, cOHP, assetsP, stocksP, sellWidBase;
-    static JLabel cOHLab, assetsLab, stocksLab;
-    static Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
     public static String stockSell = null;
 
     public JPanel sellPanel() {
@@ -20,15 +21,19 @@ public class GUISell {
         base.setLayout(null);
         base.setSize(1275, 550);
 
+        //Cash on Hand
         cOHP = FilingSell.getCOH;
         base.add(cOHP);
 
+        //Assets
         assetsP = FilingSell.getAssets;
         base.add(assetsP);
 
+        //Buy Panel
         stocksP = FilingSell.getBuyPanel;
         base.add(stocksP);
 
+        //Attempt to get SellWidget
         if (FilingMain.getData() != null) {
             sellWidBase = FilingSell.getWidBase;
             base.add(sellWidBase);
@@ -50,12 +55,15 @@ public class GUISell {
         }
         System.out.println("GUI Buy Updated!");
 
+        //Cash on Hand
         cOHP = FilingSell.getCOH;
         base.add(cOHP);
 
+        //Assets
         assetsP = FilingSell.getAssets;
         base.add(assetsP);
 
+        //Buy Panel
         stocksP = FilingSell.getBuyPanel;
         base.add(stocksP);
 

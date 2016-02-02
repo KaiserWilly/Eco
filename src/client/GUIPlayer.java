@@ -1,24 +1,20 @@
 package client;
 
-import filing.FilingMain;
-import filing.FilingWidget;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.geom.Arc2D;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
- * Created by james on 1/26/2016.
+ * Created 11/17/15
+ * Software Development
+ * TSA Conference, 2016
+ * GUIPlayer: Class containing code that renders Player tab in GUI
  */
 public class GUIPlayer {
 
     static JPanel base, playCompP, rankingMoneyP, playerT;
-    Font cHeading = new Font("Trebuchet MS", Font.PLAIN, 40);
 
     public JPanel guiStocks() {
         base = new JPanel();
@@ -65,6 +61,7 @@ public class GUIPlayer {
         base.remove(playCompP);
         base.remove(rankingMoneyP);
         base.remove(playerT);
+
         //Assets Desc.
         Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
         rankingMoneyP = new JPanel();

@@ -11,11 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 /**
- * Created by JD Isenhart on 9/14/2015.
+ * Created 10/29/15
+ * Software Development
+ * TSA Conference, 2016
+ * GUIMenu: Class containing code that starts server and client programs
  */
 public class GUIMenu {
 
@@ -23,7 +24,6 @@ public class GUIMenu {
     public static JPanel base;
     public static JButton startServer, joinGame;
     public static JLabel panelIcon;
-    public static JFileChooser openSave, getOptions;
 
     public Image getFrameIcon() {
         BufferedImage fIcon;
@@ -38,6 +38,8 @@ public class GUIMenu {
 
     public static class PaneFrameMain implements ActionListener {
         public static void createGUI() throws IOException {
+
+            //Create and render GUI
             GUIMenu icon = new GUIMenu();
             frame = new JFrame(Values.HEADER);
             frame.setMinimumSize(new Dimension(400, 600));
@@ -59,6 +61,7 @@ public class GUIMenu {
             base.setLayout(null);
             base.setSize(400, 600);
 
+            //Add Logo
             BufferedImage pb = null;
             try {
                 pb = ImageIO.read(getClass().getResource("/rsc/EcoBanner.png"));
@@ -75,7 +78,7 @@ public class GUIMenu {
             }
             assert pb != null;
 
-
+            //Start Client Button
             joinGame = new JButton("Join Game");
             joinGame.addActionListener(this);
             joinGame.setSize(200, 50);
@@ -84,6 +87,7 @@ public class GUIMenu {
             joinGame.setBorder(BorderFactory.createLineBorder(new Color(92, 92, 92), 2));
             base.add(joinGame);
 
+            //Start Server button
             startServer = new JButton("Start Server");
             startServer.addActionListener(this);
             startServer.setSize(200, 50);
@@ -92,12 +96,12 @@ public class GUIMenu {
             startServer.setBorder(BorderFactory.createLineBorder(new Color(92, 92, 92), 2));
             base.add(startServer);
 
-
             return base;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            // If Client Start button is pushed
             if (e.getSource() == joinGame) {
                 String IP = null;
                 boolean ipValid = false;
@@ -105,7 +109,6 @@ public class GUIMenu {
                     IP = (String) JOptionPane.showInputDialog(joinGame, "Enter the IP address of the Server:", "Join Game", JOptionPane.PLAIN_MESSAGE, null, null, null);
                     System.out.println(IP);
                     if (IP == null) break;
-                    //ipValid = ClientNetwork.testConnection(IP);
                     ipValid = true;
                 }
                 if (ipValid) {
@@ -118,6 +121,7 @@ public class GUIMenu {
                     frame.dispose(); //Destroy the JFrame object
                     ClientMain.startClient(IP);
                 }
+                // If Server Start button is pushed
             } else if (e.getSource() == startServer) {
                 frame.setVisible(false); //you can't see me!
                 frame.dispose(); //Destroy the JFrame object

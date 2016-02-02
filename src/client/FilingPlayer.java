@@ -9,7 +9,10 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
- * Created by james on 1/31/2016.
+ * Created 12/01/15
+ * Software Development
+ * TSA Conference, 2016
+ * FilingPlayer: Class containing code that creates Player tab GUI panels
  */
 public class FilingPlayer {
 
@@ -35,6 +38,8 @@ public class FilingPlayer {
     }
 
     public static void playerTable() {
+
+        //Create Table
         JPanel tableBase = new JPanel();
         tableBase.setSize(1225, 175);
         tableBase.setBackground(new Color(213, 255, 213));
@@ -63,6 +68,7 @@ public class FilingPlayer {
         JTable mainStatsTable = new JTable(statisticsTableModel);
         DefaultTableCellRenderer CenterRenderer = new DefaultTableCellRenderer();
         CenterRenderer.setHorizontalAlignment(JLabel.CENTER);
+        //Justify Cell
         mainStatsTable.getColumnModel().getColumn(0).setCellRenderer(CenterRenderer);
         mainStatsTable.getColumnModel().getColumn(1).setCellRenderer(CenterRenderer);
         mainStatsTable.getColumnModel().getColumn(2).setCellRenderer(CenterRenderer);
@@ -72,6 +78,7 @@ public class FilingPlayer {
         JScrollPane dataPanePS = new JScrollPane(mainStatsTable);
         dataPanePS.setPreferredSize(new Dimension(1225, 175));
         tableBase.add(dataPanePS);
+        //Layout
         GroupLayout layFrame = new GroupLayout(tableBase);
         tableBase.setLayout(layFrame);
         layFrame.setAutoCreateGaps(true);

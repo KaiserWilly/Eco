@@ -1,19 +1,19 @@
 package client;
 
 import filing.FilingMain;
-import filing.FilingWidget;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by james on 1/26/2016.
+ * Created 11/12/15
+ * Software Development
+ * TSA Conference, 2016
+ * FilingBuy: Class containing code that renders the Buy tab in GUI
  */
 public class GUIBuy {
 
     static JPanel base, cOHP, assetsP, stocksP, buyWidBase;
-    static JLabel cOHLab, assetsLab, stocksLab;
-    static Font mHeading = new Font("Trebuchet MS", Font.PLAIN, 16);
     public static String stockbuy = null;
 
     public JPanel buyPanel() {
@@ -22,15 +22,19 @@ public class GUIBuy {
         base.setLayout(null);
         base.setSize(1275, 550);
 
+        //Add Cash on Hand
         cOHP = FilingBuy.getCOH;
         base.add(cOHP);
 
+        //Add Assets Panel
         assetsP = FilingBuy.getAssets;
         base.add(assetsP);
 
+        //Add Stock Panel
         stocksP = FilingBuy.getBuyPanel;
         base.add(stocksP);
 
+        //Attempt to create BuyWidget
         if (FilingMain.getData() != null) {
             buyWidBase = FilingBuy.getWidBase;
             base.add(buyWidBase);
@@ -42,6 +46,7 @@ public class GUIBuy {
     }
 
     public static void updateBuy() {
+        //Remove components to update
         base.remove(cOHP);
         base.remove(assetsP);
         base.remove(stocksP);
@@ -52,12 +57,16 @@ public class GUIBuy {
         }
         System.out.println("GUI Buy Updated!");
 
+
+        //Add Cash on Hand
         cOHP = FilingBuy.getCOH;
         base.add(cOHP);
 
+        //Add Assets Panel
         assetsP = FilingBuy.getAssets;
         base.add(assetsP);
 
+        //Add Stock Panel
         stocksP = FilingBuy.getBuyPanel;
         base.add(stocksP);
 

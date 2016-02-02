@@ -1,43 +1,33 @@
 package client;
 
-import server.engine.EcoEngine;
-
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 
 /**
- * Created by Ryan Trost on 1/27/2016.
+ * Created 12/24/15
+ * Software Development
+ * TSA Conference, 2016
+ * Score: Class containing code that tracks and manages stock
+ * prices, averages, and names
  */
 
 public class Score {
     public static double score;
     public static double cashOnHand = 100000.00;
     public static double assets = 0;
-
     public static int numberOfStocks;
-
     public static int[] assetArray = new int[0];
     public static double[] stockPrices;
-
     public static Object[][] playerStocks;
-
     static int stockLocation;
-
     static String cashOnHandFormatted;
     static String assetsFormatted;
-
     static int count = 0;
-
     static ArrayList<Double> avgPriceList = new ArrayList<>();
     static double[] avgPriceArray;
     static double avgPrice;
-
-    static ArrayList<Double> avgAssetPrice = new ArrayList<>();
-    static double[] avgAssetArray;
-
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault()));
 
     public static void createArrays() {
@@ -68,24 +58,7 @@ public class Score {
             avgPriceArray[i] = avgPriceList.get(i);
         }
 
-       // System.out.println(Arrays.toString(avgPriceArray));
         return avgPriceArray;
-    }
-
-    public static double[] getAvgPlayerAssets() {
-
-        try {
-            if (avgAssetPrice.size() < 30 && assets != 0) {
-                avgAssetPrice.add(assets);
-            } else {
-                avgAssetPrice.remove(0);
-                avgAssetPrice.set(28, avgPrice);
-            }
-        } catch (Exception e) {
-
-        }
-
-        return avgAssetArray;
     }
 
     public static double getScore() {
@@ -168,8 +141,6 @@ public class Score {
         getStockPrices();
         getAssets();
 
-        //System.out.println(Arrays.toString(assetArray));
-
         for (int i = 0; i < numberOfStocks; i++) {
             assets += stockPrices[i] * assetArray[i];
         }
@@ -178,7 +149,6 @@ public class Score {
 
         NetChangeOfAssets.newAssets = assets;
 
-        //System.out.println("Assets: " + assets);
         return assets;
     }
 }
