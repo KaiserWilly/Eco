@@ -141,7 +141,7 @@ public class FilingWidget {
         base.add(price);
 
         //Focus button
-        JButton lookin = new JButton("Look In!");
+        JButton lookin = new JButton("Get Details!");
         lookin.setSize(100, 10);
         lookin.setLocation(300, 0);
         lookin.setFont(nameF);
@@ -191,7 +191,7 @@ public class FilingWidget {
         base.add(price);
 
         //Focus Button
-        JButton lookin = new JButton("Look In!");
+        JButton lookin = new JButton("Get Details!");
         lookin.setSize(100, 10);
         lookin.setLocation(300, 0);
         lookin.setFont(nameF);
