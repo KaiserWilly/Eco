@@ -10,9 +10,9 @@ import java.net.UnknownHostException;
  * Created 10/22/15
  * Software Development
  * TSA Conference, 2016
- * EcoMain: Class containing code that starts program
+ * ecoMain: Class containing code that starts program
  */
-public class EcoMain {
+public class ecoMain {
     public static void main(String[] args) throws UnknownHostException {
         System.out.println("Current IP: "+ InetAddress.getLocalHost().getHostAddress());
         SwingUtilities.invokeLater(new Runnable() {

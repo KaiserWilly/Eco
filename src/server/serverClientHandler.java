@@ -1,28 +1,41 @@
 package server;
 
+import client.FilingOverview;
+import jdk.internal.util.xml.impl.Input;
 import main.Values;
 import server.engine.EcoEngine;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.Arrays;
 
 /**
  * Created 12/27/15
  * Software Development
  * TSA Conference, 2016
- * ServerClientHandler: Class containing code that interacts with the client
+ * serverClientHandler: Class containing code that interacts with the client
  */
-public class ServerClientHandler extends Thread {
+public class serverClientHandler extends Thread {
     int ID;
 
     //Variables For ObjectOutputStream
     OutputStream outputStream;
     ObjectOutputStream out;
 
-    ServerClientHandler(Socket socket, int id) throws IOException {
+    InputStream inputStream;
+    ObjectInputStream objectInputStream;
+
+    Object[] userInfo = new Object[2];
+
+    serverClientHandler(Socket socket, int id) throws IOException {
         outputStream = socket.getOutputStream();
         out = new ObjectOutputStream(outputStream);
+
+        inputStream = socket.getInputStream();
+        objectInputStream = new ObjectInputStream(inputStream);
+
+        FilingOverview.allUserInfo.add(ID, userInfo);
 
         ID = id;
     }
@@ -39,11 +52,20 @@ public class ServerClientHandler extends Thread {
                     out.writeObject(EcoEngine.getData()); //Writes The Stock Data To The Client
                     out.reset(); //Resets the Output Stream to clear to data inside
 
+                    userInfo[0] = objectInputStream.readObject();
+                    userInfo[1] = objectInputStream.readObject();
+
+                    FilingOverview.allUserInfo.set(ID, userInfo);
+                    //Object[][] test = FilingOverview.getTop5Players(FilingOverview.allUserInfo);
+
+                    out.writeObject(FilingOverview.getTop5Players(FilingOverview.allUserInfo));
+                    out.reset();
+
                 }
                 Thread.sleep(1000); //Sleeps the server
             }
         } catch (SocketException e) {
-            ServerFile.showTimeStamp("Socket Error on Socket ID: "+ID);
+            serverFile.showTimeStamp("Socket Error on Socket ID: " + ID);
         } catch (Exception e) {
             e.printStackTrace();
         }

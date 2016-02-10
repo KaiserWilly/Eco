@@ -131,7 +131,7 @@ public class FilingSell {
             base.add(stockN);
 
             //%Change over 60s
-            JLabel stockP = new JLabel("$" + String.valueOf(FilingStocks.getPrice(stock)));
+            JLabel stockP = new JLabel("$" + String.valueOf(filingStocks.getPrice(stock)));
             stockP.setSize(300, 100);
             stockP.setLocation(423, 0);
             stockP.setBackground(Color.BLUE);

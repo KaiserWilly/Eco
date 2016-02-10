@@ -44,7 +44,7 @@ public class StockHistory {
         //Creates a two dimensional ArrayList that will stock history for all stocks
         for (int i = 0; i < numberOfStocks; i++) {
             ArrayList<Object> newRow = new ArrayList<>();
-            newRow.add(0, ClientServerHandler.dataArray[i][0]);
+            newRow.add(0, clientServerHandler.dataArray[i][0]);
             stockHistoryArrayList.add(i, newRow);
         }
     }
@@ -81,13 +81,13 @@ public class StockHistory {
         if (stockHistoryArrayList.get(1).size() < 30) {
             //If the stock hasn't been running for 60s, adds the price to the very back of the array
             for (int i = 0; i < numberOfStocks; i++) {
-                stockHistoryArrayList.get(i).add(ClientServerHandler.dataArray[i][1]);
+                stockHistoryArrayList.get(i).add(clientServerHandler.dataArray[i][1]);
             }
 
         } else if (stockHistoryArrayList.get(1).size() >= 30) { //The stock has been running for more than 60s, deletes the first price, and adds the latest price to the back
             for (int i = 0; i < numberOfStocks; i++) {
                 stockHistoryArrayList.get(i).remove(1);
-                stockHistoryArrayList.get(i).set(28, ClientServerHandler.dataArray[i][1]);
+                stockHistoryArrayList.get(i).set(28, clientServerHandler.dataArray[i][1]);
             }
         }
     }

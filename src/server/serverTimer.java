@@ -8,7 +8,7 @@ import java.util.TimerTask;
 /**
  * Created by james on 1/12/2016.
  */
-public class ServerTimer {
+public class serverTimer {
     static Timer timer;
     public static Object[][] dataArray;
 
@@ -24,7 +24,7 @@ public class ServerTimer {
                 dataArray = server.engine.EcoEngine.getData();
                 Values.secCount++;
                 server.engine.EcoEngine.genereateData();
-                ServerFile.showTimeStamp("Data Update Sent; SEC: " + Values.secCount);
+                serverFile.showTimeStamp("Data Update Sent; SEC: " + Values.secCount);
             }
         };
     }

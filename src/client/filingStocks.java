@@ -10,9 +10,9 @@ import java.util.Map;
  * Created 11/23/15
  * Software Development
  * TSA Conference, 2016
- * FilingStocks: Class containing code managing client-side stock info
+ * filingStocks: Class containing code managing client-side stock info
  */
-public class FilingStocks {
+public class filingStocks {
     static double total;
     static double average;
     static Map priceMap = new HashMap<>();

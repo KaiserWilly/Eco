@@ -132,7 +132,7 @@ public class FilingBuy {
             base.add(stockN);
 
             //%Change over 60s
-            JLabel stockP = new JLabel("$" + String.valueOf(FilingStocks.getPrice(stock)));
+            JLabel stockP = new JLabel("$" + String.valueOf(filingStocks.getPrice(stock)));
             stockP.setSize(300, 100);
             stockP.setLocation(423, 0);
             stockP.setBackground(Color.BLUE);
@@ -151,8 +151,8 @@ public class FilingBuy {
             base.add(compositeP);
 
             //Slider
-            if (Math.floor(Score.getCashOnHand() / FilingStocks.getPrice(stockName)) < 1000) {
-                slider = new JSlider(JSlider.HORIZONTAL, 0, (int) Math.floor(Score.getCashOnHand() / FilingStocks.getPrice(stockName)), 0);
+            if (Math.floor(Score.getCashOnHand() / filingStocks.getPrice(stockName)) < 1000) {
+                slider = new JSlider(JSlider.HORIZONTAL, 0, (int) Math.floor(Score.getCashOnHand() / filingStocks.getPrice(stockName)), 0);
             } else {
                 slider = new JSlider(JSlider.HORIZONTAL, 0, 1000, 0);
             }

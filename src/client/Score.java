@@ -31,7 +31,7 @@ public class Score {
     static DecimalFormat formatter = new DecimalFormat("###,###,###.##", DecimalFormatSymbols.getInstance(Locale.getDefault())); //Formats Strings to have commas and dollar signs
 
     public static void createArrays() {
-        numberOfStocks = ClientServerHandler.dataArray.length; //Gets the number of stocks as an easy to access variable
+        numberOfStocks = clientServerHandler.dataArray.length; //Gets the number of stocks as an easy to access variable
         assetArray = new int[numberOfStocks]; //Creates an array that keeps track of the number of each stock you have
         stockPrices = new double[numberOfStocks]; //Creates an array that keeps track of the price of each stock
     }
@@ -79,7 +79,7 @@ public class Score {
     public static double[] getStockPrices() {
         //Fills the stock prices array with the current stock prices
         for (int i = 0; i < numberOfStocks; i++) {
-            stockPrices[i] = (double) ClientServerHandler.dataArray[i][1];
+            stockPrices[i] = (double) clientServerHandler.dataArray[i][1];
         }
 
         return stockPrices;
@@ -101,8 +101,8 @@ public class Score {
 
         for (int i = 0; i < assetArray.length; i++) {
             if (assetArray[i] != 0) {
-                playerStocks[count][0] = ClientServerHandler.dataArray[i][0]; //Sets the names of the stocks the player owns
-                playerStocks[count][1] = ClientServerHandler.dataArray[i][1]; //Sets the price of the stocks the player owns
+                playerStocks[count][0] = clientServerHandler.dataArray[i][0]; //Sets the names of the stocks the player owns
+                playerStocks[count][1] = clientServerHandler.dataArray[i][1]; //Sets the price of the stocks the player owns
                 count++;
             }
         }
@@ -111,8 +111,8 @@ public class Score {
 
     public static int getStockLocation(String stockName) {
         //Finds the location of a specific stock name within the stock data array
-        for (int i = 0; i < ClientServerHandler.dataArray.length; i++) {
-            String name = (String) ClientServerHandler.dataArray[i][0];
+        for (int i = 0; i < clientServerHandler.dataArray.length; i++) {
+            String name = (String) clientServerHandler.dataArray[i][0];
             if (stockName.equals(name)) {
                 stockLocation = i;
             }
@@ -122,8 +122,8 @@ public class Score {
 
     public static void buyOrSellAssets(String stockName, int numberOfBuy) {
         //Changes the amount of stocks the player owns (
-        for (int i = 0; i < ClientServerHandler.dataArray.length; i++) {
-            String name = (String) ClientServerHandler.dataArray[i][0];
+        for (int i = 0; i < clientServerHandler.dataArray.length; i++) {
+            String name = (String) clientServerHandler.dataArray[i][0];
             if (stockName.equals(name)) {
                 stockLocation = i;
             }

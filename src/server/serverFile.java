@@ -8,9 +8,9 @@ import java.util.Calendar;
  * Created 12/28/15
  * Software Development
  * TSA Conference, 2016
- * ServerFile: Class containing code that stamps each console output
+ * serverFile: Class containing code that stamps each console output
  */
-public class ServerFile {
+public class serverFile {
     public static void showTimeStamp(String command){
         //Creates A Time Stamp, Used For Debugging Purposes
 

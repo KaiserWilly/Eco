@@ -7,12 +7,12 @@ import java.util.ConcurrentModificationException;
  * Created 11/12/15
  * Software Development
  * TSA Conference, 2016
- * ClientMain: Class containing code routing start up methods
+ * clientMain: Class containing code routing start up methods
  */
-public class ClientMain {
+public class clientMain {
 
     public static void startClient(String serverIP) {
-        Thread clientN = new ClientServerHandler(serverIP);
+        Thread clientN = new clientServerHandler(serverIP);
         clientN.start();
     }
 

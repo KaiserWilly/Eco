@@ -22,8 +22,8 @@ public class ChartBuySell extends JPanel {
 
     //Create actual graph components
     public void paintComponent(Graphics g) {
-        int minVal = FilingStocks.getMinValue(gData);
-        int maxVal = FilingStocks.getMaxValue(gData);
+        int minVal = filingStocks.getMinValue(gData);
+        int maxVal = filingStocks.getMaxValue(gData);
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(2));
         g.setColor(Color.WHITE);

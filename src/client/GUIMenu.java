@@ -2,7 +2,7 @@ package client;
 
 
 import main.Values;
-import server.ServerMain;
+import server.serverMain;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -119,13 +119,13 @@ public class GUIMenu {
                     System.out.println("It connected!");
                     frame.setVisible(false); //you can't see me!
                     frame.dispose(); //Destroy the JFrame object
-                    ClientMain.startClient(IP);
+                    clientMain.startClient(IP);
                 }
                 // If Server Start button is pushed
             } else if (e.getSource() == startServer) {
                 frame.setVisible(false); //you can't see me!
                 frame.dispose(); //Destroy the JFrame object
-                ServerMain.startServer();
+                serverMain.startServer();
             }
 
         }
